@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Endpoints.swift
 //  
 //
 //  Created by Francisco D. on 12/04/2022.
@@ -70,14 +70,14 @@ struct Endpoints {
     }
 }
 
+// TODO: Maybe we don't need this class
 public struct CustomerEndpoints {
     
     // TODO: Document
-    public func fetchProducts(customerId: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
+    static func fetchProducts(apiKey: String, customerId: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
         let endpoint = Endpoints.Customer.products(
             customerId: customerId,
-            // TODO: send as parameter
-            apiKey: "<API_KEY>",
+            apiKey: apiKey,
             // TODO: send as parameter
             workflow: "dev"
         )
@@ -94,7 +94,7 @@ public struct CustomerEndpoints {
     }
     
     // TODO: Document
-    public func fetchProductData(customerId: String, productId: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
+    static func fetchProductData(apiKey: String, customerId: String, productId: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
         let endpoint = Endpoints.Customer.productData(
             customerId: customerId,
             productId: productId,

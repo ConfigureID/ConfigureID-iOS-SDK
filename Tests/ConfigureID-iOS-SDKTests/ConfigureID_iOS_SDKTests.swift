@@ -8,17 +8,21 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         // results.
 //        XCTAssertEqual(ConfigureID_iOS_SDK().text, "Hello, World!")
         let exp = expectation(description: "Loading stories")
+        ConfigureID.setApiKey(apiKey: "<API_KEY>")
         
-//        CustomerEndpoints()
+        
+//        ConfigureID
+//            .Customers
 //            .fetchProducts(customerId: "1622", onSuccess: {
 //                print($0)
 //                exp.fulfill()
-        //            }, onError: {
-        //                print($0)
-        //                exp.fulfill()
-        //            })
+//                    }, onError: {
+//                        print($0)
+//                        exp.fulfill()
+//                    })
         
-//        CustomerEndpoints()
+//        ConfigureID
+//            .Customers
 //            .fetchProductData(customerId: "1622", productId: "24253", onSuccess: {
 //                print($0)
 //                exp.fulfill()
