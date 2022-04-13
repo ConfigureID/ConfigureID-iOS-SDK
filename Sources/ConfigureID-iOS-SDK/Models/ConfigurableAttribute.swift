@@ -45,7 +45,7 @@ struct ConfigurableAttribute: Codable {
     
     /// The id of the configurable attribute parent.
     /// - Note: Example: ca34635
-    let parentId: String
+    let parentId: String?
     
 //    TODO: What is swatchTemplate, what fields does it have?
 //    let swatchTemplate: SwatchTemplate
@@ -57,5 +57,5 @@ struct ConfigurableAttribute: Codable {
 //    let subAttributes: SubAttributes
     
     /// The list of artributes values.
-    let attributeValues: [ConfigurableAttribute]
+    let attributeValues: [AttributeValue]?
 }

@@ -25,7 +25,7 @@ class NetworkManager {
         session = URLSession(configuration: URLSessionConfiguration.ephemeral)
     }
     
-    func get<T: Codable>(url: String, onSuccess: @escaping (T) -> (), onError: @escaping (Error) -> ()) {
+    func GET<T: Codable>(url: String, onSuccess: @escaping (T) -> (), onError: @escaping (Error) -> ()) {
         guard let url = URL(string: url) else {
             // TODO
             print("Invalid URL")
@@ -63,15 +63,22 @@ struct Endpoints {
         static func products(customerId: String, apiKey: String, workflow: String) -> String {
             return "\(baseURL)/customers/\(customerId)/products?api-key=\(apiKey)&workflow=\(workflow)"
         }
+        
+        static func productData(customerId: String, productId: String, apiKey: String, workflow: String) -> String {
+            return "\(baseURL)/customers/\(customerId)/products/\(productId)?api-key=\(apiKey)&workflow=\(workflow)"
+        }
     }
 }
 
 public struct CustomerEndpoints {
     
+    // TODO: Document
     public func fetchProducts(customerId: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
         let endpoint = Endpoints.Customer.products(
             customerId: customerId,
-            apiKey: "<CHANGE_ME>",
+            // TODO: send as parameter
+            apiKey: "<API_KEY>",
+            // TODO: send as parameter
             workflow: "dev"
         )
         
@@ -79,11 +86,30 @@ public struct CustomerEndpoints {
         
         NetworkManager
             .shared
-            .get(
+            .GET(
                 url: endpoint,
                 onSuccess: onSuccess,
                 onError: onError
             )
     }
     
+    // TODO: Document
+    public func fetchProductData(customerId: String, productId: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
+        let endpoint = Endpoints.Customer.productData(
+            customerId: customerId,
+            productId: productId,
+            // TODO: send as parameter
+            apiKey: "<API_KEY>",
+            // TODO: send as parameter
+            workflow: "dev"
+        )
+        
+        NetworkManager
+            .shared
+            .GET(
+                url: endpoint,
+                onSuccess: onSuccess,
+                onError: onError
+            )
+    }
 }
