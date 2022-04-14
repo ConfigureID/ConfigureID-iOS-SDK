@@ -29,18 +29,48 @@ public extension ConfigureID {
     struct Customers {
         
         // TODO: Document
-        public static func fetchProducts(customerId: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
+        // TODO: Does this returns an [product summary] or [Product]?
+        public static func fetchProducts(customerId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
-            // TODO: Check Api key
-            CustomerEndpoints.fetchProducts(apiKey: try! apiKey.get(), customerId: customerId, onSuccess: onSuccess, onError: onError)
+            
+            let endpoint = Endpoints.Customer.products(
+                customerId: customerId,
+                // TODO: Check Api key
+                apiKey: try! apiKey.get(),
+                workflow: workflow
+            )
+            
+            NetworkService
+                .shared
+                .GET(
+                    // TODO
+                    url: endpoint!,
+                    onSuccess: onSuccess,
+                    onError: onError
+                )
         }
         
         // TODO: Document
-        public static func fetchProductData(customerId: String, productId: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
+        public static func fetchProductData(customerId: String, productId: String, workflow: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
-            CustomerEndpoints.fetchProductData(apiKey: try! apiKey.get(), customerId: customerId, productId: productId, onSuccess: onSuccess, onError: onError)
+            let endpoint = Endpoints.Customer.productData(
+                customerId: customerId,
+                productId: productId,
+                // TODO: Check Api key
+                apiKey: try! apiKey.get(),
+                workflow: workflow
+            )
+            
+            NetworkService
+                .shared
+                .GET(
+                    // TODO
+                    url: endpoint!,
+                    onSuccess: onSuccess,
+                    onError: onError
+                )
         }
         
         // TODO: Document
@@ -50,6 +80,7 @@ public extension ConfigureID {
             
             let endpoint = Endpoints.Customer.findByVendorId(
                 customerId: customerId,
+                // TODO: Check Api key
                 apiKey: try! apiKey.get(),
                 vendorId: vendorId,
                 workflow: workflow
@@ -59,7 +90,7 @@ public extension ConfigureID {
                 .shared
                 .GET(
                     // TODO
-                    url: endpoint.url!,
+                    url: endpoint!,
                     onSuccess: onSuccess,
                     onError: onError
                 )

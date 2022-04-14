@@ -42,7 +42,7 @@ struct Endpoints {
             return components.url
         }
         
-        static func findByVendorId(customerId: String, apiKey: String, vendorId: String, workflow: String) -> URLComponents {
+        static func findByVendorId(customerId: String, apiKey: String, vendorId: String, workflow: String) -> URL? {
             var components = URLComponents()
             components.scheme = "https"
             components.host = "headless.fluidconfigure.com"
@@ -52,7 +52,7 @@ struct Endpoints {
                 URLQueryItem(name: "workflow", value: workflow)
             ]
         
-            return components
+            return components.url
         }
     }
 }
@@ -79,23 +79,23 @@ public struct CustomerEndpoints {
             )
     }
     
-    // TODO: Document
-    static func fetchProductData(apiKey: String, customerId: String, productId: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
-        let endpoint = Endpoints.Customer.productData(
-            customerId: customerId,
-            productId: productId,
-            // TODO: send as parameter
-            apiKey: "<API_KEY>",
-            // TODO: send as parameter
-            workflow: "dev"
-        )
-        
-        NetworkService
-            .shared
-            .GET(
-                url: endpoint!,
-                onSuccess: onSuccess,
-                onError: onError
-            )
-    }
+//    // TODO: Document
+//    static func fetchProductData(apiKey: String, customerId: String, productId: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
+//        let endpoint = Endpoints.Customer.productData(
+//            customerId: customerId,
+//            productId: productId,
+//            // TODO: send as parameter
+//            apiKey: "<API_KEY>",
+//            // TODO: send as parameter
+//            workflow: "dev"
+//        )
+//        
+//        NetworkService
+//            .shared
+//            .GET(
+//                url: endpoint!,
+//                onSuccess: onSuccess,
+//                onError: onError
+//            )
+//    }
 }

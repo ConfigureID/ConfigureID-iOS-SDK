@@ -12,26 +12,26 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         ConfigureID.setApiKey(apiKey: "<API_KEY>")
         
         
+        ConfigureID
+            .Customers
+            .fetchProducts(customerId: "1622", workflow: "dev", onSuccess: {
+                print($0)
+                exp.fulfill()
+            }, onError: {
+                print($0)
+                exp.fulfill()
+            })
+        
 //        ConfigureID
 //            .Customers
-//            .fetchProducts(customerId: "1622", onSuccess: {
+//            .fetchProductData(customerId: "1622", productId: "24253", workflow: "dev", onSuccess: {
 //                print($0)
 //                exp.fulfill()
 //            }, onError: {
 //                print($0)
 //                exp.fulfill()
 //            })
-        
-//        ConfigureID
-//            .Customers
-//            .fetchProductData(customerId: "1622", productId: "24253", onSuccess: {
-//                print($0)
-//                exp.fulfill()
-//            }, onError: {
-//                print($0)
-//                exp.fulfill()
-//            })
-        
+//
 //        ConfigureID.Customers
 //            .findByVendorId(
 //                customerId: "1622",
