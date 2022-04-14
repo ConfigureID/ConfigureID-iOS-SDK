@@ -8,7 +8,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         // results.
 //        XCTAssertEqual(ConfigureID_iOS_SDK().text, "Hello, World!")
         let exp = expectation(description: "Loading response")
-        // TODO: Remove this
+        // TODO: Remove this (Rewrite git history)
         ConfigureID.setApiKey(apiKey: "<API_KEY>")
         
         
