@@ -7,7 +7,8 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
 //        XCTAssertEqual(ConfigureID_iOS_SDK().text, "Hello, World!")
-        let exp = expectation(description: "Loading stories")
+        let exp = expectation(description: "Loading response")
+        // TODO: Remove this
         ConfigureID.setApiKey(apiKey: "<API_KEY>")
         
         
@@ -16,10 +17,10 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
 //            .fetchProducts(customerId: "1622", onSuccess: {
 //                print($0)
 //                exp.fulfill()
-//                    }, onError: {
-//                        print($0)
-//                        exp.fulfill()
-//                    })
+//            }, onError: {
+//                print($0)
+//                exp.fulfill()
+//            })
         
 //        ConfigureID
 //            .Customers
@@ -31,6 +32,20 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
 //                exp.fulfill()
 //            })
         
+//        ConfigureID.Customers
+//            .findByVendorId(
+//                customerId: "1622",
+//                vendorId: "CUSTOM FITTED",
+//                workflow: "dev",
+//                onSuccess: {
+//                    print($0)
+//                    exp.fulfill()
+//                }, onError: {
+//                    print($0)
+//                    exp.fulfill()
+//                }
+//            )
+
         waitForExpectations(timeout: 10)
         
     }

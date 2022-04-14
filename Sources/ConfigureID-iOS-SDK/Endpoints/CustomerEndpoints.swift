@@ -25,13 +25,7 @@ class NetworkManager {
         session = URLSession(configuration: URLSessionConfiguration.ephemeral)
     }
     
-    func GET<T: Codable>(url: String, onSuccess: @escaping (T) -> (), onError: @escaping (Error) -> ()) {
-        guard let url = URL(string: url) else {
-            // TODO
-            print("Invalid URL")
-            return
-        }
-        
+    func GET<T: Codable>(url: URL, onSuccess: @escaping (T) -> (), onError: @escaping (Error) -> ()) {
         let task = session.dataTask(with: url) { data, response, error in
                 if let error = error {
                     onError(error)
@@ -56,16 +50,50 @@ class NetworkManager {
 
 struct Endpoints {
         
+    // TODO: allow to modify this
     static let baseURL = "https://headless.fluidconfigure.com"
     
     struct Customer {
         
-        static func products(customerId: String, apiKey: String, workflow: String) -> String {
-            return "\(baseURL)/customers/\(customerId)/products?api-key=\(apiKey)&workflow=\(workflow)"
+        static func products(customerId: String, apiKey: String, workflow: String) -> URL? {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = "headless.fluidconfigure.com"
+            components.path = "/customers/\(customerId)/products"
+
+            components.queryItems = [
+                URLQueryItem(name: "api-key", value: apiKey),
+                URLQueryItem(name: "workflow", value: workflow)
+            ]
+            
+            return components.url
         }
         
-        static func productData(customerId: String, productId: String, apiKey: String, workflow: String) -> String {
-            return "\(baseURL)/customers/\(customerId)/products/\(productId)?api-key=\(apiKey)&workflow=\(workflow)"
+        static func productData(customerId: String, productId: String, apiKey: String, workflow: String) -> URL? {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = "headless.fluidconfigure.com"
+            components.path = "/customers/\(customerId)/products/\(productId)"
+
+            components.queryItems = [
+                URLQueryItem(name: "api-key", value: apiKey),
+                URLQueryItem(name: "workflow", value: workflow)
+            ]
+            
+            return components.url
+        }
+        
+        static func findByVendorId(customerId: String, apiKey: String, vendorId: String, workflow: String) -> URLComponents {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = "headless.fluidconfigure.com"
+            components.path = "/customers/\(customerId)/products/find-by-vendor-id/\(vendorId)"
+            components.queryItems = [
+                URLQueryItem(name: "api-key", value: apiKey),
+                URLQueryItem(name: "workflow", value: workflow)
+            ]
+        
+            return components
         }
     }
 }
@@ -82,12 +110,11 @@ public struct CustomerEndpoints {
             workflow: "dev"
         )
         
-        print(endpoint)
-        
         NetworkManager
             .shared
             .GET(
-                url: endpoint,
+                // TODO
+                url: endpoint!,
                 onSuccess: onSuccess,
                 onError: onError
             )
@@ -107,7 +134,7 @@ public struct CustomerEndpoints {
         NetworkManager
             .shared
             .GET(
-                url: endpoint,
+                url: endpoint!,
                 onSuccess: onSuccess,
                 onError: onError
             )

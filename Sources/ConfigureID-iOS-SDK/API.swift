@@ -28,12 +28,14 @@ public extension ConfigureID {
     
     struct Customers {
         
+        // TODO: Document
         public static func fetchProducts(customerId: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             CustomerEndpoints.fetchProducts(apiKey: try! apiKey.get(), customerId: customerId, onSuccess: onSuccess, onError: onError)
         }
         
+        // TODO: Document
         public static func fetchProductData(customerId: String, productId: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
@@ -41,6 +43,28 @@ public extension ConfigureID {
             CustomerEndpoints.fetchProductData(apiKey: try! apiKey.get(), customerId: customerId, productId: productId, onSuccess: onSuccess, onError: onError)
         }
         
+        // TODO: Document
+        public static func findByVendorId(customerId: String, vendorId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
+            let apiKey = ensureApiKey()
+            // TODO: Check Api key
+            
+            let endpoint = Endpoints.Customer.findByVendorId(
+                customerId: customerId,
+                apiKey: try! apiKey.get(),
+                vendorId: vendorId,
+                workflow: workflow
+            )
+            
+            NetworkManager
+                .shared
+                .GET(
+                    // TODO
+                    url: endpoint.url!,
+                    onSuccess: onSuccess,
+                    onError: onError
+                )
+        }
+    
     }
 }
 
@@ -54,3 +78,5 @@ private extension ConfigureID {
         return .success(apiKey)
     }
 }
+
+
