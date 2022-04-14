@@ -7,47 +7,6 @@
 
 import Foundation
 
-struct Response<T: Codable>: Codable {
-    let data: T
-}
-
-// TODO: How will I manage errors?
-class NetworkManager {
-    
-//    private let session = URLSession.shared
-    
-    private let session: URLSession
-    
-    static let shared: NetworkManager = NetworkManager()
-    
-    init() {
-        // TODO: Check if we want ephemeral, this is to avoid a 304
-        session = URLSession(configuration: URLSessionConfiguration.ephemeral)
-    }
-    
-    func GET<T: Codable>(url: URL, onSuccess: @escaping (T) -> (), onError: @escaping (Error) -> ()) {
-        let task = session.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    onError(error)
-                }
-                
-                if let data = data {
-                    do {
-                        let decoder = JSONDecoder()
-                        let decoded: Response<T> = try decoder.decode(Response<T>.self, from: data)
-                        onSuccess(decoded.data)
-                    } catch {
-                        // TODO
-                        print("Error occurred get: \(error)")
-                    }
-                }
-            }
-        
-        task.resume()
-        
-    }
-}
-
 struct Endpoints {
         
     // TODO: allow to modify this
@@ -110,7 +69,7 @@ public struct CustomerEndpoints {
             workflow: "dev"
         )
         
-        NetworkManager
+        NetworkService
             .shared
             .GET(
                 // TODO
@@ -131,7 +90,7 @@ public struct CustomerEndpoints {
             workflow: "dev"
         )
         
-        NetworkManager
+        NetworkService
             .shared
             .GET(
                 url: endpoint!,

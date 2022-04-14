@@ -55,7 +55,7 @@ public extension ConfigureID {
                 workflow: workflow
             )
             
-            NetworkManager
+            NetworkService
                 .shared
                 .GET(
                     // TODO
