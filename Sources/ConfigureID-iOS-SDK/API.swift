@@ -26,6 +26,7 @@ public struct ConfigureID {
 
 public extension ConfigureID {
     
+    // TODO: Documentation
     struct Customers {
         
         // TODO: Document

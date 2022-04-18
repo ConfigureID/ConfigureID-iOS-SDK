@@ -11,7 +11,6 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         // TODO: Remove this (Rewrite git history)
         ConfigureID.setApiKey(apiKey: "<API_KEY>")
         
-        
         ConfigureID
             .Customers
             .fetchProducts(customerId: "1622", workflow: "dev", onSuccess: {
