@@ -93,7 +93,29 @@ public extension ConfigureID {
                     onError: onError
                 )
         }
+    }
     
+    struct Sessions {
+        
+        public static func fetchSession(sessionId: String, workflow: String, onSuccess: @escaping (Session) -> (), onError: @escaping (Error) -> ()) {
+            let apiKey = ensureApiKey()
+            // TODO: Check Api key
+            
+            let request = Request.Sessions.session(
+                sessionId: sessionId,
+                // TODO: Check Api key
+                apiKey: try! apiKey.get(),
+                workflow: workflow
+            )
+            
+            NetworkService
+                .shared
+                .executeRequest(
+                    request: request,
+                    onSuccess: onSuccess,
+                    onError: onError
+                )
+        }
     }
 }
 
