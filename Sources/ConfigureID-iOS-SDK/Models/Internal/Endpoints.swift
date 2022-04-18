@@ -14,7 +14,7 @@ struct Endpoints {
     
     struct Customer {
         
-        static func products(customerId: String, apiKey: String, workflow: String) -> URL? {
+        static func products(customerId: String, apiKey: String, workflow: String) -> Request {
             var components = URLComponents()
             components.scheme = "https"
             components.host = "headless.fluidconfigure.com"
@@ -25,10 +25,10 @@ struct Endpoints {
                 URLQueryItem(name: "workflow", value: workflow)
             ]
             
-            return components.url
+            return Request(method: .GET, urlComponents: components)
         }
         
-        static func productData(customerId: String, productId: String, apiKey: String, workflow: String) -> URL? {
+        static func productData(customerId: String, productId: String, apiKey: String, workflow: String) -> Request {
             var components = URLComponents()
             components.scheme = "https"
             components.host = "headless.fluidconfigure.com"
@@ -39,10 +39,10 @@ struct Endpoints {
                 URLQueryItem(name: "workflow", value: workflow)
             ]
             
-            return components.url
+            return Request(method: .GET, urlComponents: components)
         }
         
-        static func findByVendorId(customerId: String, apiKey: String, vendorId: String, workflow: String) -> URL? {
+        static func findByVendorId(customerId: String, apiKey: String, vendorId: String, workflow: String) -> Request {
             var components = URLComponents()
             components.scheme = "https"
             components.host = "headless.fluidconfigure.com"
@@ -52,7 +52,7 @@ struct Endpoints {
                 URLQueryItem(name: "workflow", value: workflow)
             ]
         
-            return components.url
+            return Request(method: .GET, urlComponents: components)
         }
     }
 }

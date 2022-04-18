@@ -34,20 +34,17 @@ public extension ConfigureID {
         public static func fetchProducts(customerId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             
-            let endpoint = Endpoints.Customer.products(
+            let request = Endpoints.Customer.products(
                 customerId: customerId,
                 // TODO: Check Api key
                 apiKey: try! apiKey.get(),
                 workflow: workflow
             )
             
-            // TODO: Unwrap
-            let request = URLRequest(url: endpoint!)
-            
             NetworkService
                 .shared
                 .executeRequest(
-                    urlRequest: request,
+                    request: request,
                     onSuccess: onSuccess,
                     onError: onError
                 )
@@ -58,7 +55,7 @@ public extension ConfigureID {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
-            let endpoint = Endpoints.Customer.productData(
+            let request = Endpoints.Customer.productData(
                 customerId: customerId,
                 productId: productId,
                 // TODO: Check Api key
@@ -66,15 +63,10 @@ public extension ConfigureID {
                 workflow: workflow
             )
             
-            // TODO: Unwrap
-            let request = URLRequest(url: endpoint!)
-            
-            
             NetworkService
                 .shared
                 .executeRequest(
-                    // TODO
-                    urlRequest: request,
+                    request: request,
                     onSuccess: onSuccess,
                     onError: onError
                 )
@@ -85,7 +77,7 @@ public extension ConfigureID {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
-            let endpoint = Endpoints.Customer.findByVendorId(
+            let request = Endpoints.Customer.findByVendorId(
                 customerId: customerId,
                 // TODO: Check Api key
                 apiKey: try! apiKey.get(),
@@ -93,13 +85,10 @@ public extension ConfigureID {
                 workflow: workflow
             )
             
-            // TODO: Optional
-            let urlRequest = URLRequest(url: endpoint!)
-            
             NetworkService
                 .shared
                 .executeRequest(
-                    urlRequest: urlRequest,
+                    request: request,
                     onSuccess: onSuccess,
                     onError: onError
                 )

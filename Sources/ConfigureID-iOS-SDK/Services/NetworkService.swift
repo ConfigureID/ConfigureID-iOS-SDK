@@ -19,7 +19,12 @@ class NetworkService {
         session = URLSession(configuration: URLSessionConfiguration.ephemeral)
     }
     
-    func executeRequest<T: Codable>(urlRequest: URLRequest, onSuccess: @escaping (T) -> (), onError: @escaping (Error) -> ()) {
+    func executeRequest<T: Codable>(request: Request, onSuccess: @escaping (T) -> (), onError: @escaping (Error) -> ()) {
+        guard let urlRequest = request.urlRequest() else {
+            print("Invalid URL ", request)
+            // TODO: return error
+            return
+        }
         let task = session.dataTask(with: urlRequest) { data, response, error in
                 if let error = error {
                     onError(error)

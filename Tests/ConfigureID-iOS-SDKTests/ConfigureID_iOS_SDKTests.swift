@@ -7,7 +7,9 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
 //        XCTAssertEqual(ConfigureID_iOS_SDK().text, "Hello, World!")
-        let exp = expectation(description: "Loading response")
+        let products = expectation(description: "Load products")
+        let product = expectation(description: "Load product data")
+        let findByVendor = expectation(description: "Find by vendor id")
         // TODO: Remove this (Rewrite git history)
         ConfigureID.setApiKey(apiKey: "<API_KEY>")
         
@@ -15,37 +17,54 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
             .Customers
             .fetchProducts(customerId: "1622", workflow: "dev", onSuccess: {
                 print($0)
-                exp.fulfill()
+                products.fulfill()
             }, onError: {
                 print($0)
-                exp.fulfill()
+                products.fulfill()
             })
         
-//        ConfigureID
-//            .Customers
-//            .fetchProductData(customerId: "1622", productId: "24253", workflow: "dev", onSuccess: {
-//                print($0)
-//                exp.fulfill()
-//            }, onError: {
-//                print($0)
-//                exp.fulfill()
-//            })
-//
-//        ConfigureID.Customers
-//            .findByVendorId(
-//                customerId: "1622",
-//                vendorId: "CUSTOM FITTED",
-//                workflow: "dev",
-//                onSuccess: {
-//                    print($0)
-//                    exp.fulfill()
-//                }, onError: {
-//                    print($0)
-//                    exp.fulfill()
-//                }
-//            )
-
-        waitForExpectations(timeout: 10)
+        waitFor(seconds: 2)
         
+        ConfigureID
+            .Customers
+            .fetchProductData(customerId: "1622", productId: "24253", workflow: "dev", onSuccess: {
+                print($0)
+                product.fulfill()
+            }, onError: {
+                print($0)
+                product.fulfill()
+            })
+        
+        waitFor(seconds: 2)
+
+        ConfigureID.Customers
+            .findByVendorId(
+                customerId: "1622",
+                vendorId: "CUSTOM FITTED",
+                workflow: "dev",
+                onSuccess: {
+                    print($0)
+                    findByVendor.fulfill()
+                }, onError: {
+                    print($0)
+                    findByVendor.fulfill()
+                }
+            )
+        
+        waitFor(seconds: 2)
+
+        waitForExpectations(timeout: 20)
+        
+    }
+    
+
+}
+
+extension XCTestCase {
+    
+    func waitFor(seconds: Double) {
+        let delayExpectation = XCTestExpectation()
+        delayExpectation.isInverted = true
+        wait(for: [delayExpectation], timeout: seconds)
     }
 }
