@@ -19,8 +19,8 @@ class NetworkService {
         session = URLSession(configuration: URLSessionConfiguration.ephemeral)
     }
     
-    func GET<T: Codable>(url: URL, onSuccess: @escaping (T) -> (), onError: @escaping (Error) -> ()) {
-        let task = session.dataTask(with: url) { data, response, error in
+    func executeRequest<T: Codable>(urlRequest: URLRequest, onSuccess: @escaping (T) -> (), onError: @escaping (Error) -> ()) {
+        let task = session.dataTask(with: urlRequest) { data, response, error in
                 if let error = error {
                     onError(error)
                 }

@@ -40,11 +40,13 @@ public extension ConfigureID {
                 workflow: workflow
             )
             
+            // TODO: Unwrap
+            let request = URLRequest(url: endpoint!)
+            
             NetworkService
                 .shared
-                .GET(
-                    // TODO
-                    url: endpoint!,
+                .executeRequest(
+                    urlRequest: request,
                     onSuccess: onSuccess,
                     onError: onError
                 )
@@ -63,11 +65,15 @@ public extension ConfigureID {
                 workflow: workflow
             )
             
+            // TODO: Unwrap
+            let request = URLRequest(url: endpoint!)
+            
+            
             NetworkService
                 .shared
-                .GET(
+                .executeRequest(
                     // TODO
-                    url: endpoint!,
+                    urlRequest: request,
                     onSuccess: onSuccess,
                     onError: onError
                 )
@@ -86,11 +92,13 @@ public extension ConfigureID {
                 workflow: workflow
             )
             
+            // TODO: Optional
+            let urlRequest = URLRequest(url: endpoint!)
+            
             NetworkService
                 .shared
-                .GET(
-                    // TODO
-                    url: endpoint!,
+                .executeRequest(
+                    urlRequest: urlRequest,
                     onSuccess: onSuccess,
                     onError: onError
                 )
