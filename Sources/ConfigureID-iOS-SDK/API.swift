@@ -34,7 +34,7 @@ public extension ConfigureID {
         public static func fetchProducts(customerId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             
-            let request = Endpoints.Customer.products(
+            let request = Request.Customer.products(
                 customerId: customerId,
                 // TODO: Check Api key
                 apiKey: try! apiKey.get(),
@@ -55,7 +55,7 @@ public extension ConfigureID {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
-            let request = Endpoints.Customer.productData(
+            let request = Request.Customer.productData(
                 customerId: customerId,
                 productId: productId,
                 // TODO: Check Api key
@@ -77,7 +77,7 @@ public extension ConfigureID {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
-            let request = Endpoints.Customer.findByVendorId(
+            let request = Request.Customer.findByVendorId(
                 customerId: customerId,
                 // TODO: Check Api key
                 apiKey: try! apiKey.get(),
