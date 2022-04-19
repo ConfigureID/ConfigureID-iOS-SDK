@@ -16,7 +16,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = "headless.fluidconfigure.com"
+            components.host = Request.host
             components.path = "/customers/\(customerId)/products"
 
             components.queryItems = [
@@ -32,7 +32,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = "headless.fluidconfigure.com"
+            components.host = Request.host
             components.path = "/customers/\(customerId)/products/\(productId)"
 
             components.queryItems = [
@@ -48,7 +48,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = "headless.fluidconfigure.com"
+            components.host = Request.host
             components.path = "/customers/\(customerId)/products/find-by-vendor-id/\(vendorId)"
             components.queryItems = [
                 URLQueryItem(name: "api-key", value: apiKey),

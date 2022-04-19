@@ -17,6 +17,11 @@ struct Request {
     let method: Method
     let urlComponents: URLComponents
     
+    // TODO: Allow to change this?
+    static let host: String = "headless.fluidconfigure.com"
+//    static let host: String = "staging.fluidconfigure.com"
+    
+    
     func urlRequest() -> URLRequest? {
         guard let endpoint = urlComponents.url else {
             return nil

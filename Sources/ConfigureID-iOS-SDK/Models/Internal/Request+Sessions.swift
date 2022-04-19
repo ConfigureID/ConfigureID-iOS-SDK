@@ -17,7 +17,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = "headless.fluidconfigure.com"
+            components.host = Request.host
             components.path = "/sessions/\(sessionId)"
 
             components.queryItems = [
