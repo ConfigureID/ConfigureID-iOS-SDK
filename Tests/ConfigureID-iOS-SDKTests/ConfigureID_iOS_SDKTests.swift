@@ -2,16 +2,15 @@ import XCTest
 @testable import ConfigureID_iOS_SDK
 
 final class ConfigureID_iOS_SDKTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-//        XCTAssertEqual(ConfigureID_iOS_SDK().text, "Hello, World!")
-        let products = expectation(description: "Load products")
-        let product = expectation(description: "Load product data")
-        let findByVendor = expectation(description: "Find by vendor id")
-        // TODO: Remove this (Rewrite git history)
+    
+    override class func setUp() {
         ConfigureID.setApiKey(apiKey: "<API_KEY>")
+    }
+    
+    func testFetchProducts() {
+        let products = expectation(description: "should fetch products")
+        
+        waitFor(seconds: 2)
         
         ConfigureID
             .Customers
@@ -22,6 +21,12 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
                 print($0)
                 products.fulfill()
             })
+        
+        waitForExpectations(timeout: 10)
+    }
+    
+    func testFetchProductData() {
+        let product = expectation(description: "Load product data")
         
         waitFor(seconds: 2)
         
@@ -35,8 +40,14 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
                 product.fulfill()
             })
         
+        waitForExpectations(timeout: 10)
+    }
+    
+    func testFindByVendorId() {
+        let findByVendor = expectation(description: "Find by vendor id")
+        
         waitFor(seconds: 2)
-
+        
         ConfigureID.Customers
             .findByVendorId(
                 customerId: "1622",
@@ -51,13 +62,9 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
                 }
             )
         
-        waitFor(seconds: 2)
-
-        waitForExpectations(timeout: 20)
-        
+        waitForExpectations(timeout: 10)
     }
     
-
 }
 
 extension XCTestCase {
