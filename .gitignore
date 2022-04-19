@@ -93,3 +93,6 @@ iOSInjectionProject/
 .DS_Store
 .AppleDouble
 .LSOverride
+
+Tests/ConfigureID-iOS-SDKTests/Configs/*
+!Tests/ConfigureID-iOS-SDKTests/Configs/sample-config.json

@@ -7,11 +7,29 @@
 
 import Foundation
 
+
+// TODO: Allow to change host?
+enum Environment: String {
+    case prod
+    case staging
+    
+    var host: String {
+        switch self {
+        case .prod:
+            return "prod-ingress.fluidconfigure.com"
+        case .staging:
+            return "staging-ingress.fluidconfigure.com"
+        }
+    }
+}
+
 // TODO: Documentation
 public struct ConfigureID {
     
     // TODO: Documentation
     private static var apiKey: String?
+    
+    static var environment: Environment = .prod
     
     // TODO: is this ok?
     init(apiKey: String) {
@@ -21,7 +39,6 @@ public struct ConfigureID {
     public static func setApiKey(apiKey: String) {
         ConfigureID.apiKey = apiKey
     }
-    
 }
 
 public extension ConfigureID {

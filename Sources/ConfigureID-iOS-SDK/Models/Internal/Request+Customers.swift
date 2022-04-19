@@ -16,8 +16,8 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = Request.host
-            components.path = "/customers/\(customerId)/products"
+            components.host = ConfigureID.environment.host
+            components.path = "/headless/customers/\(customerId)/products"
 
             components.queryItems = [
                 URLQueryItem(name: "api-key", value: apiKey),
@@ -32,8 +32,8 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = Request.host
-            components.path = "/customers/\(customerId)/products/\(productId)"
+            components.host = ConfigureID.environment.host
+            components.path = "/headless/customers/\(customerId)/products/\(productId)"
 
             components.queryItems = [
                 URLQueryItem(name: "api-key", value: apiKey),
@@ -48,8 +48,8 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = Request.host
-            components.path = "/customers/\(customerId)/products/find-by-vendor-id/\(vendorId)"
+            components.host = ConfigureID.environment.host
+            components.path = "/headless/customers/\(customerId)/products/find-by-vendor-id/\(vendorId)"
             components.queryItems = [
                 URLQueryItem(name: "api-key", value: apiKey),
                 URLQueryItem(name: "workflow", value: workflow)

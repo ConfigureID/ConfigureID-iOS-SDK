@@ -24,6 +24,6 @@ let package = Package(
         .testTarget(
             name: "ConfigureID-iOS-SDKTests",
             dependencies: ["ConfigureID-iOS-SDK"],
-            resources: [.copy("Mocks")]),
+            resources: [.copy("Mocks"), .process("Configs")]),
     ]
 )

@@ -17,7 +17,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = Request.host
+            components.host = ConfigureID.environment.host
             components.path = "/recipes/\(recipeId)"
 
             components.queryItems = [

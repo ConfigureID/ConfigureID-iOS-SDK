@@ -3,8 +3,12 @@ import XCTest
 
 final class ConfigureID_iOS_SDKTests: XCTestCase {
     
-    override class func setUp() {
-        ConfigureID.setApiKey(apiKey: "<API_KEY>")
+    var config: TestConfig!
+    
+    override func setUpWithError() throws {
+        ConfigureID.environment = .staging
+        config = try TestConfig.loadFrom(fileName: "staging-config.json")
+        ConfigureID.setApiKey(apiKey: config.apiKey)
     }
     
     func testFetchProducts() {
@@ -14,7 +18,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         
         ConfigureID
             .Customers
-            .fetchProducts(customerId: "1622", workflow: "dev", onSuccess: {
+            .fetchProducts(customerId: config.customerId, workflow: "dev", onSuccess: {
                 print($0)
                 products.fulfill()
             }, onError: {
@@ -27,31 +31,31 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
     
     func testFetchProductData() {
         let product = expectation(description: "Load product data")
-        
+
         waitFor(seconds: 2)
-        
+
         ConfigureID
             .Customers
-            .fetchProductData(customerId: "1622", productId: "24253", workflow: "dev", onSuccess: {
+            .fetchProductData(customerId: config.customerId, productId: config.productId, workflow: "dev", onSuccess: {
                 print($0)
                 product.fulfill()
             }, onError: {
                 print($0)
                 product.fulfill()
             })
-        
+
         waitForExpectations(timeout: 10)
     }
-    
+
     func testFindByVendorId() {
         let findByVendor = expectation(description: "Find by vendor id")
-        
+
         waitFor(seconds: 2)
-        
+
         ConfigureID.Customers
             .findByVendorId(
-                customerId: "1622",
-                vendorId: "CUSTOM FITTED",
+                customerId: config.customerId,
+                vendorId: config.vendorId,
                 workflow: "dev",
                 onSuccess: {
                     print($0)
@@ -61,7 +65,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
                     findByVendor.fulfill()
                 }
             )
-        
+
         waitForExpectations(timeout: 10)
     }
     
