@@ -3,4 +3,5 @@
     "customerId": "<customer_id>",
     "productId": "<productId>",
     "vendorId": "<vendorId>",
+    "environment": "<staging or prod>"
 }

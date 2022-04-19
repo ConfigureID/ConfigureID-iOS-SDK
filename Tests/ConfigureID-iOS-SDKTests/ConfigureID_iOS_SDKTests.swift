@@ -6,8 +6,8 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
     var config: TestConfig!
     
     override func setUpWithError() throws {
-        ConfigureID.environment = .staging
         config = try TestConfig.loadFrom(fileName: "staging-config.json")
+        ConfigureID.environment = config.environment
         ConfigureID.setApiKey(apiKey: config.apiKey)
     }
     

@@ -6,8 +6,11 @@
 //
 
 import Foundation
+@testable import ConfigureID_iOS_SDK
 
 extension String: Error {}
+
+extension Environment: Codable {}
 
 struct TestConfig: Codable {
     
@@ -15,6 +18,7 @@ struct TestConfig: Codable {
     let customerId: String
     let productId: String
     let vendorId: String
+    let environment: Environment
     
     static func loadFrom(fileName: String) throws -> TestConfig {
         let file = fileName.replacingOccurrences(of: ".json", with: "")
