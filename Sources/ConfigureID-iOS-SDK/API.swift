@@ -21,6 +21,14 @@ enum Environment: String {
             return "staging-ingress.fluidconfigure.com"
         }
     }
+    
+    static var encoder: JSONEncoder {
+        return JSONEncoder()
+    }
+    
+    static var decoder: JSONDecoder {
+        return JSONDecoder()
+    }
 }
 
 // TODO: Documentation
@@ -48,7 +56,7 @@ public extension ConfigureID {
         
         // TODO: Document
         // TODO: Does this returns an [product summary] or [Product]?
-        public static func fetchProducts(customerId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
+        public static func fetchProducts(customerId: Int, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             
             let request = Request.Customer.products(
@@ -68,7 +76,7 @@ public extension ConfigureID {
         }
         
         // TODO: Document
-        public static func fetchProductData(customerId: String, productId: String, workflow: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
+        public static func fetchProductData(customerId: Int, productId: Int, workflow: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
@@ -90,7 +98,7 @@ public extension ConfigureID {
         }
         
         // TODO: Document
-        public static func findByVendorId(customerId: String, vendorId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
+        public static func findByVendorId(customerId: Int, vendorId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
@@ -114,6 +122,7 @@ public extension ConfigureID {
     
     struct Sessions {
         
+        // TODO: Document
         public static func fetchSession(sessionId: String, workflow: String, onSuccess: @escaping (Session) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
@@ -133,6 +142,35 @@ public extension ConfigureID {
                     onError: onError
                 )
         }
+        
+        // TODO: Document
+        public static func createSession(
+            parameters: CreateSessionParameters,
+            onSuccess: @escaping (Session) -> (),
+            onError: @escaping (Error) -> ()
+        ) {
+            let apiKey = ensureApiKey()
+            // TODO: Check Api key
+            
+            do {
+                let request = try Request.Sessions.createSession(
+                    // TODO: Check Api key
+                    apiKey: try! apiKey.get(),
+                    parameters: parameters
+                )
+                
+                NetworkService
+                    .shared
+                    .executeRequest(
+                        request: request,
+                        onSuccess: onSuccess,
+                        onError: onError
+                    )
+            } catch {
+                // TODO: move this out
+                fatalError("Error occurred get: \(error)")
+            }
+        }
     }
     
     struct Recipes {
@@ -142,11 +180,31 @@ public extension ConfigureID {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
-            let request = Request.Sessions.session(
-                sessionId: recipeId,
-                // TODO: Check Api key
+//            let request = Request.Sessions.session(
+//                sessionId: recipeId,
+//                // TODO: Check Api key
+//                apiKey: try! apiKey.get(),
+//                workflow: workflow
+//            )
+//
+//            NetworkService
+//                .shared
+//                .executeRequest(
+//                    request: request,
+//                    onSuccess: onSuccess,
+//                    onError: onError
+//                )
+        }
+        
+        // TODO: remove parameters and add them to the function
+        public static func createRecipe(parameters: CreateRecipeParameters, onSuccess: @escaping (Recipe) -> (), onError: @escaping (Error) -> ()) {
+            let apiKey = ensureApiKey()
+            // TODO: Check Api key
+            
+            let request = Request.Recipes.createRecipe(
+                //                // TODO: Check Api key
                 apiKey: try! apiKey.get(),
-                workflow: workflow
+                parameters: parameters
             )
             
             NetworkService

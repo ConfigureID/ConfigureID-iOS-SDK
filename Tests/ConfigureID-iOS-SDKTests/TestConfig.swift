@@ -15,8 +15,8 @@ extension Environment: Codable {}
 struct TestConfig: Codable {
     
     let apiKey: String
-    let customerId: String
-    let productId: String
+    let customerId: Int
+    let productId: Int
     let vendorId: String
     let environment: Environment
     

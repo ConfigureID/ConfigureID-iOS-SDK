@@ -17,6 +17,14 @@ struct Request {
     let method: Method
     let urlComponents: URLComponents
     
+    let httpBody: Data?
+    
+    init(method: Request.Method, urlComponents: URLComponents, httpBody: Data? = nil) {
+        self.method = method
+        self.urlComponents = urlComponents
+        self.httpBody = httpBody
+    }
+    
     func urlRequest() -> URLRequest? {
         guard let endpoint = urlComponents.url else {
             return nil
@@ -24,6 +32,18 @@ struct Request {
         
         var request = URLRequest(url: endpoint)
         request.httpMethod = method.rawValue
+        request.httpBody = httpBody
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        request.addValue("application/json", forHTTPHeaderField: "accept")
+        
+        
+//        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("application/json", forHTTPHeaderField: "content-type")
+
+        
+//        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+//        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
         return request
     }
 }

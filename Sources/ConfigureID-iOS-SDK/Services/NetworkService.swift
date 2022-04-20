@@ -32,8 +32,7 @@ class NetworkService {
                 
                 if let data = data {
                     do {
-                        let decoder = JSONDecoder()
-                        let decoded: Response<T> = try decoder.decode(Response<T>.self, from: data)
+                        let decoded: Response<T> = try Environment.decoder.decode(Response<T>.self, from: data)
                         onSuccess(decoded.data)
                     } catch {
                         // TODO

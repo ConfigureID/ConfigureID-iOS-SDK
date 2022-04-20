@@ -36,13 +36,18 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
 
         ConfigureID
             .Customers
-            .fetchProductData(customerId: config.customerId, productId: config.productId, workflow: "dev", onSuccess: {
-                print($0)
-                product.fulfill()
-            }, onError: {
-                print($0)
-                product.fulfill()
-            })
+            .fetchProductData(
+                customerId: config.customerId,
+                productId: config.productId,
+                workflow: "dev",
+                onSuccess: {
+                    print($0)
+                    product.fulfill()
+                }, onError: {
+                    print($0)
+                    product.fulfill()
+                }
+            )
 
         waitForExpectations(timeout: 10)
     }

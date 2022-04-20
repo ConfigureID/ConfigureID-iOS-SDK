@@ -11,7 +11,7 @@ extension Request {
     
     struct Customer {
         
-        static func products(customerId: String, apiKey: String, workflow: String) -> Request {
+        static func products(customerId: Int, apiKey: String, workflow: String) -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"
@@ -27,7 +27,7 @@ extension Request {
             return Request(method: .GET, urlComponents: components)
         }
         
-        static func productData(customerId: String, productId: String, apiKey: String, workflow: String) -> Request {
+        static func productData(customerId: Int, productId: Int, apiKey: String, workflow: String) -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"
@@ -43,7 +43,7 @@ extension Request {
             return Request(method: .GET, urlComponents: components)
         }
         
-        static func findByVendorId(customerId: String, apiKey: String, vendorId: String, workflow: String) -> Request {
+        static func findByVendorId(customerId: Int, apiKey: String, vendorId: String, workflow: String) -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"

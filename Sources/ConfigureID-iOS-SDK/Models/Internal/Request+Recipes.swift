@@ -12,13 +12,13 @@ extension Request {
     struct Recipes {
         
         // TODO: is workflow needed?
-        static func recipe(recipeId: String, apiKey: String, workflow: String) -> Request {
+        static func fetchRecipe(recipeId: String, apiKey: String, workflow: String) -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
             components.host = ConfigureID.environment.host
-            components.path = "/recipes/\(recipeId)"
+            components.path = "/headless/recipes/\(recipeId)"
 
             components.queryItems = [
                 URLQueryItem(name: "api-key", value: apiKey),
@@ -26,6 +26,21 @@ extension Request {
             ]
             
             return Request(method: .GET, urlComponents: components)
+        }
+        
+        static func createRecipe(apiKey: String, parameters: CreateRecipeParameters) -> Request {
+            var components = URLComponents()
+            // TODO: allow to modify this
+            components.scheme = "https"
+            // TODO: allow to modify this
+            components.host = ConfigureID.environment.host
+            components.path = "/headless/recipes"
+
+            components.queryItems = [
+                URLQueryItem(name: "api-key", value: apiKey)
+            ]
+            
+            return Request(method: .POST, urlComponents: components)
         }
         
     }

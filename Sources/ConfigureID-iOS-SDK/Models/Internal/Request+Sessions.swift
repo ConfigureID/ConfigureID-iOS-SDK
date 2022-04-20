@@ -18,7 +18,7 @@ extension Request {
             components.scheme = "https"
             // TODO: allow to modify this
             components.host = ConfigureID.environment.host
-            components.path = "/sessions/\(sessionId)"
+            components.path = "/headless/sessions/\(sessionId)"
 
             components.queryItems = [
                 URLQueryItem(name: "api-key", value: apiKey),
@@ -28,5 +28,22 @@ extension Request {
             return Request(method: .GET, urlComponents: components)
         }
         
+        // TODO: add parameters to request
+        static func createSession(apiKey: String, parameters: CreateSessionParameters) throws -> Request {
+            var components = URLComponents()
+            // TODO: allow to modify this
+            components.scheme = "https"
+            // TODO: allow to modify this
+            components.host = ConfigureID.environment.host
+            components.path = "/headless/sessions"
+
+            components.queryItems = [
+                URLQueryItem(name: "api-key", value: apiKey)
+            ]
+            
+            let parametersData = try Environment.encoder.encode(parameters)
+            
+            return Request(method: .POST, urlComponents: components, httpBody: parametersData)
+        }
     }
 }
