@@ -20,12 +20,23 @@ import WebKit
 //    }
 //}
 
-public class ProductView: UIView {
+public extension ConfigureID {
+    
+    static func productView(url: URL) -> UIView {
+        return URLViewer(url: url)
+    }
+    
+}
+
+public class URLViewer: UIView, WKNavigationDelegate {
     
     let webView: WKWebView!
     
-    public init() {
+    let url: URL
+    
+    public init(url: URL) {
         webView = WKWebView()
+        self.url = url
         super.init(frame: .zero)
         webView.navigationDelegate = self
         self.backgroundColor = .red
@@ -55,13 +66,8 @@ public class ProductView: UIView {
     
     // TODO: Naming
     public func load() {
-        let url = URL(string: "https://www.hackingwithswift.com")!
         webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
+        webView.allowsBackForwardNavigationGestures = false
     }
     
-}
-
-extension ProductView: WKNavigationDelegate {
-
 }
