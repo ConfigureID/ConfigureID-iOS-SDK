@@ -21,7 +21,7 @@ extension Request {
             components.path = "/headless/recipes/\(recipeId)"
 
             components.queryItems = [
-                URLQueryItem(name: "api-key", value: apiKey),
+                URLQueryItem(name: "apiKey", value: apiKey),
                 URLQueryItem(name: "workflow", value: workflow)
             ]
             
@@ -37,7 +37,7 @@ extension Request {
             components.path = "/headless/recipes"
 
             components.queryItems = [
-                URLQueryItem(name: "api-key", value: apiKey)
+                URLQueryItem(name: "apiKey", value: apiKey)
             ]
             
             return Request(method: .POST, urlComponents: components)

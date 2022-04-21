@@ -21,7 +21,7 @@ extension Request {
             components.path = "/headless/sessions/\(sessionId)"
 
             components.queryItems = [
-                URLQueryItem(name: "api-key", value: apiKey),
+                URLQueryItem(name: "apiKey", value: apiKey),
                 URLQueryItem(name: "workflow", value: workflow)
             ]
             
@@ -38,7 +38,7 @@ extension Request {
             components.path = "/headless/sessions"
 
             components.queryItems = [
-                URLQueryItem(name: "api-key", value: apiKey)
+                URLQueryItem(name: "apiKey", value: apiKey)
             ]
             
             let parametersData = try Environment.encoder.encode(parameters)

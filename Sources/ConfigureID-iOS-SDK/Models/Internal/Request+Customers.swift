@@ -20,7 +20,7 @@ extension Request {
             components.path = "/headless/customers/\(customerId)/products"
 
             components.queryItems = [
-                URLQueryItem(name: "api-key", value: apiKey),
+                URLQueryItem(name: "apiKey", value: apiKey),
                 URLQueryItem(name: "workflow", value: workflow)
             ]
             
@@ -36,7 +36,7 @@ extension Request {
             components.path = "/headless/customers/\(customerId)/products/\(productId)"
 
             components.queryItems = [
-                URLQueryItem(name: "api-key", value: apiKey),
+                URLQueryItem(name: "apiKey", value: apiKey),
                 URLQueryItem(name: "workflow", value: workflow)
             ]
             
@@ -51,7 +51,7 @@ extension Request {
             components.host = ConfigureID.environment.host
             components.path = "/headless/customers/\(customerId)/products/find-by-vendor-id/\(vendorId)"
             components.queryItems = [
-                URLQueryItem(name: "api-key", value: apiKey),
+                URLQueryItem(name: "apiKey", value: apiKey),
                 URLQueryItem(name: "workflow", value: workflow)
             ]
         

@@ -27,6 +27,8 @@ struct Request {
     
     func urlRequest() -> URLRequest? {
         guard let endpoint = urlComponents.url else {
+            // TODO: Return an error
+            fatalError("Ups!")
             return nil
         }
         
