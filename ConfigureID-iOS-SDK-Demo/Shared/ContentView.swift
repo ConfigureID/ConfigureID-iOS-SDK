@@ -10,8 +10,7 @@ import ConfigureID_iOS_SDK
 
 struct ContentView: View {
     var body: some View {
-//        Text("Hello, world!")
-        ProductVisualizerView()
+        ProductVisualizerView(url: URL(string: "https://cdn-webgl.fluidconfigure.com/webgl-viewer/examples/demos/model-loading.html")!)
             .padding()
     }
 }
@@ -24,11 +23,19 @@ struct ContentView_Previews: PreviewProvider {
 
 // TODO: move this inside the package
 struct ProductVisualizerView: UIViewRepresentable {
-    func makeUIView(context: Context) -> ProductView {
-        return ProductView()
+
+    let url: URL
+    
+    init(url: URL) {
+        self.url = url
+    }
+    
+    func makeUIView(context: Context) -> UIView {
+        return ConfigureID
+            .productView(url: url)
     }
 
-    func updateUIView(_ uiView: ProductView, context: Context) {
+    func updateUIView(_ uiView: UIView, context: Context) {
 //        uiView.attributedText = text
     }
 }
