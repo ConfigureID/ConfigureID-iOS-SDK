@@ -25,14 +25,11 @@ struct Request {
         self.httpBody = httpBody
     }
     
-    func urlRequest() -> URLRequest? {
-        guard let endpoint = urlComponents.url else {
-            // TODO: Return an error
-            fatalError("Ups!")
+    func urlRequest() throws -> URLRequest? {
+        guard let url = urlComponents.url else {
             return nil
         }
-        
-        var request = URLRequest(url: endpoint)
+        var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.httpBody = httpBody
         request.setValue("application/json", forHTTPHeaderField: "content-type")
