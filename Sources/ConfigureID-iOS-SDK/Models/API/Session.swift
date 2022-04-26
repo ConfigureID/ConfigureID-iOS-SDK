@@ -9,8 +9,12 @@ import Foundation
 
 // TODO: Document ConfigureSessionDTo
 public struct Session: Codable {
+    
+    /// Id of the session
     let sessionId: String
     // TODO: What is this?
+    
+    /// Product configuration from configure-core
 //    let productJson: ProductJson
     let price: Int
     let quantity: Int
@@ -18,7 +22,9 @@ public struct Session: Codable {
     // TODO: Implement
 //    let recipe: Recipe
     
-    // TODO: Implement
-//    let imageUrlParameters: ImageUrlParameters
+    /// Whether product is WebGl
     let isWebGl: Bool
+    
+//    TODO
+//    let imageUrls
 }

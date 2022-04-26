@@ -57,10 +57,15 @@ final class SessionTests: XCTestCase {
     func testFetchSession() {
         let fetchSession = expectation(description: "should fetch session")
         
+        waitFor(seconds: 2)
+        
         ConfigureID
             .Sessions
             .fetchSession(
-                sessionId: "8a35ebd2-d873-4527-bbd7-55ded62288f9",
+//                sessionId: "8a35ebd2-d873-4527-bbd7-55ded62288f9",
+//                sessionId: "560dda81-f623-46c6-ab75-98c2b3dcdccd",
+//                sessionId: "ef3e6fe-8a5f-4722-b8de-ad93831a3f0c",
+                sessionId: "9ef3e6fe-8a5f-4722-b8de-ad93831a3f0c",
                 onSuccess: {
                     print($0)
                     fetchSession.fulfill()

@@ -16,7 +16,8 @@ struct AttributeValue: Codable {
     /// - Note: Example: true
     let active: Bool
     
-//  TODO
+    //  TODO
+    /// The additional data on how to render the clipart if the attribute value is used in a clipartRelation.
 //    let clipArtConfig: ClipArtConfig
     
     /// A CSS-style hex code, if the attribute value is associated with a color.
@@ -35,14 +36,15 @@ struct AttributeValue: Codable {
     /// - Note: Example: 37
     let priority: Int
     
-//    TODO
+    //    TODO
+    /// The additional data on how to render the text if the attribute value is used in a textRelation.
 //    let textConfig: TextConfig
-    
     
     /// External id of the attribute value.
     /// - Note: Example: MMS01
     let vendorId: String
     
     // TODO
+    /// The price added to the base price if this attribute value is selected.
 //    let upcharge: Upcharge
 }

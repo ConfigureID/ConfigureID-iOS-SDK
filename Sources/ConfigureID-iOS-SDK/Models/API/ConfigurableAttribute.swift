@@ -29,9 +29,7 @@ struct ConfigurableAttribute: Codable {
     /// - Note: Example: Size
     let name: String
     
-    /// TODO: Is the example ""?
     /// A localized string for a tooltip of the attribute.
-    /// - Note: Example:
     let tooltip: String
     
     /// External id of the attribute.
@@ -48,6 +46,7 @@ struct ConfigurableAttribute: Codable {
     let parentId: Int?
     
 //    TODO: What is swatchTemplate, what fields does it have?
+    /// The swatch template.
 //    let swatchTemplate: SwatchTemplate
     
     /// The list of associated facets.
@@ -57,5 +56,5 @@ struct ConfigurableAttribute: Codable {
 //    let subAttributes: SubAttributes
     
     /// The list of artributes values.
-    let attributeValues: [AttributeValue]?
+    let attributeValues: [AttributeValue]
 }
