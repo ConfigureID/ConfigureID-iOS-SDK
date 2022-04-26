@@ -14,7 +14,7 @@ final class RecipeTests: XCTestCase {
     var config: TestConfig!
     
     override func setUpWithError() throws {
-        config = try TestConfig.loadFrom(fileName: "staging-config.json")
+        config = try TestConfig.loadFrom(fileName: "prod-config.json")
         ConfigureID.environment = config.environment
         ConfigureID.setApiKey(apiKey: config.apiKey)
     }
