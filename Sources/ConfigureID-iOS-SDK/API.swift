@@ -56,7 +56,7 @@ public extension ConfigureID {
         
         // TODO: Document
         // TODO: Does this returns an [product summary] or [Product]?
-        public static func fetchProducts(customerId: Int, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
+        public static func fetchProducts(customerId: Int, workflow: String, onSuccess: @escaping ([ProductSummary]) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             
             let request = Request.Customer.products(

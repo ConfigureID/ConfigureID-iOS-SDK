@@ -7,31 +7,47 @@
 
 import Foundation
 
+//struct Facet: Codable {
+//
+//    /// The globally unique id of the attribute.
+//    /// - Note: Example: 20901
+//    let id: Int
+//
+//    /// The localized name for the facet
+//    /// - Note: Example: Core color
+//    let name: String
+//
+//
+//    /// The description for the facet.
+//    /// - Note: Example: Description of Core color
+//    let description: String
+//
+//
+//    /// The label for the facet.
+//    /// - Note: Example: Label of Core color
+//    let label: String
+//
+//
+//    /// The selector type.
+//    /// - Note: Example: dropdown
+//    let selectorType: String
+//
+//    /// The list of FacetValues
+//    let facetValues: [FacetValue]
+//}
+
 struct Facet: Codable {
     
-    /// The globally unique id of the attribute.
+    /// The globally unique id of the product facet.
     /// - Note: Example: 20901
     let id: Int
     
-    /// The localized name for the facet
+    /// The localized name for the product facet
     /// - Note: Example: Core color
     let name: String
     
+    ///    The list of FacetValues
+    ///    TODO: is this a list of strings or a list of FacetValue?
+//    let values: [String]
     
-    /// The description for the facet.
-    /// - Note: Example: Description of Core color
-    let description: String
-    
-    
-    /// The label for the facet.
-    /// - Note: Example: Label of Core color
-    let label: String
-    
-    
-    /// The selector type.
-    /// - Note: Example: dropdown
-    let selectorType: String
-      
-    /// The list of FacetValues
-    let facetValues: [FacetValue]
 }
