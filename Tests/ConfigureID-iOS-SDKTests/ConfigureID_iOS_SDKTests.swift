@@ -6,7 +6,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
     var config: TestConfig!
     
     override func setUpWithError() throws {
-        config = try TestConfig.loadFrom(fileName: "staging-config.json")
+        config = try TestConfig.loadFrom(fileName: "prod-config.json")
         ConfigureID.environment = config.environment
         ConfigureID.setApiKey(apiKey: config.apiKey)
     }
@@ -18,7 +18,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         
         ConfigureID
             .Customers
-            .fetchProducts(customerId: config.customerId, workflow: "dev", onSuccess: {
+            .fetchProducts(customerId: config.customerId, workflow: config.workflow, onSuccess: {
                 print($0)
                 products.fulfill()
             }, onError: {
@@ -39,7 +39,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
             .fetchProductData(
                 customerId: config.customerId,
                 productId: config.productId,
-                workflow: "dev",
+                workflow: config.workflow,
                 onSuccess: {
                     print($0)
                     product.fulfill()
@@ -61,7 +61,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
             .findByVendorId(
                 customerId: config.customerId,
                 vendorId: config.vendorId,
-                workflow: "dev",
+                workflow: config.workflow,
                 onSuccess: {
                     print($0)
                     findByVendor.fulfill()

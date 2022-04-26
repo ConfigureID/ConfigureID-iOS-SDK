@@ -19,6 +19,7 @@ struct TestConfig: Codable {
     let productId: Int
     let vendorId: String
     let environment: Environment
+    let workflow: String
     
     static func loadFrom(fileName: String) throws -> TestConfig {
         let file = fileName.replacingOccurrences(of: ".json", with: "")

@@ -123,15 +123,14 @@ public extension ConfigureID {
     struct Sessions {
         
         // TODO: Document
-        public static func fetchSession(sessionId: String, workflow: String, onSuccess: @escaping (Session) -> (), onError: @escaping (Error) -> ()) {
+        public static func fetchSession(sessionId: String, onSuccess: @escaping (Session) -> (), onError: @escaping (Error) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
             let request = Request.Sessions.session(
                 sessionId: sessionId,
                 // TODO: Check Api key
-                apiKey: try! apiKey.get(),
-                workflow: workflow
+                apiKey: try! apiKey.get()
             )
             
             NetworkService

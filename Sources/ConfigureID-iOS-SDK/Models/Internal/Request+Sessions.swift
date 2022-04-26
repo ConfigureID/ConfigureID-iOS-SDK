@@ -12,7 +12,7 @@ extension Request {
     struct Sessions {
         
         // TODO: is workflow needed?
-        static func session(sessionId: String, apiKey: String, workflow: String) -> Request {
+        static func session(sessionId: String, apiKey: String) -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"
@@ -21,8 +21,7 @@ extension Request {
             components.path = "/headless/sessions/\(sessionId)"
 
             components.queryItems = [
-                URLQueryItem(name: "apiKey", value: apiKey),
-                URLQueryItem(name: "workflow", value: workflow)
+                URLQueryItem(name: "apiKey", value: apiKey)
             ]
             
             return Request(method: .GET, urlComponents: components)

@@ -20,6 +20,5 @@ public struct Session: Codable {
     
     // TODO: Implement
 //    let imageUrlParameters: ImageUrlParameters
-    let generateImageUrl: String
     let isWebGl: Bool
 }

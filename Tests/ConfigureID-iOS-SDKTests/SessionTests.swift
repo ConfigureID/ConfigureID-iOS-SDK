@@ -14,7 +14,7 @@ final class SessionTests: XCTestCase {
     var config: TestConfig!
     
     override func setUpWithError() throws {
-        config = try TestConfig.loadFrom(fileName: "staging-config.json")
+        config = try TestConfig.loadFrom(fileName: "prod-config.json")
         ConfigureID.environment = config.environment
         ConfigureID.setApiKey(apiKey: config.apiKey)
     }
@@ -26,10 +26,10 @@ final class SessionTests: XCTestCase {
         
         let parameters = CreateSessionParameters(
             recipeId: nil,
-            locale: "en",
+            locale: "en_US",
             customerId: config.customerId,
             productId: config.productId,
-            workflow: nil,
+            workflow: config.workflow,
             environment: nil,
             productBaseUrl: nil,
             configureEndpoint: nil,
@@ -51,6 +51,26 @@ final class SessionTests: XCTestCase {
                 }
             )
 
+        waitForExpectations(timeout: 10)
+    }
+    
+    func testFetchSession() {
+        let fetchSession = expectation(description: "should fetch session")
+        
+        ConfigureID
+            .Sessions
+            .fetchSession(
+                sessionId: "8a35ebd2-d873-4527-bbd7-55ded62288f9",
+                onSuccess: {
+                    print($0)
+                    fetchSession.fulfill()
+                },
+                onError: {
+                    print($0)
+                    fetchSession.fulfill()
+                }
+            )
+        
         waitForExpectations(timeout: 10)
     }
 }
