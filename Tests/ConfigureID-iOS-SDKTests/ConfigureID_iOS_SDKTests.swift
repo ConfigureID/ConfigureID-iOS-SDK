@@ -22,7 +22,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
                 print($0)
                 products.fulfill()
             }, onError: {
-                print($0)
+                XCTFail(error: $0)
                 products.fulfill()
             })
         
@@ -44,7 +44,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
                     print($0)
                     product.fulfill()
                 }, onError: {
-                    print($0)
+                    XCTFail(error: $0)
                     product.fulfill()
                 }
             )
@@ -66,7 +66,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
                     print($0)
                     findByVendor.fulfill()
                 }, onError: {
-                    print($0)
+                    XCTFail(error: $0)
                     findByVendor.fulfill()
                 }
             )

@@ -44,10 +44,23 @@ class NetworkService {
                     do {
                         let decoded: Response<T> = try Environment.decoder.decode(Response<T>.self, from: data)
                         onSuccess(decoded.data)
+                        return
                     } catch {
-                        // TODO
                         print("Error occurred get: \(error)")
                     }
+                    
+                    do {
+                        let decodedError: ServerError = try Environment.decoder.decode(ServerError.self, from: data)
+                        onError(.error(
+                            status: decodedError.error.status,
+                            details: decodedError.error.details)
+                        )
+                        return
+                    } catch {
+                        // TODO
+                        print("Error while trying to get the real error: \(error)")
+                    }
+
                 }
             }
         
@@ -58,4 +71,14 @@ class NetworkService {
 
 struct Response<T: Codable>: Codable {
     let data: T
+}
+
+struct ServerError: Codable {
+    let error: ServerErrorInner
+}
+
+
+struct ServerErrorInner: Codable {
+    let status: Int
+    let details: String
 }

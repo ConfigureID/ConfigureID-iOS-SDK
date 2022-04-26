@@ -46,7 +46,7 @@ final class SessionTests: XCTestCase {
                     products.fulfill()
                 },
                 onError: {
-                    print($0)
+                    XCTFail(error: $0)
                     products.fulfill()
                 }
             )
@@ -71,7 +71,7 @@ final class SessionTests: XCTestCase {
                     fetchSession.fulfill()
                 },
                 onError: {
-                    print($0)
+                    XCTFail(error: $0)
                     fetchSession.fulfill()
                 }
             )
@@ -79,3 +79,14 @@ final class SessionTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
 }
+
+func XCTFail(error: Error, file: StaticString = #filePath, line: UInt = #line) {
+    XCTFail(error.localizedDescription, file: file, line: line)
+}
+
+//extension XCTestCase {
+//
+//    func fail(error: Error) {
+//        XCTFail(error.localizedDescription)
+//    }
+//}
