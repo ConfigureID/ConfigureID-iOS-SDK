@@ -19,7 +19,7 @@ class NetworkService {
         session = URLSession(configuration: URLSessionConfiguration.ephemeral)
     }
     
-    func executeRequest<T: Codable>(request: Request, onSuccess: @escaping (T) -> (), onError: @escaping (ConfigureIDError) -> ()) {
+    func executeRequest<ResponseType: Codable>(request: Request, onSuccess: @escaping (ResponseType) -> (), onError: @escaping (ConfigureIDError) -> ()) {
         
         var urlRequest: URLRequest?
         
@@ -42,7 +42,7 @@ class NetworkService {
                 
                 if let data = data {
                     do {
-                        let decoded: Response<T> = try Environment.decoder.decode(Response<T>.self, from: data)
+                        let decoded: Response<ResponseType> = try Environment.decoder.decode(Response<ResponseType>.self, from: data)
                         onSuccess(decoded.data)
                         return
                     } catch {
