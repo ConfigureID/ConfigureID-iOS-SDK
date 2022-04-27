@@ -77,8 +77,34 @@ struct ServerError: Codable {
     let error: ServerErrorInner
 }
 
-
 struct ServerErrorInner: Codable {
     let status: Int
-    let details: String
+    let details: [String]
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        status = try values.decode(Int.self, forKey: .status)
+        
+        var _error: Error? = nil
+        
+        var _details: [String] = []
+        
+        do {
+            _details = try values.decode([String].self, forKey: .details)
+        } catch {
+            _error = error
+        }
+        
+        do {
+            _details = [try values.decode(String.self, forKey: .details)]
+        } catch {
+            
+        }
+        
+        if _details.isEmpty, let _error = _error {
+            throw _error
+        }
+        
+        self.details = _details
+    }
 }

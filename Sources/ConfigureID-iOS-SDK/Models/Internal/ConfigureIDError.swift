@@ -8,7 +8,7 @@
 import Foundation
 
 enum ConfigureIDError: Error {
-    case error(status: Int, details: String)
+    case error(status: Int, details: [String])
     case invalidURL
     case unknownError(Error)
 }
