@@ -77,7 +77,7 @@ final class SessionTests: XCTestCase {
     }
     
     func testResetSession() {
-        let fetchSession = expectation(description: "should reset session")
+        let resetSession = expectation(description: "should reset session")
         
         waitFor(seconds: 2)
         
@@ -87,11 +87,11 @@ final class SessionTests: XCTestCase {
                 sessionId: "335e430c-a32b-4511-9712-7c9045c64143",
                 onSuccess: {
                     print($0)
-                    fetchSession.fulfill()
+                    resetSession.fulfill()
                 },
                 onError: {
                     XCTFail(error: $0)
-                    fetchSession.fulfill()
+                    resetSession.fulfill()
                 }
             )
         
