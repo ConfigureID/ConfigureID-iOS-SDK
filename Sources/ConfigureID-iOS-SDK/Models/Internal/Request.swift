@@ -12,6 +12,7 @@ struct Request {
     enum Method: String {
         case POST
         case GET
+        case PUT
     }
     
     let method: Method

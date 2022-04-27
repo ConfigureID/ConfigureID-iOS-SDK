@@ -62,7 +62,29 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .fetchSession(
-                sessionId: "9384a081-c31d-4448-8a33-102c3851021d",
+                sessionId: "335e430c-a32b-4511-9712-7c9045c64143",
+                onSuccess: {
+                    print($0)
+                    fetchSession.fulfill()
+                },
+                onError: {
+                    XCTFail(error: $0)
+                    fetchSession.fulfill()
+                }
+            )
+        
+        waitForExpectations(timeout: 10)
+    }
+    
+    func testResetSession() {
+        let fetchSession = expectation(description: "should reset session")
+        
+        waitFor(seconds: 2)
+        
+        ConfigureID
+            .Sessions
+            .resetSession(
+                sessionId: "335e430c-a32b-4511-9712-7c9045c64143",
                 onSuccess: {
                     print($0)
                     fetchSession.fulfill()

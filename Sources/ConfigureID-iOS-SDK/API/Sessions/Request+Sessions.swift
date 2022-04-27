@@ -44,5 +44,28 @@ extension Request {
             
             return Request(method: .POST, urlComponents: components, httpBody: parametersData)
         }
+        
+        static func resetSession(apiKey: String, sessionId: String, recipeId: String?) throws -> Request {
+            var components = URLComponents()
+            // TODO: allow to modify this
+            components.scheme = "https"
+            // TODO: allow to modify this
+            components.host = ConfigureID.environment.host
+            components.path = "/headless/sessions/\(sessionId)"
+
+            components.queryItems = [
+                URLQueryItem(name: "apiKey", value: apiKey)
+            ]
+            
+            let body: Data?
+            
+            if let recipeId = recipeId {
+                body = try JSONSerialization.data(withJSONObject: ["recipeId": recipeId])
+            } else {
+                body = nil
+            }
+            
+            return Request(method: .PUT, urlComponents: components, httpBody: body)
+        }
     }
 }

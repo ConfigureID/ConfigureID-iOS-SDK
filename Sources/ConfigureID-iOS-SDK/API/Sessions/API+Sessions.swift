@@ -59,5 +59,35 @@ public extension ConfigureID {
                 fatalError("Error occurred get: \(error)")
             }
         }
+        
+        public static func resetSession(
+            sessionId: String,
+            recipeId: String? = nil,
+            onSuccess: @escaping (Session) -> (),
+            onError: @escaping (Error) -> ()
+        ) {
+            let apiKey = ensureApiKey()
+            // TODO: Check Api key
+            
+            do {
+                let request = try Request.Sessions.resetSession(
+                    // TODO: Check Api key
+                    apiKey: try! apiKey.get(),
+                    sessionId: sessionId,
+                    recipeId: recipeId
+                )
+                
+                NetworkService
+                    .shared
+                    .executeRequest(
+                        request: request,
+                        onSuccess: onSuccess,
+                        onError: onError
+                    )
+            } catch {
+                // TODO: move this out
+                fatalError("Error occurred get: \(error)")
+            }
+        }
     }
 }
