@@ -8,41 +8,58 @@
 import Foundation
 
 public struct Recipe: Codable {
-    let id: Int
-    let customerId: Int
-    let environment: String
-    let workflow: String
+    
+    /// The id of the recipe.
+    let id: Int?
+    
+    /// The id of the customer.
+    let customerId: Int?
+    
+    /// The environment identifier.
+    let environment: String?
+    
+    /// The workflow identifier.
+    let workflow: String?
     
     // TODO: What is this?
-//    let productQuantities: ProductQuantities
-    let purpose: String
-    let catalogId: [String]
-    let locale: String
-    let creationDate: String
+//    let productQuantities: ProductQuantities?
+    
+    /// Purpose of adding to cart.
+    let purpose: String?
+        
+    /// Names of catalogs in the recipe-search that this recipe is a part of.
+    let catalogId: [String]?
+    
+    /// The identifier for locale used to show the configuration.
+    let locale: String?
+    
+    /// Creation date.
+    let creationDate: String?
     
     // TODO: Add this
 //    let prices: Prices
     
-    let isSearchable: Bool
+    /// True if recipe is included indexed in recipe-search service.
+    let isSearchable: Bool?
     
     // TODO: Add this
 //    let custom: Custom
     
     // TODO: Add this
 //    let images: Images
-    let product: Product
+//    let product: Product?
     
     // TODO: Add this
-//    let configuration: Configuration
+//    let configuration: Configuration?
     
     // TODO: Add this
-//    let configurableAttributes: ConfigurableAttributes
-    let version: Int
-    let uri: String
+//    let configurableAttributes: ConfigurableAttributes?
+    let version: Int?
+    let uri: String?
     
     // TODO: Add this
-//    let localizedConfiguration: LocalizedConfiguration
+//    let localizedConfiguration: LocalizedConfiguration?
     
     // TODO: Add this
-//    let extendedAttributes: ExtendedAttributes
+//    let extendedAttributes: ExtendedAttributes?
 }
