@@ -56,7 +56,7 @@ public extension ConfigureID {
                     )
             } catch {
                 // TODO: move this out
-                fatalError("Error occurred get: \(error)")
+                fatalError("2_Error occurred get: \(error)")
             }
         }
         
@@ -86,7 +86,7 @@ public extension ConfigureID {
                     )
             } catch {
                 // TODO: move this out
-                fatalError("Error occurred get: \(error)")
+                fatalError("1_Error occurred get: \(error)")
             }
         }
     }

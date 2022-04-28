@@ -34,35 +34,44 @@ class NetworkService {
             onError(.invalidURL)
             return
         }
-            
+        
         let task = session.dataTask(with: urlRequest) { data, response, error in
-                if let error = error {
-                    onError(.unknownError(error))
+            if let error = error {
+                onError(.unknownError(error))
+            }
+            
+            if let data = data {
+                do {
+                    let decoded: Response<ResponseType> = try Environment.decoder.decode(Response<ResponseType>.self, from: data)
+                    onSuccess(decoded.data)
+                    return
+                } catch {
+                    print("0_Error occurred get: \(error)")
                 }
                 
-                if let data = data {
-                    do {
-                        let decoded: Response<ResponseType> = try Environment.decoder.decode(Response<ResponseType>.self, from: data)
-                        onSuccess(decoded.data)
-                        return
-                    } catch {
-                        print("Error occurred get: \(error)")
-                    }
-                    
-                    do {
-                        let decodedError: ServerError = try Environment.decoder.decode(ServerError.self, from: data)
-                        onError(.error(
-                            status: decodedError.error.status,
-                            details: decodedError.error.details)
-                        )
-                        return
-                    } catch {
-                        // TODO
-                        print("Error while trying to get the real error: \(error)")
-                    }
-
+                do {
+                    let decodedError: ServerError = try Environment.decoder.decode(ServerError.self, from: data)
+                    onError(.error(
+                        status: decodedError.error.status,
+                        details: decodedError.error.details)
+                    )
+                    return
+                } catch {
+                    // TODO
+                    print("Error while trying to get the real error: \(error)")
                 }
             }
+            
+            // If we got here, probably we received a 5xx.
+            let response = response as! HTTPURLResponse
+            let statusCode = response.statusCode
+            onError(
+                .error(
+                    status: statusCode,
+                    details: [HTTPURLResponse.localizedString(forStatusCode: statusCode)]
+                )
+            )
+        }
         
         task.resume()
         

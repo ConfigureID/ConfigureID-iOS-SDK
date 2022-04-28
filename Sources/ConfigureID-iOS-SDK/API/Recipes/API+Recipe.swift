@@ -37,20 +37,24 @@ public extension ConfigureID {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
-            let request = Request.Recipes.createRecipe(
-                //                // TODO: Check Api key
-                apiKey: try! apiKey.get(),
-                parameters: parameters
-            )
-            
-            NetworkService
-                .shared
-                .executeRequest(
-                    request: request,
-                    onSuccess: onSuccess,
-                    onError: onError
+            do {
+                let request = try Request.Recipes.createRecipe(
+                    //                // TODO: Check Api key
+                    apiKey: try! apiKey.get(),
+                    parameters: parameters
                 )
+                
+                NetworkService
+                    .shared
+                    .executeRequest(
+                        request: request,
+                        onSuccess: onSuccess,
+                        onError: onError
+                    )
+            } catch {
+                // TODO
+                print("Error ocurred")
+            }
         }
-        
     }
 }

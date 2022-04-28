@@ -28,7 +28,7 @@ extension Request {
             return Request(method: .GET, urlComponents: components)
         }
         
-        static func createRecipe(apiKey: String, parameters: CreateRecipeParameters) -> Request {
+        static func createRecipe(apiKey: String, parameters: CreateRecipeParameters) throws -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"
@@ -40,7 +40,13 @@ extension Request {
                 URLQueryItem(name: "apiKey", value: apiKey)
             ]
             
-            return Request(method: .POST, urlComponents: components)
+            let parametersData = try Environment.encoder.encode(parameters)
+            
+            return Request(
+                method: .POST,
+                urlComponents: components,
+                httpBody: parametersData
+            )
         }
         
     }
