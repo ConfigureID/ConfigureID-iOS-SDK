@@ -13,6 +13,7 @@ public enum ConfigureIDError: Error {
     case decodingError(entity: String)
     // TODO: revisit naming
     case serverError(statusCode: Int, details: [String])
+    case notAuthenticated
     case unknownError(Error)
     case unexpectedError
     
@@ -30,6 +31,8 @@ public enum ConfigureIDError: Error {
             return -4
         case .unexpectedError:
             return -5
+        case .notAuthenticated:
+            return -6
         }
     }
     
@@ -47,6 +50,8 @@ public enum ConfigureIDError: Error {
             return ["Could not encode \(entity)"]
         case .unexpectedError:
             return ["This error should not have happened"]
+        case .notAuthenticated:
+            return ["Have you called ConfigureID.setApiKey(apiKey: ...)?"]
         }
     }
 }

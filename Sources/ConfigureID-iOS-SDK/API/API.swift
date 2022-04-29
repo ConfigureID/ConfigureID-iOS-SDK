@@ -35,7 +35,7 @@ enum Environment: String {
 public struct ConfigureID {
     
     // TODO: Documentation
-    private static var apiKey: String?
+    static var apiKey: String?
     
     static var environment: Environment = .prod
     
@@ -62,13 +62,13 @@ public struct ConfigureID {
 }
 
 extension ConfigureID {
-    static func ensureApiKey() -> Result<String, Error> {
+    static func ensureApiKey() throws -> String {
         // TODO: Return error on no api key
         guard let apiKey = ConfigureID.apiKey else {
-            fatalError("TODO: return an error")
+            throw ConfigureIDError.notAuthenticated
         }
         
-        return .success(apiKey)
+        return apiKey
     }
 }
 

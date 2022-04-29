@@ -13,22 +13,24 @@ public extension ConfigureID {
         
         // TODO: Document
         public static func fetchSession(sessionId: String, onSuccess: @escaping (Session) -> (), onError: @escaping (ConfigureIDError) -> ()) {
-            let apiKey = ensureApiKey()
-            // TODO: Check Api key
-            
-            let request = Request.Sessions.session(
-                sessionId: sessionId,
-                // TODO: Check Api key
-                apiKey: try! apiKey.get()
-            )
-            
-            NetworkService
-                .shared
-                .executeRequest(
-                    request: request,
-                    onSuccess: onSuccess,
-                    onError: onError
+        
+            do {
+                let request = try Request.Sessions.session(
+                    sessionId: sessionId,
+                    // TODO: Check Api key
+                    apiKey: try ensureApiKey()
                 )
+                
+                NetworkService
+                    .shared
+                    .executeRequest(
+                        request: request,
+                        onSuccess: onSuccess,
+                        onError: onError
+                    )
+            } catch {
+                handleError(error: error, onError: onError)
+            }
         }
         
         // TODO: Document
@@ -38,23 +40,19 @@ public extension ConfigureID {
             onError: @escaping (ConfigureIDError) -> ()
         ) {
             do {
-            let apiKey = ensureApiKey()
-            // TODO: Check Api key
-            
-            
-            let request = try Request.Sessions.createSession(
-                // TODO: Check Api key
-                apiKey: try! apiKey.get(),
-                parameters: parameters
-            )
-            
-            NetworkService
-                .shared
-                .executeRequest(
-                    request: request,
-                    onSuccess: onSuccess,
-                    onError: onError
+                let request = try Request.Sessions.createSession(
+                    // TODO: Check Api key
+                    apiKey: try ensureApiKey(),
+                    parameters: parameters
                 )
+                
+                NetworkService
+                    .shared
+                    .executeRequest(
+                        request: request,
+                        onSuccess: onSuccess,
+                        onError: onError
+                    )
             } catch {
                 handleError(error: error, onError: onError)
             }
@@ -66,12 +64,10 @@ public extension ConfigureID {
             onSuccess: @escaping (Session) -> (),
             onError: @escaping (ConfigureIDError) -> ()
         ) {
-            let apiKey = ensureApiKey()
-            // TODO: Check Api key
             do {
                 let request = try Request.Sessions.resetSession(
                     // TODO: Check Api key
-                    apiKey: try! apiKey.get(),
+                    apiKey: try ensureApiKey(),
                     sessionId: sessionId,
                     recipeId: recipeId
                 )

@@ -13,7 +13,7 @@ public extension ConfigureID {
         
         // TODO: Add locale, includeLocalizedConfiguration, includeExtendedAttributes, etc...
         public static func fetchRecipe(recipeId: String, workflow: String, onSuccess: @escaping (Recipe) -> (), onError: @escaping (ConfigureIDError) -> ()) {
-            let apiKey = ensureApiKey()
+//            let apiKey = ensureApiKey()
             // TODO: Check Api key
             
 //            let request = Request.Sessions.session(
@@ -34,13 +34,11 @@ public extension ConfigureID {
         
         // TODO: remove parameters and add them to the function
         public static func createRecipe(parameters: CreateRecipeParameters, onSuccess: @escaping (Recipe) -> (), onError: @escaping (ConfigureIDError) -> ()) {
-            let apiKey = ensureApiKey()
-            // TODO: Check Api key
-            
+                        
             do {
                 let request = try Request.Recipes.createRecipe(
                     //                // TODO: Check Api key
-                    apiKey: try! apiKey.get(),
+                    apiKey: ensureApiKey(),
                     parameters: parameters
                 )
                 
