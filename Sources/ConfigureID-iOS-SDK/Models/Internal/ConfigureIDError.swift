@@ -51,7 +51,7 @@ public enum ConfigureIDError: Error {
         case .unexpectedError:
             return ["This error should not have happened"]
         case .notAuthenticated:
-            return ["Have you called ConfigureID.setApiKey(apiKey: ...)?"]
+            return ["apiKey not set. Did you call ConfigureID.setApiKey(apiKey: ...)?"]
         }
     }
 }
