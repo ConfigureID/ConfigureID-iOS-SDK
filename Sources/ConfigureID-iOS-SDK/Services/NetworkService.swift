@@ -16,7 +16,10 @@ class NetworkService {
     
     init() {
         // TODO: Check if we want ephemeral, this is to avoid a 304
-        session = URLSession(configuration: URLSessionConfiguration.ephemeral)
+        let configuration = URLSessionConfiguration.ephemeral
+        // A litte bit more time for requests. Default is 60 seconds.
+        configuration.timeoutIntervalForRequest = 1
+        session = URLSession(configuration: configuration)
     }
     
     func executeRequest<ResponseType: Codable>(request: Request, onSuccess: @escaping (ResponseType) -> (), onError: @escaping (ConfigureIDError) -> ()) {
@@ -28,8 +31,8 @@ class NetworkService {
             return
         }
         
-        let task = session.dataTask(with: urlRequest) { data, response, error in
-            if let error = error {
+        let task = session.dataTask(with: urlRequest) { data, response, responseError in
+            if let error = responseError {
                 onError(.unknownError(error))
             }
             
@@ -55,15 +58,18 @@ class NetworkService {
                 }
             }
             
-            // If we got here, probably we received a 5xx.
-            let response = response as! HTTPURLResponse
-            let statusCode = response.statusCode
-            onError(
-                .error(
-                    status: statusCode,
-                    details: [HTTPURLResponse.localizedString(forStatusCode: statusCode)]
+            if let response = response as? HTTPURLResponse {
+                let statusCode = response.statusCode
+                
+                onError(
+                    .error(
+                        status: statusCode,
+                        details: [HTTPURLResponse.localizedString(forStatusCode: statusCode)]
+                    )
                 )
-            )
+            }
+            
+            fatalError("TODO: Not implemented")
         }
         
         task.resume()
