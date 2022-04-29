@@ -9,10 +9,22 @@ import Foundation
 
 public extension ConfigureID {
     
+    private static func handleError(
+        error: Error,
+        onError: (ConfigureIDError) -> ()
+    ) {
+        if let error = error as? ConfigureIDError {
+            onError(error)
+            return
+        }
+        
+        onError(.unknownError(error))
+    }
+    
     struct Sessions {
         
         // TODO: Document
-        public static func fetchSession(sessionId: String, onSuccess: @escaping (Session) -> (), onError: @escaping (Error) -> ()) {
+        public static func fetchSession(sessionId: String, onSuccess: @escaping (Session) -> (), onError: @escaping (ConfigureIDError) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
@@ -35,28 +47,28 @@ public extension ConfigureID {
         public static func createSession(
             parameters: CreateSessionParameters,
             onSuccess: @escaping (Session) -> (),
-            onError: @escaping (Error) -> ()
+            onError: @escaping (ConfigureIDError) -> ()
         ) {
+            do {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
-            do {
-                let request = try Request.Sessions.createSession(
-                    // TODO: Check Api key
-                    apiKey: try! apiKey.get(),
-                    parameters: parameters
+            
+            let request = try Request.Sessions.createSession(
+                // TODO: Check Api key
+                apiKey: try! apiKey.get(),
+                parameters: parameters
+            )
+            
+            NetworkService
+                .shared
+                .executeRequest(
+                    request: request,
+                    onSuccess: onSuccess,
+                    onError: onError
                 )
-                
-                NetworkService
-                    .shared
-                    .executeRequest(
-                        request: request,
-                        onSuccess: onSuccess,
-                        onError: onError
-                    )
             } catch {
-                // TODO: move this out
-                fatalError("2_Error occurred get: \(error)")
+                handleError(error: error, onError: onError)
             }
         }
         
@@ -64,11 +76,10 @@ public extension ConfigureID {
             sessionId: String,
             recipeId: String? = nil,
             onSuccess: @escaping (Session) -> (),
-            onError: @escaping (Error) -> ()
+            onError: @escaping (ConfigureIDError) -> ()
         ) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
-            
             do {
                 let request = try Request.Sessions.resetSession(
                     // TODO: Check Api key
@@ -84,9 +95,9 @@ public extension ConfigureID {
                         onSuccess: onSuccess,
                         onError: onError
                     )
-            } catch {
-                // TODO: move this out
-                fatalError("1_Error occurred get: \(error)")
+            }
+            catch {
+                handleError(error: error, onError: onError)
             }
         }
     }

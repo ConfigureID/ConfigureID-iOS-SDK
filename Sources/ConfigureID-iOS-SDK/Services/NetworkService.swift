@@ -18,11 +18,14 @@ class NetworkService {
         // TODO: Check if we want ephemeral, this is to avoid a 304
         let configuration = URLSessionConfiguration.ephemeral
         // A litte bit more time for requests. Default is 60 seconds.
-        configuration.timeoutIntervalForRequest = 1
+        configuration.timeoutIntervalForRequest = 0.01
         session = URLSession(configuration: configuration)
     }
     
-    func executeRequest<ResponseType: Codable>(request: Request, onSuccess: @escaping (ResponseType) -> (), onError: @escaping (ConfigureIDError) -> ()) {
+    func executeRequest<ResponseType: Codable>(
+        request: Request,
+        onSuccess: @escaping (ResponseType) -> (),
+        onError: @escaping (ConfigureIDError) -> ()) {
         
         let urlRequest = request.urlRequest()
 
@@ -34,6 +37,7 @@ class NetworkService {
         let task = session.dataTask(with: urlRequest) { data, response, responseError in
             if let error = responseError {
                 onError(.unknownError(error))
+                return
             }
             
             if let data = data {
@@ -47,8 +51,8 @@ class NetworkService {
                 
                 do {
                     let decodedError: ServerError = try Environment.decoder.decode(ServerError.self, from: data)
-                    onError(.error(
-                        status: decodedError.error.status,
+                    onError(.serverError(
+                        statusCode: decodedError.error.status,
                         details: decodedError.error.details)
                     )
                     return
@@ -61,19 +65,27 @@ class NetworkService {
             if let response = response as? HTTPURLResponse {
                 let statusCode = response.statusCode
                 
+                switch statusCode {
+                case 200 ..< 300:
+                    onError(.decodingError(entity: "\(ResponseType.self)"))
+                    return
+                default:
+                    break
+                }
+                
                 onError(
-                    .error(
-                        status: statusCode,
+                    .serverError(
+                        statusCode: statusCode,
                         details: [HTTPURLResponse.localizedString(forStatusCode: statusCode)]
                     )
                 )
+                return
             }
             
             fatalError("TODO: Not implemented")
         }
         
         task.resume()
-        
     }
 }
 

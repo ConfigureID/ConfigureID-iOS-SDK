@@ -14,7 +14,7 @@ public extension ConfigureID {
         
         // TODO: Document
         // TODO: Does this returns an [product summary] or [Product]?
-        public static func fetchProducts(customerId: Int, workflow: String, onSuccess: @escaping ([ProductSummary]) -> (), onError: @escaping (Error) -> ()) {
+        public static func fetchProducts(customerId: Int, workflow: String, onSuccess: @escaping ([ProductSummary]) -> (), onError: @escaping (ConfigureIDError) -> ()) {
             let apiKey = ensureApiKey()
             
             let request = Request.Customer.products(
@@ -34,7 +34,7 @@ public extension ConfigureID {
         }
         
         // TODO: Document
-        public static func fetchProductData(customerId: Int, productId: Int, workflow: String, onSuccess: @escaping (Product) -> (), onError: @escaping (Error) -> ()) {
+        public static func fetchProductData(customerId: Int, productId: Int, workflow: String, onSuccess: @escaping (Product) -> (), onError: @escaping (ConfigureIDError) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
@@ -56,7 +56,7 @@ public extension ConfigureID {
         }
         
         // TODO: Document
-        public static func findByVendorId(customerId: Int, vendorId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (Error) -> ()) {
+        public static func findByVendorId(customerId: Int, vendorId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (ConfigureIDError) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             

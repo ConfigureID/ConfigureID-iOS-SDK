@@ -12,7 +12,7 @@ public extension ConfigureID {
     struct Recipes {
         
         // TODO: Add locale, includeLocalizedConfiguration, includeExtendedAttributes, etc...
-        public static func fetchRecipe(recipeId: String, workflow: String, onSuccess: @escaping (Recipe) -> (), onError: @escaping (Error) -> ()) {
+        public static func fetchRecipe(recipeId: String, workflow: String, onSuccess: @escaping (Recipe) -> (), onError: @escaping (ConfigureIDError) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
@@ -33,7 +33,7 @@ public extension ConfigureID {
         }
         
         // TODO: remove parameters and add them to the function
-        public static func createRecipe(parameters: CreateRecipeParameters, onSuccess: @escaping (Recipe) -> (), onError: @escaping (Error) -> ()) {
+        public static func createRecipe(parameters: CreateRecipeParameters, onSuccess: @escaping (Recipe) -> (), onError: @escaping (ConfigureIDError) -> ()) {
             let apiKey = ensureApiKey()
             // TODO: Check Api key
             
