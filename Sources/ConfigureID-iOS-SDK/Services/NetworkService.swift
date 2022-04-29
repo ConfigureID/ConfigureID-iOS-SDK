@@ -18,7 +18,7 @@ class NetworkService {
         // TODO: Check if we want ephemeral, this is to avoid a 304
         let configuration = URLSessionConfiguration.ephemeral
         // A litte bit more time for requests. Default is 60 seconds.
-        configuration.timeoutIntervalForRequest = 0.01
+        configuration.timeoutIntervalForRequest = 180
         session = URLSession(configuration: configuration)
     }
     
