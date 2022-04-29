@@ -9,11 +9,12 @@ import Foundation
 
 public enum ConfigureIDError: Error {
     case invalidURL
-    case unknownError(Error)
     case encodingError(entity: String)
     case decodingError(entity: String)
     // TODO: revisit naming
     case serverError(statusCode: Int, details: [String])
+    case unknownError(Error)
+    case unexpectedError
     
     var statusCode: Int {
         switch self {
@@ -27,6 +28,8 @@ public enum ConfigureIDError: Error {
             return -3
         case .encodingError(_):
             return -4
+        case .unexpectedError:
+            return -5
         }
     }
     
@@ -42,6 +45,8 @@ public enum ConfigureIDError: Error {
             return ["Could not decode \(entity) from response"]
         case .encodingError(entity: let entity):
             return ["Could not encode \(entity)"]
+        case .unexpectedError:
+            return ["This error should not have happened"]
         }
     }
 }

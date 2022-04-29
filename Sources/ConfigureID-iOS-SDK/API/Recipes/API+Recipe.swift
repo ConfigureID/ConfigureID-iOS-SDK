@@ -52,8 +52,7 @@ public extension ConfigureID {
                         onError: onError
                     )
             } catch {
-                // TODO
-                print("Error ocurred")
+                handleError(error: error, onError: onError)
             }
         }
     }

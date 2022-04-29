@@ -9,18 +9,6 @@ import Foundation
 
 public extension ConfigureID {
     
-    private static func handleError(
-        error: Error,
-        onError: (ConfigureIDError) -> ()
-    ) {
-        if let error = error as? ConfigureIDError {
-            onError(error)
-            return
-        }
-        
-        onError(.unknownError(error))
-    }
-    
     struct Sessions {
         
         // TODO: Document

@@ -82,7 +82,8 @@ class NetworkService {
                 return
             }
             
-            fatalError("TODO: Not implemented")
+            assertionFailure("shouldn't reach here")
+            onError(.unexpectedError)
         }
         
         task.resume()
