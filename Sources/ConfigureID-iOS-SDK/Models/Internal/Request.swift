@@ -26,7 +26,7 @@ struct Request {
         self.httpBody = httpBody
     }
     
-    func urlRequest() throws -> URLRequest? {
+    func urlRequest() -> URLRequest? {
         guard let url = urlComponents.url else {
             return nil
         }
@@ -35,15 +35,7 @@ struct Request {
         request.httpBody = httpBody
         request.setValue("application/json", forHTTPHeaderField: "content-type")
         request.addValue("application/json", forHTTPHeaderField: "accept")
-        
-        
-//        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("application/json", forHTTPHeaderField: "content-type")
 
-        
-//        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-//        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
-        
         return request
     }
 }

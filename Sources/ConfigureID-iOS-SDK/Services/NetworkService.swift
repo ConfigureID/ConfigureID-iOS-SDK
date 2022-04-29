@@ -21,15 +21,8 @@ class NetworkService {
     
     func executeRequest<ResponseType: Codable>(request: Request, onSuccess: @escaping (ResponseType) -> (), onError: @escaping (ConfigureIDError) -> ()) {
         
-        var urlRequest: URLRequest?
-        
-        do {
-            urlRequest = try request.urlRequest()
-        } catch {
-            onError(.invalidURL)
-            return
-        }
-        
+        let urlRequest = request.urlRequest()
+
         guard let urlRequest = urlRequest else {
             onError(.invalidURL)
             return
