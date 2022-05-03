@@ -15,7 +15,7 @@ public extension ConfigureID {
         public static func fetchSession(sessionId: String, onSuccess: @escaping (Session) -> (), onError: @escaping (ConfigureIDError) -> ()) {
         
             do {
-                let request = try Request.Sessions.session(
+                let request = Request.Sessions.session(
                     sessionId: sessionId,
                     // TODO: Check Api key
                     apiKey: try ensureApiKey()
