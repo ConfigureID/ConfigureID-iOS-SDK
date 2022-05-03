@@ -61,7 +61,7 @@ ConfigureID
 
 ## Endpoints
 
-Name of the methods are displayed below. Each method receives different parameters.
+Name of the methods are displayed below. Each method receives different parameters, you'll need to fill the `(...)`.
 
 ### Customers
 
