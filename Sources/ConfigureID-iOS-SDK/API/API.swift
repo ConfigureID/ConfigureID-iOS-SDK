@@ -37,6 +37,7 @@ public struct ConfigureID {
     // TODO: Documentation
     static var apiKey: String?
     
+    // TODO: Should this be changeable?
     static var environment: Environment = .prod
     
     // TODO: is this ok?
