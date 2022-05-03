@@ -12,19 +12,24 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
     }
     
     func testFetchProducts() {
-        let products = expectation(description: "should fetch products")
+        let productsExpectation = expectation(description: "should fetch products")
         
         waitFor(seconds: 2)
         
         ConfigureID
             .Customers
-            .fetchProducts(customerId: config.customerId, workflow: config.workflow, onSuccess: {
-                print($0)
-                products.fulfill()
-            }, onError: {
-                XCTFail(error: $0)
-                products.fulfill()
-            })
+            .fetchProducts(
+                customerId: config.customerId,
+                workflow: config.workflow,
+                onSuccess: { (products: [ProductSummary]) in
+                    print(products)
+                    productsExpectation.fulfill()
+                },
+                onError: { (error: ConfigureIDError) in
+                    print(error)
+                    productsExpectation.fulfill()
+                }
+            )
         
         waitForExpectations(timeout: 10)
     }
@@ -33,7 +38,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         let product = expectation(description: "Load product data")
 
         waitFor(seconds: 2)
-
+    
         ConfigureID
             .Customers
             .fetchProductData(
