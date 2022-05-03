@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  API+Sessions.swift
 //  
 //
 //  Created by Francisco D. on 27/04/2022.

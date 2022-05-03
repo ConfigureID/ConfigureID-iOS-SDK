@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ConfigureIDError.swift
 //  
 //
 //  Created by Francisco D. on 21/04/2022.

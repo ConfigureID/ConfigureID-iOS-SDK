@@ -51,28 +51,28 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
 
         waitForExpectations(timeout: 10)
     }
-
-    func testFindByVendorId() {
-        let findByVendor = expectation(description: "Find by vendor id")
-
-        waitFor(seconds: 2)
-
-        ConfigureID.Customers
-            .findByVendorId(
-                customerId: config.customerId,
-                vendorId: config.vendorId,
-                workflow: config.workflow,
-                onSuccess: {
-                    print($0)
-                    findByVendor.fulfill()
-                }, onError: {
-                    XCTFail(error: $0)
-                    findByVendor.fulfill()
-                }
-            )
-
-        waitForExpectations(timeout: 10)
-    }
+//
+//    func testFindByVendorId() {
+//        let findByVendor = expectation(description: "Find by vendor id")
+//
+//        waitFor(seconds: 2)
+//
+//        ConfigureID.Customers
+//            .findByVendorId(
+//                customerId: config.customerId,
+//                vendorId: config.vendorId,
+//                workflow: config.workflow,
+//                onSuccess: {
+//                    print($0)
+//                    findByVendor.fulfill()
+//                }, onError: {
+//                    XCTFail(error: $0)
+//                    findByVendor.fulfill()
+//                }
+//            )
+//
+//        waitForExpectations(timeout: 10)
+//    }
     
 }
 

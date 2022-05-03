@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SessionTests.swift
 //  
 //
 //  Created by Francisco D. on 20/04/2022.
@@ -62,7 +62,7 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .fetchSession(
-                sessionId: "335e430c-a32b-4511-9712-7c9045c64143",
+                sessionId: "375e957-9e9e-4618-9090-3fc9918e894b",
                 onSuccess: {
                     print($0)
                     fetchSession.fulfill()
@@ -84,7 +84,7 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .resetSession(
-                sessionId: "335e430c-a32b-4511-9712-7c9045c64143",
+                sessionId: "375e957-9e9e-4618-9090-3fc9918e894b",
                 onSuccess: {
                     print($0)
                     resetSession.fulfill()

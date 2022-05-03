@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ImageParameters.swift
 //  
 //
 //  Created by Francisco D. on 20/04/2022.
