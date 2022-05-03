@@ -31,6 +31,14 @@ let package = Package(
 )
 ```
 
+## Authentication
+You need to authenticate with your apiKey to use this SDK.
+```swift
+import ConfigureID_iOS_SDK
+
+ConfigureID.setApiKey(apiKey: "YOUR_API_KEY")
+```
+
 ## Usage example
 
 
@@ -52,6 +60,8 @@ ConfigureID
 ```
 
 ## Endpoints
+
+Name of the methods are displayed below. Each method receives different parameters.
 
 ### Customers
 
