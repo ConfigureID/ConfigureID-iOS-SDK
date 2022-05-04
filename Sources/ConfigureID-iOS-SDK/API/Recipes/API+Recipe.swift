@@ -37,8 +37,6 @@ public extension ConfigureID {
                         
             do {
                 let request = try Request.Recipes.createRecipe(
-                    //                // TODO: Check Api key
-                    apiKey: ensureApiKey(),
                     parameters: parameters
                 )
                 

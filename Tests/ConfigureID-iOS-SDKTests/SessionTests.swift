@@ -24,23 +24,13 @@ final class SessionTests: XCTestCase {
         
         waitFor(seconds: 2)
         
-        let parameters = CreateSessionParameters(
-            recipeId: nil,
-            locale: "en_US",
-            customerId: config.customerId,
-            productId: config.productId,
-            workflow: config.workflow,
-            environment: nil,
-            productBaseUrl: nil,
-            configureEndpoint: nil,
-            imageParameters: nil,
-            debug: nil
-        )
-        
         ConfigureID
             .Sessions
             .createSession(
-                parameters: parameters,
+                locale: "en_US",
+                customerId: config.customerId,
+                productId: config.productId,
+                workflow: config.workflow,
                 onSuccess: {
                     print($0)
                     products.fulfill()
@@ -62,7 +52,7 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .fetchSession(
-                sessionId: "375e957-9e9e-4618-9090-3fc9918e894b",
+                sessionId: "41fc2e4b-456d-440d-be29-bba62258fbef",
                 onSuccess: {
                     print($0)
                     fetchSession.fulfill()

@@ -61,16 +61,3 @@ public struct ConfigureID {
         onError(.unknownError(error))
     }
 }
-
-extension ConfigureID {
-    static func ensureApiKey() throws -> String {
-        // TODO: Return error on no api key
-        guard let apiKey = ConfigureID.apiKey else {
-            throw ConfigureIDError.notAuthenticated
-        }
-        
-        return apiKey
-    }
-}
-
-

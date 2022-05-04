@@ -30,12 +30,18 @@ struct Request {
         guard let url = urlComponents.url else {
             return nil
         }
+        
+        guard let apiKey = ConfigureID.apiKey else {
+            fatalError()
+//            throw ConfigureIDError.notAuthenticated
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.httpBody = httpBody
         request.setValue("application/json", forHTTPHeaderField: "content-type")
-        request.addValue("application/json", forHTTPHeaderField: "accept")
-
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
         return request
     }
 }

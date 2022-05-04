@@ -12,13 +12,15 @@ public extension ConfigureID {
     struct Sessions {
         
         // TODO: Document
-        public static func fetchSession(sessionId: String, onSuccess: @escaping (Session) -> (), onError: @escaping (ConfigureIDError) -> ()) {
+        public static func fetchSession(
+            sessionId: String,
+            onSuccess: @escaping (Session) -> (),
+            onError: @escaping (ConfigureIDError) -> ()
+        ) {
         
             do {
                 let request = Request.Sessions.session(
-                    sessionId: sessionId,
-                    // TODO: Check Api key
-                    apiKey: try ensureApiKey()
+                    sessionId: sessionId
                 )
                 
                 NetworkService
@@ -35,15 +37,35 @@ public extension ConfigureID {
         
         // TODO: Document
         public static func createSession(
-            parameters: CreateSessionParameters,
+            locale: String,
+            customerId: Int,
+            productId: Int,
+            recipeId: Int? = nil,
+            workflow: String? = nil,
+            environment: String? = nil,
+            baseUrl: String? = nil,
+            skipCdn: Bool? = nil,
+            configureEndpoint: String? = nil,
+            imageParameters: [ImageParameters]? = nil,
+            debug: Bool? = nil,
             onSuccess: @escaping (Session) -> (),
             onError: @escaping (ConfigureIDError) -> ()
         ) {
             do {
                 let request = try Request.Sessions.createSession(
-                    // TODO: Check Api key
-                    apiKey: try ensureApiKey(),
-                    parameters: parameters
+                    parameters: CreateSessionParameters(
+                        recipeId: recipeId,
+                        locale: locale,
+                        customerId: customerId,
+                        productId: productId,
+                        workflow: workflow,
+                        environment: environment,
+                        baseUrl: baseUrl,
+                        skipCdn: skipCdn,
+                        configureEndpoint: configureEndpoint,
+                        imageParameters: imageParameters,
+                        debug: debug
+                    )
                 )
                 
                 NetworkService
@@ -66,8 +88,6 @@ public extension ConfigureID {
         ) {
             do {
                 let request = try Request.Sessions.resetSession(
-                    // TODO: Check Api key
-                    apiKey: try ensureApiKey(),
                     sessionId: sessionId,
                     recipeId: recipeId
                 )
@@ -84,5 +104,25 @@ public extension ConfigureID {
                 handleError(error: error, onError: onError)
             }
         }
+//        
+//        public static func updateRecipe() {
+//            do {
+//                let request = try Request.Sessions.updateRecipe(
+//                    sessionId: sessionId,
+//                    recipeId: recipeId
+//                )
+//                
+//                NetworkService
+//                    .shared
+//                    .executeRequest(
+//                        request: request,
+//                        onSuccess: onSuccess,
+//                        onError: onError
+//                    )
+//            }
+//            catch {
+//                handleError(error: error, onError: onError)
+//            }
+//        }
     }
 }

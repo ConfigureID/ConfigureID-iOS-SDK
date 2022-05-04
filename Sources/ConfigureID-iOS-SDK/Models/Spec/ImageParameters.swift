@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct ImageParameters: Codable {
+public struct ImageParameters: Codable {
 
-    let binary: Bool
-    let zoom: Bool
-    let format: String
-    let trim: Bool
-    let padding: Int
-    let scale: Int
-    let quality: Int
-    let backgroundColor: String
+    let binary: Bool?
+    let zoom: Bool?
+    let format: String?
+    let trim: Bool?
+    let padding: Int?
+    let scale: Int?
+    let quality: Int?
+    let backgroundColor: String?
     let viewName: String
     
 }

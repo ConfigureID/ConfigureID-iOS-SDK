@@ -16,7 +16,9 @@ public struct Session: Codable {
     
     /// Product configuration from configure-core
 //    let productJson: ProductJson
+    
     let price: Int
+    
     let quantity: Int
     
     // TODO: Implement

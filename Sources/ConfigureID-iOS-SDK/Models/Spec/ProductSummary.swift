@@ -24,7 +24,7 @@ public struct ProductSummary: Codable {
     /// The list of all available locales for the product.
     let locales: [String]
     
-    /// The list of associated product facets.
-    let facets: [Facet]
+    /// A list of Product Facets. Each product facet includes the values as a list.
+    let facets: [ProductFacet]
     
 }

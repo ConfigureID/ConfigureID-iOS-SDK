@@ -50,7 +50,7 @@ struct ConfigurableAttribute: Codable {
 //    let swatchTemplate: SwatchTemplate
     
     /// The list of associated facets.
-    let facets: [Facet]
+//    let facets: [Facet]
     
 //    TODO: what type is this?
 //    let subAttributes: SubAttributes

@@ -26,7 +26,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
                     productsExpectation.fulfill()
                 },
                 onError: { (error: ConfigureIDError) in
-                    print(error)
+                    XCTFail(error: error)
                     productsExpectation.fulfill()
                 }
             )
