@@ -16,7 +16,7 @@ struct Request {
     }
     
     let method: Method
-    let urlComponents: URLComponents
+    private(set) var urlComponents: URLComponents
     
     let httpBody: Data?
     
@@ -24,16 +24,17 @@ struct Request {
         self.method = method
         self.urlComponents = urlComponents
         self.httpBody = httpBody
+        
+        self.urlComponents.queryItems = urlComponents.queryItems?.filter { $0.value != nil }
     }
     
-    func urlRequest() -> URLRequest? {
+    func urlRequest() throws -> URLRequest {
         guard let url = urlComponents.url else {
-            return nil
+            throw ConfigureIDError.invalidURL
         }
         
         guard let apiKey = ConfigureID.apiKey else {
-            fatalError()
-//            throw ConfigureIDError.notAuthenticated
+            throw ConfigureIDError.notAuthenticated
         }
         
         var request = URLRequest(url: url)

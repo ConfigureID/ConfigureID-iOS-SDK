@@ -52,7 +52,7 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .fetchSession(
-                sessionId: "41fc2e4b-456d-440d-be29-bba62258fbef",
+                sessionId: "b5ee08d5-f4e9-4f59-a11c-83340b7d9ba9",
                 onSuccess: {
                     print($0)
                     fetchSession.fulfill()
@@ -74,7 +74,7 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .resetSession(
-                sessionId: "375e957-9e9e-4618-9090-3fc9918e894b",
+                sessionId: "b5ee08d5-f4e9-4f59-a11c-83340b7d9ba9",
                 onSuccess: {
                     print($0)
                     resetSession.fulfill()

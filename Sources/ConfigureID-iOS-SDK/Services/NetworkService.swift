@@ -26,74 +26,76 @@ class NetworkService {
         request: Request,
         onSuccess: @escaping (ResponseType) -> (),
         onError: @escaping (ConfigureIDError) -> ()) {
-        
-        let urlRequest = request.urlRequest()
-
-        guard let urlRequest = urlRequest else {
-            onError(.invalidURL)
-            return
-        }
-        
-        let task = session.dataTask(with: urlRequest) { data, response, responseError in
-            if let error = responseError {
-                onError(.unknownError(error))
+            
+            var urlRequest: URLRequest!
+            
+            do {
+                urlRequest = try request.urlRequest()
+            } catch {
+                handleError(error: error, onError: onError)
                 return
             }
             
-            var dataDecodingError: Error?
-            var errorDecodingError: Error?
-            
-            if let data = data {
-                
-                do {
-                    let decoded: Response<ResponseType> = try Environment.decoder.decode(Response<ResponseType>.self, from: data)
-                    onSuccess(decoded.data)
+            let task = session.dataTask(with: urlRequest) { data, response, responseError in
+                if let error = responseError {
+                    onError(.unknownError(error))
                     return
-                } catch {
-                    dataDecodingError = error
                 }
                 
-                do {
-                    let decodedError: ServerError = try Environment.decoder.decode(ServerError.self, from: data)
-                    onError(.serverError(
-                        statusCode: decodedError.error.status,
-                        details: decodedError.error.details)
+                var dataDecodingError: Error?
+                
+                if let data = data {
+                    
+                    do {
+                        let decoded: Response<ResponseType> = try Environment.decoder.decode(Response<ResponseType>.self, from: data)
+                        onSuccess(decoded.data)
+                        return
+                    } catch {
+                        dataDecodingError = error
+                    }
+                    
+                    do {
+                        let decodedError: ServerError = try Environment.decoder.decode(ServerError.self, from: data)
+                        onError(.serverError(
+                            statusCode: decodedError.error.status,
+                            details: decodedError.error.details)
+                        )
+                        return
+                    } catch {
+                        // TODO?
+                        //                    errorDecodingError = error
+                    }
+                }
+                
+                if let response = response as? HTTPURLResponse {
+                    let statusCode = response.statusCode
+                    
+                    switch statusCode {
+                    case 200 ..< 300:
+                        onError(.decodingError(
+                            entity: "\(ResponseType.self)",
+                            originalError: dataDecodingError)
+                        )
+                        return
+                    default:
+                        break
+                    }
+                    
+                    onError(
+                        .serverError(
+                            statusCode: statusCode,
+                            details: [HTTPURLResponse.localizedString(forStatusCode: statusCode)]
+                        )
                     )
                     return
-                } catch {
-                    errorDecodingError = error
                 }
+                
+                assertionFailure("shouldn't reach here")
+                onError(.unexpectedError)
             }
             
-            if let response = response as? HTTPURLResponse {
-                let statusCode = response.statusCode
-                
-                switch statusCode {
-                case 200 ..< 300:
-                    onError(.decodingError(
-                        entity: "\(ResponseType.self)",
-                        originalError: dataDecodingError)
-                    )
-                    return
-                default:
-                    break
-                }
-                
-                onError(
-                    .serverError(
-                        statusCode: statusCode,
-                        details: [HTTPURLResponse.localizedString(forStatusCode: statusCode)]
-                    )
-                )
-                return
-            }
-            
-            assertionFailure("shouldn't reach here")
-            onError(.unexpectedError)
+            task.resume()
         }
-        
-        task.resume()
-    }
 }
 
 struct Response<T: Codable>: Codable {

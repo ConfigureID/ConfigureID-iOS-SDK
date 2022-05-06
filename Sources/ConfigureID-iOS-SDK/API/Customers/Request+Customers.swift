@@ -11,7 +11,7 @@ extension Request {
     
     struct Customer {
         
-        static func products(customerId: Int, workflow: String?) throws -> Request {
+        static func products(customerId: Int, workflow: String?, vendorId: String?) throws -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"
@@ -20,7 +20,8 @@ extension Request {
             components.path = "/headless/customers/\(customerId)/products"
 
             components.queryItems = [
-                URLQueryItem(name: "workflow", value: workflow)
+                URLQueryItem(name: "workflow", value: workflow),
+                URLQueryItem(name: "vendorId", value: vendorId)
             ]
             
             return Request(method: .GET, urlComponents: components)

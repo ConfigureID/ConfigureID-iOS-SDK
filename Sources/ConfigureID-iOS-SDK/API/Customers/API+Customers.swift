@@ -16,18 +16,21 @@ public extension ConfigureID {
         /// - Parameters:
         ///   - customerId: Id of a customer.
         ///   - workflow: The workflow identifier.
+        ///   - vendorId: The vendor id of the product.
         ///   - onSuccess: Callback that will be run on success.
         ///   - onError: Callback that will be run on error.
         public static func fetchProducts(
             customerId: Int,
             workflow: String? = nil,
+            vendorId: String? = nil,
             onSuccess: @escaping ([ProductSummary]) -> (),
             onError: @escaping (ConfigureIDError) -> ()
         ) {
             do {
                 let request = try Request.Customer.products(
                     customerId: customerId,
-                    workflow: workflow
+                    workflow: workflow,
+                    vendorId: vendorId
                 )
                 
                 NetworkService

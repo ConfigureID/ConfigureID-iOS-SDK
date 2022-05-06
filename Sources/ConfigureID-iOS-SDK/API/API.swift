@@ -49,15 +49,16 @@ public struct ConfigureID {
         ConfigureID.apiKey = apiKey
     }
     
-    static func handleError(
-        error: Error,
-        onError: (ConfigureIDError) -> ()
-    ) {
-        if let error = error as? ConfigureIDError {
-            onError(error)
-            return
-        }
-        
-        onError(.unknownError(error))
+}
+
+func handleError(
+    error: Error,
+    onError: (ConfigureIDError) -> ()
+) {
+    if let error = error as? ConfigureIDError {
+        onError(error)
+        return
     }
+    
+    onError(.unknownError(error))
 }
