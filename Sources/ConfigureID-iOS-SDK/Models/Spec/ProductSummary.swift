@@ -13,7 +13,8 @@ public struct ProductSummary: Codable {
     let id: Int
         
     /// The name of the product.
-    let name: String
+//    TODO: This is object in API.
+//    let name: String
     
     /// External id of the product.
     let vendorId: String

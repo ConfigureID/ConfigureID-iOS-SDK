@@ -37,7 +37,7 @@ extension Request {
             do {
                 parametersData = try Environment.encoder.encode(parameters)
             } catch {
-                throw ConfigureIDError.encodingError(entity: "CreateSession")
+                throw ConfigureIDError.encodingError(entity: "CreateSession", originalError: error)
             }
             
             return Request(method: .POST, urlComponents: components, httpBody: parametersData)
@@ -58,7 +58,7 @@ extension Request {
                 do {
                     body = try ["recipeId": recipeId].toJSON()
                 } catch {
-                    throw ConfigureIDError.encodingError(entity: "resetSession")
+                    throw ConfigureIDError.encodingError(entity: "resetSession", originalError: error)
                 }
             } else {
                 body = nil

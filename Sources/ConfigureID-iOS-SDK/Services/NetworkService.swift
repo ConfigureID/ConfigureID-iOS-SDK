@@ -40,13 +40,17 @@ class NetworkService {
                 return
             }
             
+            var dataDecodingError: Error?
+            var errorDecodingError: Error?
+            
             if let data = data {
+                
                 do {
                     let decoded: Response<ResponseType> = try Environment.decoder.decode(Response<ResponseType>.self, from: data)
                     onSuccess(decoded.data)
                     return
                 } catch {
-                    print("0_Error occurred get: \(error)")
+                    dataDecodingError = error
                 }
                 
                 do {
@@ -57,8 +61,7 @@ class NetworkService {
                     )
                     return
                 } catch {
-                    // TODO
-                    print("Error while trying to get the real error: \(error)")
+                    errorDecodingError = error
                 }
             }
             
@@ -67,7 +70,10 @@ class NetworkService {
                 
                 switch statusCode {
                 case 200 ..< 300:
-                    onError(.decodingError(entity: "\(ResponseType.self)"))
+                    onError(.decodingError(
+                        entity: "\(ResponseType.self)",
+                        originalError: dataDecodingError)
+                    )
                     return
                 default:
                     break

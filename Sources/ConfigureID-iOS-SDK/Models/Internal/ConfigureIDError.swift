@@ -9,8 +9,8 @@ import Foundation
 
 public enum ConfigureIDError: Error {
     case invalidURL
-    case encodingError(entity: String)
-    case decodingError(entity: String)
+    case encodingError(entity: String, originalError: Error?)
+    case decodingError(entity: String, originalError: Error?)
     // TODO: revisit naming
     case serverError(statusCode: Int, details: [String])
     case notAuthenticated
@@ -27,7 +27,7 @@ public enum ConfigureIDError: Error {
             return -2
         case .decodingError:
             return -3
-        case .encodingError(_):
+        case .encodingError:
             return -4
         case .unexpectedError:
             return -5
@@ -44,10 +44,12 @@ public enum ConfigureIDError: Error {
             return [error.localizedDescription]
         case .invalidURL:
             return ["Invalid URL provided"]
-        case .decodingError(let entity):
-            return ["Could not decode \(entity) from response"]
-        case .encodingError(entity: let entity):
-            return ["Could not encode \(entity)"]
+        case .decodingError(let entity, let originalError):
+            return ["Could not decode \(entity) from response"] +
+                    (originalError.map { ["\($0)"] } ?? [])
+        case .encodingError(entity: let entity, let originalError):
+            return ["Could not encode \(entity)"] +
+                    (originalError.map { ["\($0)"] } ?? [])
         case .unexpectedError:
             return ["This error should not have happened"]
         case .notAuthenticated:

@@ -76,28 +76,5 @@ public extension ConfigureID {
                 handleError(error: error, onError: onError)
             }
         }
-        
-        // TODO: Document
-        // TODO: Remove
-//        public static func findByVendorId(customerId: Int, vendorId: String, workflow: String, onSuccess: @escaping ([Product]) -> (), onError: @escaping (ConfigureIDError) -> ()) {
-//
-//            do {
-//                let request = Request.Customer.findByVendorId(
-//                    customerId: customerId,
-//                    vendorId: vendorId,
-//                    workflow: workflow
-//                )
-//
-//                NetworkService
-//                    .shared
-//                    .executeRequest(
-//                        request: request,
-//                        onSuccess: onSuccess,
-//                        onError: onError
-//                    )
-//            } catch {
-//                handleError(error: error, onError: onError)
-//            }
-//        }
     }
 }
