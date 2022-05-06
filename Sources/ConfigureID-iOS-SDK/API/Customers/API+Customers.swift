@@ -12,9 +12,12 @@ public extension ConfigureID {
     // TODO: Documentation
     struct Customers {
         
-        // TODO: Document
-        // TODO: Does this returns an [product summary] or [Product]?
-        // TODO: workflow is optional in API.
+        /// Retrieves all products of a customer.
+        /// - Parameters:
+        ///   - customerId: Id of a customer.
+        ///   - workflow: The workflow identifier.
+        ///   - onSuccess: Callback that will be run on success.
+        ///   - onError: Callback that will be run on error.
         public static func fetchProducts(
             customerId: Int,
             workflow: String? = nil,
@@ -22,7 +25,7 @@ public extension ConfigureID {
             onError: @escaping (ConfigureIDError) -> ()
         ) {
             do {
-                let request = Request.Customer.products(
+                let request = try Request.Customer.products(
                     customerId: customerId,
                     workflow: workflow
                 )
@@ -45,6 +48,8 @@ public extension ConfigureID {
         ///   - customerId: Id of a customer.
         ///   - productId: Id of a product.
         ///   - workflow: The workflow identifier.
+        ///   - onSuccess: Callback that will be run on success.
+        ///   - onError: Callback that will be run on error.
         public static func fetchProductData(
             customerId: Int,
             productId: Int,
@@ -54,7 +59,7 @@ public extension ConfigureID {
         ) {
             do {
                 
-                let request = Request.Customer.productData(
+                let request = try Request.Customer.productData(
                     customerId: customerId,
                     productId: productId,
                     workflow: workflow

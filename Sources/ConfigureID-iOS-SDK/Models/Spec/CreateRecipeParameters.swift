@@ -8,7 +8,7 @@
 import Foundation
 
 // TODO: Document
-public struct CreateRecipeParameters: Codable {
+struct CreateRecipeParameters: Codable {
     
     /// Id of a sesstion to create a recipe.
     let sessionId: String

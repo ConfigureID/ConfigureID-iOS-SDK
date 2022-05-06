@@ -12,7 +12,7 @@ extension Request {
     struct Sessions {
         
         // TODO: is workflow needed?
-        static func session(sessionId: String) -> Request {
+        static func session(sessionId: String) throws -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"

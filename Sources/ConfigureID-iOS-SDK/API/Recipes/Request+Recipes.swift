@@ -12,16 +12,24 @@ extension Request {
     struct Recipes {
         
         // TODO: is workflow needed?
-        static func fetchRecipe(recipeId: String, workflow: String) -> Request {
+        static func fetchRecipe(
+            recipeId: String,
+            locale: String,
+            includeLocalizedConfiguration: Bool,
+            includeExtendedAttributes: Bool
+        ) throws -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
             components.host = ConfigureID.environment.host
             components.path = "/headless/recipes/\(recipeId)"
-
+            
             components.queryItems = [
-                URLQueryItem(name: "workflow", value: workflow)
+                URLQueryItem(name: "locale", value: locale),
+                // TODO: how to encode booleans?
+//                URLQueryItem(name: "includeLocalizedConfiguration", value: includeLocalizedConfiguration),
+//                URLQueryItem(name: "includeExtendedAttributes", value: includeExtendedAttributes),
             ]
             
             return Request(method: .GET, urlComponents: components)

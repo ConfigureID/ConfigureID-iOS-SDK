@@ -20,29 +20,50 @@ final class RecipeTests: XCTestCase {
     }
     
     func testCreateRecipe() {
-        let products = expectation(description: "should create recipe")
+        let createRecipeExpectation = expectation(description: "should create recipe")
 
         waitFor(seconds: 2)
-        
-        let parameters = CreateRecipeParameters(
-            sessionId: "335e430c-a32b-4511-9712-7c9045c64143",
-            quantity: nil,
-            purpose: nil,
-            addToCatalog: nil,
-            catalogs: nil
-        )
         
         ConfigureID
             .Recipes
             .createRecipe(
-                parameters: parameters,
+                sessionId: "335e430c-a32b-4511-9712-7c9045c64143",
+                quantity: nil,
+                purpose: nil,
+                addToCatalog: nil,
+                catalogs: nil,
                 onSuccess: {
                     print($0)
-                    products.fulfill()
+                    createRecipeExpectation.fulfill()
                 },
                 onError: {
                     XCTFail(error: $0)
-                    products.fulfill()
+                    createRecipeExpectation.fulfill()
+                }
+            )
+
+        waitForExpectations(timeout: 10)
+    }
+    
+    func testRetrieveRecipe() {
+        let retrieveExpectation = expectation(description: "should retrieve recipe")
+
+        waitFor(seconds: 2)
+        
+        ConfigureID
+            .Recipes
+            .fetchRecipe(
+                recipeId: "",
+                locale: "",
+                includeLocalizedConfiguration: true,
+                includeExtendedAttributes: true,
+                onSuccess: {
+                    print($0)
+                    retrieveExpectation.fulfill()
+                },
+                onError: {
+                    XCTFail(error: $0)
+                    retrieveExpectation.fulfill()
                 }
             )
 

@@ -11,7 +11,7 @@ extension Request {
     
     struct Customer {
         
-        static func products(customerId: Int, workflow: String?) -> Request {
+        static func products(customerId: Int, workflow: String?) throws -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"
@@ -26,7 +26,7 @@ extension Request {
             return Request(method: .GET, urlComponents: components)
         }
         
-        static func productData(customerId: Int, productId: Int, workflow: String?) -> Request {
+        static func productData(customerId: Int, productId: Int, workflow: String?) throws -> Request {
             var components = URLComponents()
             // TODO: allow to modify this
             components.scheme = "https"
