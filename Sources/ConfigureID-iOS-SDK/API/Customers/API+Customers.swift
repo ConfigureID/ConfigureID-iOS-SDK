@@ -9,7 +9,7 @@ import Foundation
 
 public extension ConfigureID {
     
-    // TODO: Documentation
+    /// Customers endpoints
     struct Customers {
         
         /// Retrieves all products of a customer.
@@ -45,7 +45,6 @@ public extension ConfigureID {
             }
         }
         
-        // TODO: Document onSuccess and onError
         /// Retrieves the data of a product.
         /// - Parameters:
         ///   - customerId: Id of a customer.

@@ -45,6 +45,8 @@ public struct ConfigureID {
         ConfigureID.setApiKey(apiKey: apiKey)
     }
     
+    
+    /// The API key will be used to validate the customer ID used in the url
     public static func setApiKey(apiKey: String) {
         ConfigureID.apiKey = apiKey
     }

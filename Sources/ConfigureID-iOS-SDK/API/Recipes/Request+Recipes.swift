@@ -11,7 +11,6 @@ extension Request {
     
     struct Recipes {
         
-        // TODO: is workflow needed?
         static func fetchRecipe(
             recipeId: String,
             locale: String,
