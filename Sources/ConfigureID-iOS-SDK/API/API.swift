@@ -31,10 +31,9 @@ enum Environment: String {
     }
 }
 
-// TODO: Documentation
+/// This API exposes the endpoints necessary for interacting with Configure.
 public struct ConfigureID {
     
-    // TODO: Documentation
     static var apiKey: String?
     
     // TODO: Should this be changeable?
@@ -44,7 +43,7 @@ public struct ConfigureID {
     init(apiKey: String) {
         ConfigureID.setApiKey(apiKey: apiKey)
     }
-    
+
     
     /// The API key will be used to validate the customer ID used in the url
     public static func setApiKey(apiKey: String) {
