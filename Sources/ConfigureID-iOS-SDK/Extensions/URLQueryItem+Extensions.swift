@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  URLQueryItem+Extensions.swift
 //  
 //
 //  Created by Francisco D. on 06/05/2022.
