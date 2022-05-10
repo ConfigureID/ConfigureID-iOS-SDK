@@ -26,9 +26,8 @@ extension Request {
             
             components.queryItems = [
                 URLQueryItem(name: "locale", value: locale),
-                // TODO: how to encode booleans?
-//                URLQueryItem(name: "includeLocalizedConfiguration", value: includeLocalizedConfiguration),
-//                URLQueryItem(name: "includeExtendedAttributes", value: includeExtendedAttributes),
+                URLQueryItem(name: "includeLocalizedConfiguration", value: includeLocalizedConfiguration.asQueryItem),
+                URLQueryItem(name: "includeExtendedAttributes", value: includeExtendedAttributes.asQueryItem),
             ]
             
             return Request(method: .GET, urlComponents: components)

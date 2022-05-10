@@ -3,5 +3,7 @@
     "customerId": "<customer_id>",
     "productId": "<productId>",
     "vendorId": "<vendorId>",
-    "environment": "<staging or prod>"
+    "environment": "<staging or prod>",
+    "workflow": "<workflow, i.e: dev>",
+    "sessionId": "<id of existing session>"
 }

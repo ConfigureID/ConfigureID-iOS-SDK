@@ -14,7 +14,7 @@ final class RecipeTests: XCTestCase {
     var config: TestConfig!
     
     override func setUpWithError() throws {
-        config = try TestConfig.loadFrom(fileName: "prod-config.json")
+        config = try TestConfig.prod()
         ConfigureID.environment = config.environment
         ConfigureID.setApiKey(apiKey: config.apiKey)
     }
@@ -27,7 +27,7 @@ final class RecipeTests: XCTestCase {
         ConfigureID
             .Recipes
             .createRecipe(
-                sessionId: "335e430c-a32b-4511-9712-7c9045c64143",
+                sessionId: config.sessionId,
                 quantity: nil,
                 purpose: nil,
                 addToCatalog: nil,
@@ -53,10 +53,10 @@ final class RecipeTests: XCTestCase {
         ConfigureID
             .Recipes
             .fetchRecipe(
-                recipeId: "",
-                locale: "",
-                includeLocalizedConfiguration: true,
-                includeExtendedAttributes: true,
+                recipeId: config.recipeId,
+                locale: "en_US",
+                includeLocalizedConfiguration: false,
+                includeExtendedAttributes: false,
                 onSuccess: {
                     print($0)
                     retrieveExpectation.fulfill()

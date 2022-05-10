@@ -11,9 +11,6 @@ public extension ConfigureID {
     
     struct Recipes {
         
-        // TODO: Add locale, includeLocalizedConfiguration, includeExtendedAttributes, etc...
-        
-        
         /// Retrieves an existing recipe.
         /// - Parameters:
         ///   - recipeId: Id of a recipe.
@@ -69,7 +66,7 @@ public extension ConfigureID {
             catalogs: [String]?,
             // TODO: imageParameters
             // TODO: customerData
-            onSuccess: @escaping (Recipe) -> (),
+            onSuccess: @escaping (CreatedRecipe) -> (),
             onError: @escaping (ConfigureIDError) -> ()
         ) { 
             do {

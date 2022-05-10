@@ -14,7 +14,7 @@ final class SessionTests: XCTestCase {
     var config: TestConfig!
     
     override func setUpWithError() throws {
-        config = try TestConfig.loadFrom(fileName: "prod-config.json")
+        config = try TestConfig.prod()
         ConfigureID.environment = config.environment
         ConfigureID.setApiKey(apiKey: config.apiKey)
     }
@@ -52,7 +52,7 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .fetchSession(
-                sessionId: "b5ee08d5-f4e9-4f59-a11c-83340b7d9ba9",
+                sessionId: config.sessionId,
                 onSuccess: {
                     print($0)
                     fetchSession.fulfill()
@@ -74,7 +74,7 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .resetSession(
-                sessionId: "b5ee08d5-f4e9-4f59-a11c-83340b7d9ba9",
+                sessionId: config.sessionId,
                 onSuccess: {
                     print($0)
                     resetSession.fulfill()

@@ -20,6 +20,8 @@ struct TestConfig: Codable {
     let vendorId: String
     let environment: Environment
     let workflow: String
+    let sessionId: String
+    let recipeId: String
     
     static func loadFrom(fileName: String) throws -> TestConfig {
         let file = fileName.replacingOccurrences(of: ".json", with: "")
@@ -33,4 +35,13 @@ struct TestConfig: Codable {
         return try decoder.decode(TestConfig.self, from: jsonData)
     }
     
+    static func prod() throws -> TestConfig {
+        // NOTE: You'll need to create this.
+        return try TestConfig.loadFrom(fileName: "prod-config.json")
+    }
+    
+    static func staging() throws -> TestConfig {
+        // NOTE: You'll need to create this.
+        return try TestConfig.loadFrom(fileName: "staging-config.json")
+    }
 }

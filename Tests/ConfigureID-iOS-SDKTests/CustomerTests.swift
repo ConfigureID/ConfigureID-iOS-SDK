@@ -6,7 +6,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
     var config: TestConfig!
     
     override func setUpWithError() throws {
-        config = try TestConfig.loadFrom(fileName: "prod-config.json")
+        config = try TestConfig.prod()
         ConfigureID.environment = config.environment
         ConfigureID.setApiKey(apiKey: config.apiKey)
     }
