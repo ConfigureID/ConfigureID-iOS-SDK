@@ -52,7 +52,6 @@ extension Request {
             
             let body: Data?
             
-            // TODO: Extract this to an extension
             if let recipeId = recipeId {
                 do {
                     body = try ["recipeId": recipeId].toJSON()

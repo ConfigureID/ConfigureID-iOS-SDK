@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TODO: How will I manage errors?
 class NetworkService {
     
     private let session: URLSession
@@ -15,7 +14,6 @@ class NetworkService {
     static let shared: NetworkService = NetworkService()
     
     init() {
-        // TODO: Check if we want ephemeral, this is to avoid a 304
         let configuration = URLSessionConfiguration.ephemeral
         // A litte bit more time for requests. Default is 60 seconds.
         configuration.timeoutIntervalForRequest = 180
@@ -62,8 +60,6 @@ class NetworkService {
                         )
                         return
                     } catch {
-                        // TODO?
-                        //                    errorDecodingError = error
                     }
                 }
                 

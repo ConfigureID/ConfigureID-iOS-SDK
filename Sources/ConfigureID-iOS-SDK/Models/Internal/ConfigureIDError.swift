@@ -11,7 +11,6 @@ public enum ConfigureIDError: Error {
     case invalidURL
     case encodingError(entity: String, originalError: Error?)
     case decodingError(entity: String, originalError: Error?)
-    // TODO: revisit naming
     case serverError(statusCode: Int, details: [String])
     case notAuthenticated
     case unknownError(Error)

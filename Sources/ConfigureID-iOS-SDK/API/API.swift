@@ -39,7 +39,6 @@ public struct ConfigureID {
     // TODO: Should this be changeable?
     static var environment: Environment = .prod
     
-    // TODO: is this ok?
     init(apiKey: String) {
         ConfigureID.setApiKey(apiKey: apiKey)
     }
