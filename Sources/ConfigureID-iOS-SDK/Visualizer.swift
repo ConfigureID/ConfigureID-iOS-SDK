@@ -22,6 +22,7 @@ import WebKit
 
 public extension ConfigureID {
     
+    // TODO: Documentation
     static func productView(url: URL) -> UIView {
         return URLViewer(url: url)
     }

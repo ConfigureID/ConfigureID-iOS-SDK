@@ -9,7 +9,7 @@ import Foundation
 
 public extension ConfigureID {
     
-    /// Customers endpoints
+    /// Customers endpoints.
     struct Customers {
         
         /// Retrieves all products of a customer.

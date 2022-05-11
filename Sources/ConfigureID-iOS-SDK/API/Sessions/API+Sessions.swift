@@ -9,8 +9,8 @@ import Foundation
 
 public extension ConfigureID {
     
+    /// Sessions endpoints
     struct Sessions {
-        
         
         /// Retrieves the current state of the session.
         /// - Parameters:

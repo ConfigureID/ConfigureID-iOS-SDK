@@ -9,6 +9,7 @@ import Foundation
 
 public extension ConfigureID {
     
+    /// Recipes endpoints.
     struct Recipes {
         
         /// Retrieves an existing recipe.
