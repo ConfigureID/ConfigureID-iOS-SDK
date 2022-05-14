@@ -6,6 +6,7 @@
 </a>
 
 This SDK exposes the endpoints necessary for interacting with Configure and viewing products.
+You can take a look at the API at https://prod-ingress.fluidconfigure.com/headless/docs/.
 
 ## Installation
 
@@ -96,6 +97,11 @@ ConfigureID.Recipes.fetchRecipe(...)
 // Creates a new recipe. 
 ConfigureID.Recipes.createRecipe(...)
 ```
+
+## Visualizer
+
+TODO
+
 
 ## 🏷 License
 
