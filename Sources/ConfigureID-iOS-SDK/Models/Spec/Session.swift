@@ -29,4 +29,7 @@ public struct Session: Codable {
     
 //    TODO
 //    let imageUrls
+    
+    // TODO
+//    let changes
 }

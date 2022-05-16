@@ -132,28 +132,35 @@ public extension ConfigureID {
         }
         
         
-//        /// Updates a recipe.
-//        /// - Parameters:
-//        ///   - sessionId: Id of a session.
-//        ///   - includeSummary: Indicates if an array of changes is returned in the response. Useful for debugging/testing purposes.
-//        public static func updateRecipe(sessionId: String, includeSummary: Bool) {
-//            do {
-//                let request = try Request.Sessions.updateRecipe(
-//                    sessionId: sessionId,
-//                    includeSummary
-//                )
-//                
-//                NetworkService
-//                    .shared
-//                    .executeRequest(
-//                        request: request,
-//                        onSuccess: onSuccess,
-//                        onError: onError
-//                    )
-//            }
-//            catch {
-//                handleError(error: error, onError: onError)
-//            }
-//        }
+        /// Updates a recipe.
+        /// - Parameters:
+        ///   - sessionId: Id of a session.
+        ///   - includeSummary: Indicates if an array of changes is returned in the response. Useful for debugging/testing purposes.
+        public static func updateRecipe(
+            sessionId: String,
+            includeSummary: Bool,
+            updates: [UpdateRecipeAttributes],
+            onSuccess: @escaping (Session) -> (),
+            onError: @escaping (ConfigureIDError) -> ()
+        ) {
+            do {
+                let request = try Request.Sessions.updateRecipe(
+                    sessionId: sessionId,
+                    includeSummary: includeSummary,
+                    updates: updates
+                )
+                
+                NetworkService
+                    .shared
+                    .executeRequest(
+                        request: request,
+                        onSuccess: onSuccess,
+                        onError: onError
+                    )
+            }
+            catch {
+                handleError(error: error, onError: onError)
+            }
+        }
     }
 }

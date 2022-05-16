@@ -87,6 +87,32 @@ final class SessionTests: XCTestCase {
         
         waitForExpectations(timeout: 10)
     }
+    
+    func testUpdateRecipe() {
+        let updateRecipe = expectation(description: "should update recipe")
+        
+        waitFor(seconds: 2)
+        
+        ConfigureID
+            .Sessions
+            .updateRecipe(
+                sessionId: config.sessionId,
+                includeSummary: true,
+                updates: [
+                    UpdateRecipeAttributes.init(op: "selectValue", configurableAttribute: .string("Blue"), attributeValue: .int(98231))
+                ],
+                onSuccess: {
+                    print($0)
+                    updateRecipe.fulfill()
+                },
+                onError: {
+                    XCTFail(error: $0)
+                    updateRecipe.fulfill()
+                }
+            )
+
+        waitForExpectations(timeout: 10)
+    }
 }
 
 func XCTFail(error: Error, file: StaticString = #filePath, line: UInt = #line) {

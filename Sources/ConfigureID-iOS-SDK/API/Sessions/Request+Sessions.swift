@@ -64,24 +64,24 @@ extension Request {
             
             return Request(method: .PUT, urlComponents: components, httpBody: body)
         }
-//        
-//        static func updateRecipe(sessionId: String, includeSummary: Bool) throws -> Request {
-//            var components = URLComponents()
-//            // TODO: allow to modify this
-//            components.scheme = "https"
-//            // TODO: allow to modify this
-//            components.host = ConfigureID.environment.host
-//            components.path = "/headless/sessions/\(sessionId)/recipe"
-//            
-//            let parametersData: Data
-//            
-//            do {
-//                parametersData = try Environment.encoder.encode(parameters)
-//            } catch {
-//                throw ConfigureIDError.encodingError(entity: "CreateSession")
-//            }
-//            
-//            return Request(method: .POST, urlComponents: components, httpBody: parametersData)
-//        }
+        
+        static func updateRecipe(sessionId: String, includeSummary: Bool, updates: [UpdateRecipeAttributes]) throws -> Request {
+            var components = URLComponents()
+            // TODO: allow to modify this
+            components.scheme = "https"
+            // TODO: allow to modify this
+            components.host = ConfigureID.environment.host
+            components.path = "/headless/sessions/\(sessionId)/recipe"
+                        
+            let parametersData: Data
+            
+            do {
+                parametersData = try Environment.encoder.encode(updates)
+            } catch {
+                throw ConfigureIDError.encodingError(entity: "updateRecipe", originalError: error)
+            }
+            
+            return Request(method: .PATCH, urlComponents: components, httpBody: parametersData)
+        }
     }
 }

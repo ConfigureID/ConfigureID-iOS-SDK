@@ -13,6 +13,7 @@ struct Request {
         case POST
         case GET
         case PUT
+        case PATCH
     }
     
     let method: Method
