@@ -131,6 +131,32 @@ public extension ConfigureID {
             }
         }
         
+        public static func updateSession(
+            sessionId: String,
+            locale: String,
+            quantity: Int,
+            onSuccess: @escaping (Session) -> (),
+            onError: @escaping (ConfigureIDError) -> ()
+        ) {
+            do {
+                let request = try Request.Sessions.updateSession(
+                    sessionId: sessionId,
+                    locale: locale,
+                    quantity: quantity
+                )
+                
+                NetworkService
+                    .shared
+                    .executeRequest(
+                        request: request,
+                        onSuccess: onSuccess,
+                        onError: onError
+                    )
+            }
+            catch {
+                handleError(error: error, onError: onError)
+            }
+        }
         
         /// Updates a recipe.
         /// - Parameters:

@@ -65,6 +65,37 @@ extension Request {
             return Request(method: .PUT, urlComponents: components, httpBody: body)
         }
         
+        static func updateSession(sessionId: String, locale: String?, quantity: Int?) throws -> Request {
+            var components = URLComponents()
+            // TODO: allow to modify this
+            components.scheme = "https"
+            // TODO: allow to modify this
+            components.host = ConfigureID.environment.host
+            components.path = "/headless/sessions/\(sessionId)/recipe"
+                        
+            var parametersData: Data? = nil
+            
+            var parameters: [String: Any] = [:]
+            
+            if let locale = locale {
+                parameters["locale"] = locale
+            }
+            
+            if let quantity = quantity {
+                parameters["quantity"] = quantity
+            }
+            
+            if !parameters.isEmpty {
+                do {
+                    parametersData = try parameters.toJSON()
+                } catch {
+                    throw ConfigureIDError.encodingError(entity: "updateRecipe", originalError: error)
+                }
+            }
+            
+            return Request(method: .PUT, urlComponents: components, httpBody: parametersData)
+        }
+        
         static func updateRecipe(sessionId: String, includeSummary: Bool, updates: [UpdateRecipeAttributes]) throws -> Request {
             var components = URLComponents()
             // TODO: allow to modify this

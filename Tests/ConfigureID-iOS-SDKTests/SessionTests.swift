@@ -99,7 +99,7 @@ final class SessionTests: XCTestCase {
                 sessionId: config.sessionId,
                 includeSummary: true,
                 updates: [
-                    UpdateRecipeAttributes.init(op: "selectValue", configurableAttribute: .string("Blue"), attributeValue: .int(98231))
+                    UpdateRecipeAttributes.init(op: "selectValue", configurableAttribute: .string("p_24253_ca_93788"), attributeValue: .string("98231"))
                 ],
                 onSuccess: {
                     print($0)
