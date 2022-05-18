@@ -45,7 +45,7 @@ class NetworkService {
                 if let data = data {
                     
                     do {
-                        let decoded: Response<ResponseType> = try Environment.decoder.decode(Response<ResponseType>.self, from: data)
+                        let decoded: Response<ResponseType> = try Host.decoder.decode(Response<ResponseType>.self, from: data)
                         onSuccess(decoded.data)
                         return
                     } catch {
@@ -53,7 +53,7 @@ class NetworkService {
                     }
                     
                     do {
-                        let decodedError: ServerError = try Environment.decoder.decode(ServerError.self, from: data)
+                        let decodedError: ServerError = try Host.decoder.decode(ServerError.self, from: data)
                         onError(.serverError(
                             statusCode: decodedError.error.status,
                             details: decodedError.error.details)

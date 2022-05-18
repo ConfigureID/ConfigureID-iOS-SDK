@@ -7,18 +7,21 @@
 
 import Foundation
 
-
-// TODO: Allow to change host?
-enum Environment: String {
+public enum Host {
     case prod
     case staging
+    case custom(String)
     
-    var host: String {
+    var stringValue: String {
         switch self {
         case .prod:
             return "prod-ingress.fluidconfigure.com"
+            
         case .staging:
             return "staging-ingress.fluidconfigure.com"
+            
+        case .custom(let customHost):
+            return customHost
         }
     }
     
@@ -36,17 +39,21 @@ public struct ConfigureID {
     
     static var apiKey: String?
     
-    // TODO: Should this be changeable?
-    static var environment: Environment = .prod
+    static var host: Host = .prod
     
     init(apiKey: String) {
         ConfigureID.setApiKey(apiKey: apiKey)
     }
-
     
     /// Sets the API key that will be used to validate the customer.
     public static func setApiKey(apiKey: String) {
         ConfigureID.apiKey = apiKey
+    }
+    
+    /// Sets the API host (without https part).
+    /// Example value: .custom("prod-ingress.fluidconfigure.com")
+    public static func setHost(host: Host) {
+        self.host = host
     }
     
 }

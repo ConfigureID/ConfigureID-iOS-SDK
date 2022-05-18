@@ -16,7 +16,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = ConfigureID.environment.host
+            components.host = ConfigureID.host.stringValue
             components.path = "/headless/customers/\(customerId)/products"
 
             components.queryItems = [
@@ -32,7 +32,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = ConfigureID.environment.host
+            components.host = ConfigureID.host.stringValue
             components.path = "/headless/customers/\(customerId)/products/\(productId)"
 
             components.queryItems = [

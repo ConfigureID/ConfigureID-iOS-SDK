@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import ConfigureID_iOS_SDK
+import ConfigureID_iOS_SDK
 
 final class SessionTests: XCTestCase {
     
@@ -15,7 +15,7 @@ final class SessionTests: XCTestCase {
     
     override func setUpWithError() throws {
         config = try TestConfig.prod()
-        ConfigureID.environment = config.environment
+        ConfigureID.setHost(host: config.host)
         ConfigureID.setApiKey(apiKey: config.apiKey)
     }
     
@@ -96,10 +96,14 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .updateRecipe(
-                sessionId: config.sessionId,
+                sessionId: "ccb281b9-64b5-4c12-b7b1-1427f2612ed9",
                 includeSummary: true,
                 updates: [
-                    UpdateRecipeAttributes.init(op: "selectValue", configurableAttribute: .string("p_24253_ca_93788"), attributeValue: .string("98231"))
+                    UpdateRecipeAttributes(
+                        op: "selectValue",
+                        configurableAttribute: .string("default"),
+                        attributeValue: .string("98231")
+                    )
                 ],
                 onSuccess: {
                     print($0)

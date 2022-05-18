@@ -131,10 +131,18 @@ public extension ConfigureID {
             }
         }
         
+        
+        /// Update session.
+        /// - Parameters:
+        ///   - sessionId: Id of a session.
+        ///   - locale: The locale identifier to select the language. Should be >= 2 characters.
+        ///   - quantity: Amount of products created with this recipe.  Must be >= 1. Default: 1
+        ///   - onSuccess: Callback that will be run on success.
+        ///   - onError: Callback that will be run on error.
         public static func updateSession(
             sessionId: String,
-            locale: String,
-            quantity: Int,
+            locale: String?,
+            quantity: Int?,
             onSuccess: @escaping (Session) -> (),
             onError: @escaping (ConfigureIDError) -> ()
         ) {

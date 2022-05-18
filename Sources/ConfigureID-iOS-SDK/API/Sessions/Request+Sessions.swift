@@ -16,7 +16,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = ConfigureID.environment.host
+            components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions/\(sessionId)"
             
             return Request(method: .GET, urlComponents: components)
@@ -28,13 +28,13 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = ConfigureID.environment.host
+            components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions"
             
             let parametersData: Data
             
             do {
-                parametersData = try Environment.encoder.encode(parameters)
+                parametersData = try Host.encoder.encode(parameters)
             } catch {
                 throw ConfigureIDError.encodingError(entity: "CreateSession", originalError: error)
             }
@@ -47,7 +47,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = ConfigureID.environment.host
+            components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions/\(sessionId)"
             
             let body: Data?
@@ -70,7 +70,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = ConfigureID.environment.host
+            components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions/\(sessionId)/recipe"
                         
             var parametersData: Data? = nil
@@ -101,13 +101,13 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = ConfigureID.environment.host
+            components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions/\(sessionId)/recipe"
                         
             let parametersData: Data
             
             do {
-                parametersData = try Environment.encoder.encode(updates)
+                parametersData = try Host.encoder.encode(updates)
             } catch {
                 throw ConfigureIDError.encodingError(entity: "updateRecipe", originalError: error)
             }

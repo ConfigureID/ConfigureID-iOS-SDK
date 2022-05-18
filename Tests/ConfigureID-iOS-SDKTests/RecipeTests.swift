@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import ConfigureID_iOS_SDK
+import ConfigureID_iOS_SDK
 
 final class RecipeTests: XCTestCase {
     
@@ -15,7 +15,7 @@ final class RecipeTests: XCTestCase {
     
     override func setUpWithError() throws {
         config = try TestConfig.prod()
-        ConfigureID.environment = config.environment
+        ConfigureID.setHost(host: config.host)
         ConfigureID.setApiKey(apiKey: config.apiKey)
     }
     

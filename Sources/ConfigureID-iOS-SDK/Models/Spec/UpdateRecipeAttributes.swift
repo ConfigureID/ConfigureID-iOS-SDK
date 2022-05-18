@@ -39,9 +39,8 @@ public enum VariadicType: Codable {
     }
 }
 
+// TODO: Pedro would send the real values, this probably should be an enum.
 public struct UpdateRecipeAttributes: Codable {
-    // TODO: Pedro would send the real values, this probably should be an enum.
-
     /// Patch operation
     let op: String
     
@@ -50,4 +49,15 @@ public struct UpdateRecipeAttributes: Codable {
     
     /// The attribute value to select/update.
     let attributeValue: VariadicType
+    
+    /// Parameters for update recipe endpoint.
+    /// - Parameters:
+    ///   - op: Patch operation
+    ///   - configurableAttribute: The configurable attribute to update.
+    ///   - attributeValue: The attribute value to select/update.
+    public init(op: String, configurableAttribute: VariadicType, attributeValue: VariadicType) {
+        self.op = op
+        self.configurableAttribute = configurableAttribute
+        self.attributeValue = attributeValue
+    }
 }

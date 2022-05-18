@@ -21,7 +21,7 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = ConfigureID.environment.host
+            components.host = ConfigureID.host.stringValue
             components.path = "/headless/recipes/\(recipeId)"
             
             components.queryItems = [
@@ -38,10 +38,10 @@ extension Request {
             // TODO: allow to modify this
             components.scheme = "https"
             // TODO: allow to modify this
-            components.host = ConfigureID.environment.host
+            components.host = ConfigureID.host.stringValue
             components.path = "/headless/recipes"
             
-            let parametersData = try Environment.encoder.encode(parameters)
+            let parametersData = try Host.encoder.encode(parameters)
             
             return Request(
                 method: .POST,

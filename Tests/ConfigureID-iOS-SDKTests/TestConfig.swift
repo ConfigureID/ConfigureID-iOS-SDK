@@ -6,19 +6,35 @@
 //
 
 import Foundation
-@testable import ConfigureID_iOS_SDK
+import ConfigureID_iOS_SDK
 
 extension String: Error {}
 
-extension Environment: Codable {}
+extension Host: Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let decodedHost = try container.decode(String.self)
+        if decodedHost == "prod" {
+            self = .prod
+            return
+        }
+        
+        if decodedHost == "staging" {
+            self = .staging
+            return
+        }
+        
+        self = .custom(decodedHost)
+    }
+}
 
-struct TestConfig: Codable {
+struct TestConfig: Decodable {
     
     let apiKey: String
     let customerId: Int
     let productId: Int
     let vendorId: String
-    let environment: Environment
+    let host: Host
     let workflow: String
     let sessionId: String
     let recipeId: String
