@@ -18,9 +18,7 @@ extension Request {
             includeExtendedAttributes: Bool
         ) throws -> Request {
             var components = URLComponents()
-            // TODO: allow to modify this
             components.scheme = "https"
-            // TODO: allow to modify this
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/recipes/\(recipeId)"
             
@@ -35,9 +33,7 @@ extension Request {
         
         static func createRecipe(parameters: CreateRecipeParameters) throws -> Request {
             var components = URLComponents()
-            // TODO: allow to modify this
             components.scheme = "https"
-            // TODO: allow to modify this
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/recipes"
             

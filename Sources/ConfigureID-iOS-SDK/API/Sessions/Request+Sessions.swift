@@ -13,9 +13,7 @@ extension Request {
         
         static func session(sessionId: String) throws -> Request {
             var components = URLComponents()
-            // TODO: allow to modify this
             components.scheme = "https"
-            // TODO: allow to modify this
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions/\(sessionId)"
             
@@ -25,9 +23,7 @@ extension Request {
         // TODO: add parameters to request
         static func createSession(parameters: CreateSessionParameters) throws -> Request {
             var components = URLComponents()
-            // TODO: allow to modify this
             components.scheme = "https"
-            // TODO: allow to modify this
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions"
             
@@ -44,9 +40,7 @@ extension Request {
         
         static func resetSession(sessionId: String, recipeId: String?) throws -> Request {
             var components = URLComponents()
-            // TODO: allow to modify this
             components.scheme = "https"
-            // TODO: allow to modify this
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions/\(sessionId)"
             
@@ -67,9 +61,7 @@ extension Request {
         
         static func updateSession(sessionId: String, locale: String?, quantity: Int?) throws -> Request {
             var components = URLComponents()
-            // TODO: allow to modify this
             components.scheme = "https"
-            // TODO: allow to modify this
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions/\(sessionId)/recipe"
                         
@@ -98,9 +90,7 @@ extension Request {
         
         static func updateRecipe(sessionId: String, includeSummary: Bool, updates: [UpdateRecipeAttributes]) throws -> Request {
             var components = URLComponents()
-            // TODO: allow to modify this
             components.scheme = "https"
-            // TODO: allow to modify this
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions/\(sessionId)/recipe"
                         

@@ -13,9 +13,7 @@ extension Request {
         
         static func products(customerId: Int, workflow: String?, vendorId: String?) throws -> Request {
             var components = URLComponents()
-            // TODO: allow to modify this
             components.scheme = "https"
-            // TODO: allow to modify this
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/customers/\(customerId)/products"
 
@@ -29,9 +27,7 @@ extension Request {
         
         static func productData(customerId: Int, productId: Int, workflow: String?) throws -> Request {
             var components = URLComponents()
-            // TODO: allow to modify this
             components.scheme = "https"
-            // TODO: allow to modify this
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/customers/\(customerId)/products/\(productId)"
 
