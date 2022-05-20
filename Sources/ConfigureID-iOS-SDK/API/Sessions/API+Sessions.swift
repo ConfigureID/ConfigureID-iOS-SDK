@@ -40,7 +40,6 @@ public extension ConfigureID {
             }
         }
         
-        
         /// Creates a new session.
         /// - Parameters:
         ///   - locale: The locale identifier to select the language. Should be >= 2 characters.
@@ -125,12 +124,10 @@ public extension ConfigureID {
                         onSuccess: onSuccess,
                         onError: onError
                     )
-            }
-            catch {
+            } catch {
                 handleError(error: error, onError: onError)
             }
         }
-        
         
         /// Update session.
         /// - Parameters:
@@ -160,8 +157,7 @@ public extension ConfigureID {
                         onSuccess: onSuccess,
                         onError: onError
                     )
-            }
-            catch {
+            } catch {
                 handleError(error: error, onError: onError)
             }
         }
@@ -191,8 +187,7 @@ public extension ConfigureID {
                         onSuccess: onSuccess,
                         onError: onError
                     )
-            }
-            catch {
+            } catch {
                 handleError(error: error, onError: onError)
             }
         }

@@ -98,6 +98,13 @@ ConfigureID.Recipes.fetchRecipe(...)
 ConfigureID.Recipes.createRecipe(...)
 ```
 
+## Contributing
+
+### Install Swiftlint
+```
+brew install swiftlint
+```
+
 ## Visualizer
 
 TODO

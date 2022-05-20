@@ -21,7 +21,19 @@ struct CreateSessionParameters: Codable {
     let imageParameters: [ImageParameters]?
     let debug: Bool?
     
-    init(recipeId: Int?, locale: String, customerId: Int, productId: Int, workflow: String?, environment: String?, baseUrl: String?, skipCdn: Bool?, configureEndpoint: String?, imageParameters: [ImageParameters]?, debug: Bool?) {
+    init(
+        recipeId: Int?,
+        locale: String,
+        customerId: Int,
+        productId: Int,
+        workflow: String?,
+        environment: String?,
+        baseUrl: String?,
+        skipCdn: Bool?,
+        configureEndpoint: String?,
+        imageParameters: [ImageParameters]?,
+        debug: Bool?
+    ) {
         self.recipeId = recipeId
         self.locale = locale
         self.customerId = customerId
@@ -34,5 +46,5 @@ struct CreateSessionParameters: Codable {
         self.imageParameters = imageParameters
         self.debug = debug
     }
-
+    
 }

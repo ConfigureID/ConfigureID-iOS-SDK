@@ -73,7 +73,7 @@ extension Request {
             components.host = ConfigureID.host.stringValue
             components.path = "/headless/sessions/\(sessionId)/recipe"
                         
-            var parametersData: Data? = nil
+            var parametersData: Data?
             
             var parameters: [String: Any] = [:]
             

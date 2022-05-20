@@ -32,11 +32,3 @@ struct CreateRecipeParameters: Codable {
 //    TODO: add this
 //    let imageParameters: String?
 }
-
-//struct CustomerData: Codable {
-//    let recipeName: String
-//    let buttonLabel: String
-//    let showPriceOnButton: Bool
-//    let saveOnSelected: Bool
-//    let author: String
-//}

@@ -110,10 +110,10 @@ struct ServerErrorInner: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         status = try values.decode(Int.self, forKey: .status)
         
-        var _error: Error? = nil
+        var _error: Error?
         
         var _details: [String] = []
-        
+
         do {
             _details = try values.decode([String].self, forKey: .details)
         } catch {

@@ -9,7 +9,7 @@ import SwiftUI
 import ConfigureID_iOS_SDK
 
 @main
-struct ConfigureID_iOS_SDK_DemoApp: App {
+struct ConfigureIDiOSSDKDemoApp: App {
     var body: some Scene {
         return WindowGroup {
             ContentView()

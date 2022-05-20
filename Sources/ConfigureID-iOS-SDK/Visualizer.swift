@@ -8,17 +8,6 @@
 import Foundation
 import UIKit
 import WebKit
-//
-//public class Visualizer: UIViewController {
-//
-//    var webView: WKWebView!
-//
-//    override func loadView() {
-//        webView = WKWebView()
-//        webView.navigationDelegate = self
-//        view = webView
-//    }
-//}
 
 public extension ConfigureID {
     
