@@ -1,0 +1,18 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '15.0'
+
+target 'ConfigureID-iOS-Pods-Demo (iOS)' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for ConfigureID-iOS-Pods-Demo (iOS)
+  pod 'ConfigureId', :path => "../ConfigureId.podspec"
+end
+
+target 'ConfigureID-iOS-Pods-Demo (macOS)' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for ConfigureID-iOS-Pods-Demo (macOS)
+
+end

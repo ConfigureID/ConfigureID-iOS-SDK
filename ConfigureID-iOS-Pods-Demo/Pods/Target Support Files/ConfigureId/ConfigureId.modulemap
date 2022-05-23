@@ -1,0 +1,6 @@
+framework module ConfigureId {
+  umbrella header "ConfigureId-umbrella.h"
+
+  export *
+  module * { export * }
+}

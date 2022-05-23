@@ -1,0 +1,6 @@
+framework module Pods_ConfigureID_iOS_Pods_Demo__macOS_ {
+  umbrella header "Pods-ConfigureID-iOS-Pods-Demo (macOS)-umbrella.h"
+
+  export *
+  module * { export * }
+}

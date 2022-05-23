@@ -23,7 +23,7 @@ let package = Package(
     //...
     dependencies: [
         .package(
-            name: "ConfigureID-iOS-SDK",
+            name: "ConfigureId",
             url: "https://github.com/FranDepascuali/ConfigureID-iOS-SDK",
             .exact("0.0.1")
         ),
@@ -35,7 +35,7 @@ let package = Package(
 ## Authentication
 You need to authenticate with your apiKey to use this SDK.
 ```swift
-import ConfigureID_iOS_SDK
+import ConfigureId
 
 ConfigureID.setApiKey(apiKey: "YOUR_API_KEY")
 ```
@@ -44,7 +44,7 @@ ConfigureID.setApiKey(apiKey: "YOUR_API_KEY")
 
 
 ```swift
-import ConfigureID_iOS_SDK
+import ConfigureId
 
 ConfigureID.setApiKey(apiKey: "YOUR_API_KEY")
 ConfigureID
@@ -103,6 +103,11 @@ ConfigureID.Recipes.createRecipe(...)
 ### Install Swiftlint
 ```
 brew install swiftlint
+```
+
+### Publish cocoapods version
+```
+pod lib lint
 ```
 
 ## Visualizer
