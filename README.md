@@ -106,8 +106,15 @@ brew install swiftlint
 ```
 
 ### Publish cocoapods version
+
+Run the cocoapods linter.
 ```
 pod lib lint
+```
+
+Push to cocoapods.
+```
+pod trunk push
 ```
 
 ## Visualizer
