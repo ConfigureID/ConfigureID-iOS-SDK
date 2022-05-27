@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-import ConfigureID_iOS_SDK
+import ConfigureId
 
 final class RecipeTests: XCTestCase {
     

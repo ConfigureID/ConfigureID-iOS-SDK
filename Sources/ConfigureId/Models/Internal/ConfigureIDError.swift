@@ -35,6 +35,25 @@ public enum ConfigureIDError: Error {
         }
     }
     
+    var errorName: String {
+        switch self {
+        case .serverError:
+            return "Server error"
+        case .unknownError:
+            return "Unkown error"
+        case .invalidURL:
+            return "Invalid URL"
+        case .decodingError:
+            return "Decoding error"
+        case .encodingError:
+            return "Encoding error"
+        case .unexpectedError:
+            return "Unexpected Error"
+        case .notAuthenticated:
+            return "Not authenticated"
+        }
+    }
+    
     var details: [String] {
         switch self {
         case .serverError(_, let details):
@@ -59,6 +78,14 @@ public enum ConfigureIDError: Error {
 
 extension ConfigureIDError: LocalizedError {
     public var errorDescription: String? {
-        return "\(self.statusCode): \(self.details)"
+        return "Error: \(self.errorName), code: \(self.statusCode), details: \(self.details)"
     }
+}
+
+extension ConfigureIDError: CustomStringConvertible {
+    
+    public var description: String {
+        return self.errorDescription ?? "\(self)"
+    }
+    
 }

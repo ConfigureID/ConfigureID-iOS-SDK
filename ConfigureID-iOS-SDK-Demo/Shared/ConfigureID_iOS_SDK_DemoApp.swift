@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import ConfigureID_iOS_SDK
+import ConfigureId
 
 @main
 struct ConfigureIDiOSSDKDemoApp: App {

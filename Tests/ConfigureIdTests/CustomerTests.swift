@@ -1,5 +1,5 @@
 import XCTest
-import ConfigureID_iOS_SDK
+import ConfigureId
 
 final class ConfigureID_iOS_SDKTests: XCTestCase {
     

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ConfigureID_iOS_SDK
+import ConfigureId
 
 extension String: Error {}
 

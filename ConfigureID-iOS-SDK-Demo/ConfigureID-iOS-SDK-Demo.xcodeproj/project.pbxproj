@@ -10,7 +10,7 @@
 		170593222811C5B800B64235 /* ConfigureID_iOS_SDK_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170593122811C5B700B64235 /* ConfigureID_iOS_SDK_DemoApp.swift */; };
 		170593242811C5B800B64235 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170593132811C5B700B64235 /* ContentView.swift */; };
 		170593262811C5B800B64235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170593142811C5B800B64235 /* Assets.xcassets */; };
-		1722778D2811C7BB000F3D72 /* ConfigureID-iOS-SDK in Frameworks */ = {isa = PBXBuildFile; productRef = 1722778C2811C7BB000F3D72 /* ConfigureID-iOS-SDK */; };
+		17D26BD3283BD0C90059953F /* ConfigureId in Frameworks */ = {isa = PBXBuildFile; productRef = 17D26BD2283BD0C90059953F /* ConfigureId */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,7 +19,7 @@
 		170593142811C5B800B64235 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		170593192811C5B800B64235 /* ConfigureID-iOS-SDK-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ConfigureID-iOS-SDK-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		170593212811C5B800B64235 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		172277882811C76F000F3D72 /* ConfigureID-iOS-SDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ConfigureID-iOS-SDK"; path = ..; sourceTree = "<group>"; };
+		17D26BD1283BD09F0059953F /* ConfigureID-iOS-SDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ConfigureID-iOS-SDK"; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1722778D2811C7BB000F3D72 /* ConfigureID-iOS-SDK in Frameworks */,
+				17D26BD3283BD0C90059953F /* ConfigureId in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +74,7 @@
 		170593302811C5DF00B64235 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				172277882811C76F000F3D72 /* ConfigureID-iOS-SDK */,
+				17D26BD1283BD09F0059953F /* ConfigureID-iOS-SDK */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -104,7 +104,7 @@
 			);
 			name = "ConfigureID-iOS-SDK-Demo (iOS)";
 			packageProductDependencies = (
-				1722778C2811C7BB000F3D72 /* ConfigureID-iOS-SDK */,
+				17D26BD2283BD0C90059953F /* ConfigureId */,
 			);
 			productName = "ConfigureID-iOS-SDK-Demo (iOS)";
 			productReference = 170593192811C5B800B64235 /* ConfigureID-iOS-SDK-Demo.app */;
@@ -382,9 +382,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1722778C2811C7BB000F3D72 /* ConfigureID-iOS-SDK */ = {
+		17D26BD2283BD0C90059953F /* ConfigureId */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "ConfigureID-iOS-SDK";
+			productName = ConfigureId;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

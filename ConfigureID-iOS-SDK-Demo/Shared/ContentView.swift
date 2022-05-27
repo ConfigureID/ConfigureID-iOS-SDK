@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import ConfigureID_iOS_SDK
+import ConfigureId
 
 struct ContentView: View {
     var body: some View {

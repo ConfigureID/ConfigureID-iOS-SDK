@@ -94,5 +94,5 @@ iOSInjectionProject/
 .AppleDouble
 .LSOverride
 
-Tests/ConfigureID-iOS-SDKTests/Configs/*
-!Tests/ConfigureID-iOS-SDKTests/Configs/sample-config.json
+Tests/ConfigureIdTests/Configs/*
+!Tests/ConfigureIdTests/Configs/sample-config.json
