@@ -5,5 +5,6 @@
     "vendorId": "<vendorId>",
     "host": "<staging or prod>",
     "workflow": "<workflow, i.e: dev>",
-    "sessionId": "<id of existing session>"
+    "sessionId": "<id of existing session>",
+    "recipeId": "<id of recipe session>"
 }

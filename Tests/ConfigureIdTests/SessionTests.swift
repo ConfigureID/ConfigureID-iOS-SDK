@@ -96,7 +96,7 @@ final class SessionTests: XCTestCase {
         ConfigureID
             .Sessions
             .updateRecipe(
-                sessionId: "ccb281b9-64b5-4c12-b7b1-1427f2612ed9",
+                sessionId: config.sessionId,
                 includeSummary: true,
                 updates: [
                     UpdateRecipeAttributes(
