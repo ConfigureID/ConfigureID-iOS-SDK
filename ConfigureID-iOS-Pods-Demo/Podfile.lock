@@ -1,5 +1,5 @@
 PODS:
-  - ConfigureId (0.0.3)
+  - ConfigureId (0.0.4)
 
 DEPENDENCIES:
   - ConfigureId (from `../ConfigureId.podspec`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../ConfigureId.podspec"
 
 SPEC CHECKSUMS:
-  ConfigureId: 8ce0f99e93c22ca56e8c233a7d029110a0c1a567
+  ConfigureId: 2c78c43a7e627abac17f12a781dc160c6dcbf4fa
 
 PODFILE CHECKSUM: e961853f19ce784b2c43f7930ca2aef0e00cf744
 
