@@ -14,7 +14,7 @@ extension Request {
         static func session(sessionId: String) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
-            components.host = ConfigureID.host.stringValue
+            components.host = ConfigureId.host.stringValue
             components.path = "/headless/sessions/\(sessionId)"
             
             return Request(method: .GET, urlComponents: components)
@@ -24,7 +24,7 @@ extension Request {
         static func createSession(parameters: CreateSessionParameters) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
-            components.host = ConfigureID.host.stringValue
+            components.host = ConfigureId.host.stringValue
             components.path = "/headless/sessions"
             
             let parametersData: Data
@@ -32,7 +32,7 @@ extension Request {
             do {
                 parametersData = try Host.encoder.encode(parameters)
             } catch {
-                throw ConfigureIDError.encodingError(entity: "CreateSession", originalError: error)
+                throw ConfigureIdError.encodingError(entity: "CreateSession", originalError: error)
             }
             
             return Request(method: .POST, urlComponents: components, httpBody: parametersData)
@@ -41,7 +41,7 @@ extension Request {
         static func resetSession(sessionId: String, recipeId: String?) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
-            components.host = ConfigureID.host.stringValue
+            components.host = ConfigureId.host.stringValue
             components.path = "/headless/sessions/\(sessionId)"
             
             let body: Data?
@@ -50,7 +50,7 @@ extension Request {
                 do {
                     body = try ["recipeId": recipeId].toJSON()
                 } catch {
-                    throw ConfigureIDError.encodingError(entity: "resetSession", originalError: error)
+                    throw ConfigureIdError.encodingError(entity: "resetSession", originalError: error)
                 }
             } else {
                 body = nil
@@ -62,7 +62,7 @@ extension Request {
         static func updateSession(sessionId: String, locale: String?, quantity: Int?) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
-            components.host = ConfigureID.host.stringValue
+            components.host = ConfigureId.host.stringValue
             components.path = "/headless/sessions/\(sessionId)/recipe"
                         
             var parametersData: Data?
@@ -81,7 +81,7 @@ extension Request {
                 do {
                     parametersData = try parameters.toJSON()
                 } catch {
-                    throw ConfigureIDError.encodingError(entity: "updateRecipe", originalError: error)
+                    throw ConfigureIdError.encodingError(entity: "updateRecipe", originalError: error)
                 }
             }
             
@@ -91,7 +91,7 @@ extension Request {
         static func updateRecipe(sessionId: String, includeSummary: Bool, updates: [UpdateRecipeAttributes]) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
-            components.host = ConfigureID.host.stringValue
+            components.host = ConfigureId.host.stringValue
             components.path = "/headless/sessions/\(sessionId)/recipe"
                         
             let parametersData: Data
@@ -99,7 +99,7 @@ extension Request {
             do {
                 parametersData = try Host.encoder.encode(updates)
             } catch {
-                throw ConfigureIDError.encodingError(entity: "updateRecipe", originalError: error)
+                throw ConfigureIdError.encodingError(entity: "updateRecipe", originalError: error)
             }
             
             return Request(method: .PATCH, urlComponents: components, httpBody: parametersData)

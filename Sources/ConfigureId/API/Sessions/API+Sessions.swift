@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension ConfigureID {
+public extension ConfigureId {
     
     /// Sessions endpoints
     struct Sessions {
@@ -20,7 +20,7 @@ public extension ConfigureID {
         public static func fetchSession(
             sessionId: String,
             onSuccess: @escaping (Session) -> (),
-            onError: @escaping (ConfigureIDError) -> ()
+            onError: @escaping (ConfigureIdError) -> ()
         ) {
         
             do {
@@ -68,7 +68,7 @@ public extension ConfigureID {
             imageParameters: [ImageParameters]? = nil,
             debug: Bool? = nil,
             onSuccess: @escaping (Session) -> (),
-            onError: @escaping (ConfigureIDError) -> ()
+            onError: @escaping (ConfigureIdError) -> ()
         ) {
             do {
                 let request = try Request.Sessions.createSession(
@@ -109,7 +109,7 @@ public extension ConfigureID {
             sessionId: String,
             recipeId: String? = nil,
             onSuccess: @escaping (Session) -> (),
-            onError: @escaping (ConfigureIDError) -> ()
+            onError: @escaping (ConfigureIdError) -> ()
         ) {
             do {
                 let request = try Request.Sessions.resetSession(
@@ -141,7 +141,7 @@ public extension ConfigureID {
             locale: String?,
             quantity: Int?,
             onSuccess: @escaping (Session) -> (),
-            onError: @escaping (ConfigureIDError) -> ()
+            onError: @escaping (ConfigureIdError) -> ()
         ) {
             do {
                 let request = try Request.Sessions.updateSession(
@@ -171,7 +171,7 @@ public extension ConfigureID {
             includeSummary: Bool,
             updates: [UpdateRecipeAttributes],
             onSuccess: @escaping (Session) -> (),
-            onError: @escaping (ConfigureIDError) -> ()
+            onError: @escaping (ConfigureIdError) -> ()
         ) {
             do {
                 let request = try Request.Sessions.updateRecipe(

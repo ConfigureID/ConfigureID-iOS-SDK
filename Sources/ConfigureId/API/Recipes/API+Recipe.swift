@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension ConfigureID {
+public extension ConfigureId {
     
     /// Recipes endpoints.
     struct Recipes {
@@ -26,7 +26,7 @@ public extension ConfigureID {
             includeLocalizedConfiguration: Bool,
             includeExtendedAttributes: Bool,
             onSuccess: @escaping (Recipe) -> (),
-            onError: @escaping (ConfigureIDError) -> ()
+            onError: @escaping (ConfigureIdError) -> ()
         ) {
             do {
                 let request = try Request.Recipes.fetchRecipe(
@@ -68,7 +68,7 @@ public extension ConfigureID {
             // TODO: imageParameters
             // TODO: customerData
             onSuccess: @escaping (CreatedRecipe) -> (),
-            onError: @escaping (ConfigureIDError) -> ()
+            onError: @escaping (ConfigureIdError) -> ()
         ) { 
             do {
                 let request = try Request.Recipes.createRecipe(

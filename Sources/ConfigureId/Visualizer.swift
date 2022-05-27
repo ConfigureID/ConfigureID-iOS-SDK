@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import WebKit
 
-public extension ConfigureID {
+public extension ConfigureId {
     
     // TODO: Documentation
     static func productView(url: URL) -> UIView {

@@ -19,7 +19,7 @@ extension Request {
         ) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
-            components.host = ConfigureID.host.stringValue
+            components.host = ConfigureId.host.stringValue
             components.path = "/headless/recipes/\(recipeId)"
             
             components.queryItems = [
@@ -34,7 +34,7 @@ extension Request {
         static func createRecipe(parameters: CreateRecipeParameters) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
-            components.host = ConfigureID.host.stringValue
+            components.host = ConfigureId.host.stringValue
             components.path = "/headless/recipes"
             
             let parametersData = try Host.encoder.encode(parameters)

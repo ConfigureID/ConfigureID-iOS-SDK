@@ -31,11 +31,11 @@ struct Request {
     
     func urlRequest() throws -> URLRequest {
         guard let url = urlComponents.url else {
-            throw ConfigureIDError.invalidURL
+            throw ConfigureIdError.invalidURL
         }
         
-        guard let apiKey = ConfigureID.apiKey else {
-            throw ConfigureIDError.notAuthenticated
+        guard let apiKey = ConfigureId.apiKey else {
+            throw ConfigureIdError.notAuthenticated
         }
         
         var request = URLRequest(url: url)

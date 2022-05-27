@@ -23,7 +23,7 @@ class NetworkService {
     func executeRequest<ResponseType: Codable>(
         request: Request,
         onSuccess: @escaping (ResponseType) -> (),
-        onError: @escaping (ConfigureIDError) -> ()) {
+        onError: @escaping (ConfigureIdError) -> ()) {
             
             var urlRequest: URLRequest!
             

@@ -31,7 +31,7 @@ struct ProductVisualizerView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> UIView {
-        return ConfigureID
+        return ConfigureId
             .productView(url: url)
     }
 

@@ -35,19 +35,19 @@ public enum Host {
 }
 
 /// This API exposes the endpoints necessary for interacting with Configure.
-public struct ConfigureID {
+public struct ConfigureId {
     
     static var apiKey: String?
     
     static var host: Host = .prod
     
     init(apiKey: String) {
-        ConfigureID.setApiKey(apiKey: apiKey)
+        ConfigureId.setApiKey(apiKey: apiKey)
     }
     
     /// Sets the API key that will be used to validate the customer.
     public static func setApiKey(apiKey: String) {
-        ConfigureID.apiKey = apiKey
+        ConfigureId.apiKey = apiKey
     }
     
     /// Sets the API host (without https part).
@@ -60,9 +60,9 @@ public struct ConfigureID {
 
 func handleError(
     error: Error,
-    onError: (ConfigureIDError) -> ()
+    onError: (ConfigureIdError) -> ()
 ) {
-    if let error = error as? ConfigureIDError {
+    if let error = error as? ConfigureIdError {
         onError(error)
         return
     }

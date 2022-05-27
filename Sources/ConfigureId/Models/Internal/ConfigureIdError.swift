@@ -1,5 +1,5 @@
 //
-//  ConfigureIDError.swift
+//  ConfigureIdError.swift
 //  
 //
 //  Created by Francisco D. on 21/04/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ConfigureIDError: Error {
+public enum ConfigureIdError: Error {
     case invalidURL
     case encodingError(entity: String, originalError: Error?)
     case decodingError(entity: String, originalError: Error?)
@@ -76,13 +76,13 @@ public enum ConfigureIDError: Error {
     }
 }
 
-extension ConfigureIDError: LocalizedError {
+extension ConfigureIdError: LocalizedError {
     public var errorDescription: String? {
         return "Error: \(self.errorName), code: \(self.statusCode), details: \(self.details)"
     }
 }
 
-extension ConfigureIDError: CustomStringConvertible {
+extension ConfigureIdError: CustomStringConvertible {
     
     public var description: String {
         return self.errorDescription ?? "\(self)"

@@ -15,8 +15,8 @@ final class RecipeTests: XCTestCase {
     
     override func setUpWithError() throws {
         config = try TestConfig.prod()
-        ConfigureID.setHost(host: config.host)
-        ConfigureID.setApiKey(apiKey: config.apiKey)
+        ConfigureId.setHost(host: config.host)
+        ConfigureId.setApiKey(apiKey: config.apiKey)
     }
     
     func testCreateRecipe() {
@@ -24,7 +24,7 @@ final class RecipeTests: XCTestCase {
 
         waitFor(seconds: 2)
         
-        ConfigureID
+        ConfigureId
             .Recipes
             .createRecipe(
                 sessionId: config.sessionId,
@@ -50,7 +50,7 @@ final class RecipeTests: XCTestCase {
 
         waitFor(seconds: 2)
         
-        ConfigureID
+        ConfigureId
             .Recipes
             .fetchRecipe(
                 recipeId: config.recipeId,

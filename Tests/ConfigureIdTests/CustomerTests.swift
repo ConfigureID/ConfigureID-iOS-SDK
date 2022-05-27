@@ -7,8 +7,8 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
     
     override func setUpWithError() throws {
         config = try TestConfig.prod()
-        ConfigureID.setHost(host: config.host)
-        ConfigureID.setApiKey(apiKey: config.apiKey)
+        ConfigureId.setHost(host: config.host)
+        ConfigureId.setApiKey(apiKey: config.apiKey)
     }
     
     func testFetchProducts() {
@@ -16,7 +16,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
         
         waitFor(seconds: 2)
         
-        ConfigureID
+        ConfigureId
             .Customers
             .fetchProducts(
                 customerId: config.customerId,
@@ -25,7 +25,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
                     print(products)
                     productsExpectation.fulfill()
                 },
-                onError: { (error: ConfigureIDError) in
+                onError: { (error: ConfigureIdError) in
                     XCTFail(error: error)
                     productsExpectation.fulfill()
                 }
@@ -39,7 +39,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
 
         waitFor(seconds: 2)
     
-        ConfigureID
+        ConfigureId
             .Customers
             .fetchProductData(
                 customerId: config.customerId,
@@ -62,7 +62,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
 
         waitFor(seconds: 2)
 
-        ConfigureID.Customers
+        ConfigureId.Customers
             .fetchProducts(
                 customerId: config.customerId,
                 workflow: config.workflow,

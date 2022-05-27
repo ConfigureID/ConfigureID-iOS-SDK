@@ -1,5 +1,5 @@
 //
-//  ConfigureID.swift
+//  ConfigureId.swift
 //  
 //
 //  Created by Francisco D. on 27/04/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension ConfigureID {
+public extension ConfigureId {
     
     /// Customers endpoints.
     struct Customers {
@@ -24,7 +24,7 @@ public extension ConfigureID {
             workflow: String? = nil,
             vendorId: String? = nil,
             onSuccess: @escaping ([ProductSummary]) -> (),
-            onError: @escaping (ConfigureIDError) -> ()
+            onError: @escaping (ConfigureIdError) -> ()
         ) {
             do {
                 let request = try Request.Customer.products(
@@ -57,7 +57,7 @@ public extension ConfigureID {
             productId: Int,
             workflow: String? = nil,
             onSuccess: @escaping (Product) -> (),
-            onError: @escaping (ConfigureIDError) -> ()
+            onError: @escaping (ConfigureIdError) -> ()
         ) {
             do {
                 

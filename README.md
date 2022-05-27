@@ -25,19 +25,25 @@ let package = Package(
         .package(
             name: "ConfigureId",
             url: "https://github.com/FranDepascuali/ConfigureID-iOS-SDK",
-            .exact("0.0.1")
+            .exact("0.0.4")
         ),
     ],
     //...
 )
 ```
 
+```ruby
+pod 'ConfigureId', '0.0.4'
+```
+
+### 
+
 ## Authentication
 You need to authenticate with your apiKey to use this SDK.
 ```swift
 import ConfigureId
 
-ConfigureID.setApiKey(apiKey: "YOUR_API_KEY")
+ConfigureId.setApiKey(apiKey: "YOUR_API_KEY")
 ```
 
 ## Usage example
@@ -46,15 +52,15 @@ ConfigureID.setApiKey(apiKey: "YOUR_API_KEY")
 ```swift
 import ConfigureId
 
-ConfigureID.setApiKey(apiKey: "YOUR_API_KEY")
-ConfigureID
+ConfigureId.setApiKey(apiKey: "YOUR_API_KEY")
+ConfigureId
     .Customers
     .fetchProducts(
         customerId: "CUSTOMER_ID",
         onSuccess: { (products: [ProductSummary]) in
             print(products)
         },
-        onError: { (error: ConfigureIDError) in
+        onError: { (error: ConfigureIdError) in
             print(error)
         }
     )
@@ -68,34 +74,34 @@ Name of the methods are displayed below. Each method receives different paramete
 
 ```swift
 // Retrieves all products of a customer.
-ConfigureID.Customers.fetchProducts(...)
+ConfigureId.Customers.fetchProducts(...)
 
 // Retrieves the data of a product.
-ConfigureID.Customers.fetchProductData(...)
+ConfigureId.Customers.fetchProductData(...)
 ```
 
 ### Sessions 
 ```swift
 // Retrieves the current state of the session. 
-ConfigureID.Sessions.fetchSession(...)
+ConfigureId.Sessions.fetchSession(...)
 
 // Resets a session.
-ConfigureID.Sessions.resetSession(...)
+ConfigureId.Sessions.resetSession(...)
 
 // Creates a new session.
-ConfigureID.Sessions.createSession(...)
+ConfigureId.Sessions.createSession(...)
 
 // Updates a recipe.
-ConfigureID.Sessions.updateRecipe(...)
+ConfigureId.Sessions.updateRecipe(...)
 ```
 
 ### Recipes
 ```swift
 // Retrieves an existing recipe.
-ConfigureID.Recipes.fetchRecipe(...)
+ConfigureId.Recipes.fetchRecipe(...)
 
 // Creates a new recipe. 
-ConfigureID.Recipes.createRecipe(...)
+ConfigureId.Recipes.createRecipe(...)
 ```
 
 ## Contributing

@@ -15,8 +15,8 @@ final class SessionTests: XCTestCase {
     
     override func setUpWithError() throws {
         config = try TestConfig.prod()
-        ConfigureID.setHost(host: config.host)
-        ConfigureID.setApiKey(apiKey: config.apiKey)
+        ConfigureId.setHost(host: config.host)
+        ConfigureId.setApiKey(apiKey: config.apiKey)
     }
     
     func testCreateSession() {
@@ -24,7 +24,7 @@ final class SessionTests: XCTestCase {
         
         waitFor(seconds: 2)
         
-        ConfigureID
+        ConfigureId
             .Sessions
             .createSession(
                 locale: "en_US",
@@ -49,7 +49,7 @@ final class SessionTests: XCTestCase {
         
         waitFor(seconds: 2)
         
-        ConfigureID
+        ConfigureId
             .Sessions
             .fetchSession(
                 sessionId: config.sessionId,
@@ -71,7 +71,7 @@ final class SessionTests: XCTestCase {
         
         waitFor(seconds: 2)
         
-        ConfigureID
+        ConfigureId
             .Sessions
             .resetSession(
                 sessionId: config.sessionId,
@@ -93,7 +93,7 @@ final class SessionTests: XCTestCase {
         
         waitFor(seconds: 2)
         
-        ConfigureID
+        ConfigureId
             .Sessions
             .updateRecipe(
                 sessionId: config.sessionId,
