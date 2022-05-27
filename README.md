@@ -117,6 +117,8 @@ Push to cocoapods.
 pod trunk push
 ```
 
+[Here](https://github.com/CocoaPods/Specs/tree/master/Specs/a/b/6/ConfigureId) is the link to the updated podspect.
+
 ## Visualizer
 
 TODO
