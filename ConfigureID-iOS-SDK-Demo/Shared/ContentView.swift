@@ -10,7 +10,7 @@ import ConfigureId
 
 struct ContentView: View {
     var body: some View {
-        ProductVisualizerView(url: URL(string: "https://cdn-webgl.fluidconfigure.com/webgl-viewer/examples/demos/model-loading.html")!)
+        ProductVisualizerView(url: URL(string: "https://cdn-webgl.fluidconfigure.com/configure-webgl-display/index.html")!)
             .padding()
     }
 }
