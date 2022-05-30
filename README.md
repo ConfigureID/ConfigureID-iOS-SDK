@@ -48,11 +48,9 @@ ConfigureId.setApiKey(apiKey: "YOUR_API_KEY")
 
 ## Usage example
 
+Ensure you already authenticated. Then you can use the SDK, i.e:
 
 ```swift
-import ConfigureId
-
-ConfigureId.setApiKey(apiKey: "YOUR_API_KEY")
 ConfigureId
     .Customers
     .fetchProducts(
