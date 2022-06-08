@@ -60,7 +60,7 @@ class ExampleViewController: UIViewController {
                 return self.loadNewViewer(configureIdData: configureIdData)
             }
             .switchToLatest()
-            .sink(receiveValue: { (viewer: URLViewer) in
+            .sink(receiveValue: { (viewer: Visualizer) in
                 print("Viewer loaded")
             })
             .store(in: &_cancellables)
@@ -83,24 +83,24 @@ class ExampleViewController: UIViewController {
             .store(in: &_cancellables)
     }
     
-    var currentViewer: URLViewer? {
-        return self._view.viewerContainerView.subviews.first as? URLViewer
+    var currentViewer: Visualizer? {
+        return self._view.viewerContainerView.subviews.first as? Visualizer
     }
     
-    fileprivate func loadNewViewer(configureIdData: ConfigureIdData) -> AnyPublisher<URLViewer, Never> {
+    fileprivate func loadNewViewer(configureIdData: ConfigureIdData) -> AnyPublisher<Visualizer, Never> {
         if let oldViewer = currentViewer {
             oldViewer.removeFromSuperview()
         }
         
         let url = getUrl(session: configureIdData.session)
-        let viewer = URLViewer(url: url)
+        let viewer = Visualizer(url: url)
         viewer.loadInto(containerView: self._view.viewerContainerView)
         
 
         if configureIdData.session.isWebGl {
             // If it's webgl, we need to wait until the page is rendered and call initConfigure.
             return viewer
-                .whenLoaded
+                .onFinishedLoading
                 .handleEvents(receiveOutput: { _ in
                     viewer.initConfigure(
                         customerId: configureIdData.customerId,

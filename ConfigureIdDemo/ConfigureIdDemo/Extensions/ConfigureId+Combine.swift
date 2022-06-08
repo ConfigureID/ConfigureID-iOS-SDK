@@ -9,74 +9,6 @@ import UIKit
 import Combine
 import ConfigureId
 
-extension TestConfig {
-    
-    static func loadFrom(fileName: String) throws -> TestConfig {
-        
-        let file = fileName.replacingOccurrences(of: ".json", with: "")
-        guard let path = Bundle.main.path(forResource: file, ofType: "json") else {
-            throw "Config file \(fileName) for testing doesn't exist"
-        }
-        
-        let jsonData = try Data(contentsOf: URL(fileURLWithPath: path))
-        let decoder = JSONDecoder()
-        return try decoder.decode(TestConfig.self, from: jsonData)
-    }
-    
-    static func current() throws -> TestConfig {
-        return try prod3dProduct()
-    }
-
-    static func prod2dProduct() throws -> TestConfig {
-        // NOTE: You'll need to create this.
-        return try TestConfig.loadFrom(fileName: "prod-2d-product.json")
-    }
-
-    static func prod3dProduct() throws -> TestConfig {
-        // NOTE: You'll need to create this.
-        return try TestConfig.loadFrom(fileName: "prod-3d-product.json")
-    }
-
-    static func staging() throws -> TestConfig {
-        // NOTE: You'll need to create this.
-        return try TestConfig.loadFrom(fileName: "staging-config.json")
-    }
-    
-}
-
-enum SelectedExample: Int, Equatable {
-    case image
-    case webgl
-    case extra
-    
-    var config: TestConfig {
-        switch self {
-        case .image:
-            return try! TestConfig.prod2dProduct()
-        case .webgl:
-            return try! TestConfig.prod3dProduct()
-        case .extra:
-            return try! TestConfig.prod3dProduct()
-        }
-    }
-}
-
-enum ConfigureIdDataType {
-    case fetchSession
-    case updateRecipe
-}
-
-struct ConfigureIdData {
-    
-    let typeToRender: ConfigureIdDataType
-    
-    let session: Session
-    
-    let customerId: Int
-    
-    let productId: Int
-}
-
 func updateRecipe(
     sessionId: String,
     includeSummary: Bool,
@@ -148,6 +80,3 @@ func fetchSession(sessionId: String) -> AnyPublisher<Session, ConfigureIdError> 
         }
     }.eraseToAnyPublisher()
 }
-
-
-
