@@ -14,7 +14,7 @@ final class RecipeTests: XCTestCase {
     var config: TestConfig!
     
     override func setUpWithError() throws {
-        config = try TestConfig.prod()
+        config = try TestConfig.current()
         ConfigureId.setHost(host: config.host)
         ConfigureId.setApiKey(apiKey: config.apiKey)
     }

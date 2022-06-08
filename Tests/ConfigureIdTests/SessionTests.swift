@@ -14,7 +14,7 @@ final class SessionTests: XCTestCase {
     var config: TestConfig!
     
     override func setUpWithError() throws {
-        config = try TestConfig.prod()
+        config = try TestConfig.current()
         ConfigureId.setHost(host: config.host)
         ConfigureId.setApiKey(apiKey: config.apiKey)
     }
@@ -27,7 +27,7 @@ final class SessionTests: XCTestCase {
         ConfigureId
             .Sessions
             .createSession(
-                locale: "en_US",
+                locale: "en_us",
                 customerId: config.customerId,
                 productId: config.productId,
                 workflow: config.workflow,
@@ -101,8 +101,8 @@ final class SessionTests: XCTestCase {
                 updates: [
                     UpdateRecipeAttributes(
                         op: "selectValue",
-                        configurableAttribute: .string("default"),
-                        attributeValue: .string("98231")
+                        configurableAttribute: .int(33951),
+                        attributeValue: .int(44852)
                     )
                 ],
                 onSuccess: {

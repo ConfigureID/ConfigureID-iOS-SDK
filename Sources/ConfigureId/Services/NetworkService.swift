@@ -36,7 +36,9 @@ class NetworkService {
             
             let task = session.dataTask(with: urlRequest) { data, response, responseError in
                 if let error = responseError {
-                    onError(.unknownError(error))
+                    DispatchQueue.main.async {
+                        onError(.unknownError(error))
+                    }
                     return
                 }
                 
@@ -46,7 +48,9 @@ class NetworkService {
                     
                     do {
                         let decoded: Response<ResponseType> = try Host.decoder.decode(Response<ResponseType>.self, from: data)
-                        onSuccess(decoded.data)
+                        DispatchQueue.main.async {
+                            onSuccess(decoded.data)
+                        }
                         return
                     } catch {
                         dataDecodingError = error
@@ -54,10 +58,12 @@ class NetworkService {
                     
                     do {
                         let decodedError: ServerError = try Host.decoder.decode(ServerError.self, from: data)
-                        onError(.serverError(
-                            statusCode: decodedError.error.status,
-                            details: decodedError.error.details)
-                        )
+                        DispatchQueue.main.async {
+                            onError(.serverError(
+                                statusCode: decodedError.error.status,
+                                details: decodedError.error.details)
+                            )
+                        }
                         return
                     } catch {
                     }
@@ -68,21 +74,25 @@ class NetworkService {
                     
                     switch statusCode {
                     case 200 ..< 300:
-                        onError(.decodingError(
-                            entity: "\(ResponseType.self)",
-                            originalError: dataDecodingError)
-                        )
+                        DispatchQueue.main.async {
+                            onError(.decodingError(
+                                entity: "\(ResponseType.self)",
+                                originalError: dataDecodingError)
+                            )
+                        }
                         return
                     default:
                         break
                     }
                     
-                    onError(
-                        .serverError(
-                            statusCode: statusCode,
-                            details: [HTTPURLResponse.localizedString(forStatusCode: statusCode)]
+                    DispatchQueue.main.async {
+                        onError(
+                            .serverError(
+                                statusCode: statusCode,
+                                details: [HTTPURLResponse.localizedString(forStatusCode: statusCode)]
+                            )
                         )
-                    )
+                    }
                     return
                 }
                 

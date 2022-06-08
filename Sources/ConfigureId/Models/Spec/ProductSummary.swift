@@ -19,11 +19,13 @@ public struct ProductSummary: Codable {
     /// External id of the product.
     let vendorId: String
     
+    // TODO: According documentation, this shouldn't be optional but it failed with one case.
     /// The identifier for the locale used by default. This is the locale that will be used when no locale is sent via query parameters.
-    let defaultLocale: String
+//    let defaultLocale: String
     
+    // TODO: According documentation, this shouldn't be optional but it failed with one case.
     /// The list of all available locales for the product.
-    let locales: [String]
+//    let locales: [String]
     
     /// A list of Product Facets. Each product facet includes the values as a list.
     let facets: [ProductFacet]
