@@ -25,7 +25,7 @@ let package = Package(
         .package(
             name: "ConfigureId",
             url: "https://github.com/FranDepascuali/ConfigureID-iOS-SDK",
-            .exact("0.0.4")
+            .exact("0.0.5")
         ),
     ],
     //...
@@ -33,7 +33,7 @@ let package = Package(
 ```
 
 ```ruby
-pod 'ConfigureId', '0.0.4'
+pod 'ConfigureId', '0.0.5'
 ```
 
 ### 

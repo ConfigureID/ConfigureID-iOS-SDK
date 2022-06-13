@@ -18,8 +18,8 @@ func updateRecipe(
         Future<Session, ConfigureIdError> { promise in
             ConfigureId.Sessions.updateRecipe(
                 sessionId: sessionId,
-                includeSummary: includeSummary,
                 updates: updates,
+                includeSummary: includeSummary,
                 onSuccess: { promise(.success($0)) },
                 onError: { promise(.failure($0)) }
             )
