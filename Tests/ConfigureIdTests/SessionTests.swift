@@ -97,7 +97,6 @@ final class SessionTests: XCTestCase {
             .Sessions
             .updateRecipe(
                 sessionId: config.sessionId,
-                includeSummary: true,
                 updates: [
                     UpdateRecipeAttributes(
                         op: "selectValue",
@@ -105,6 +104,7 @@ final class SessionTests: XCTestCase {
                         attributeValue: .int(44852)
                     )
                 ],
+                includeSummary: true,
                 onSuccess: {
                     print($0)
                     updateRecipe.fulfill()

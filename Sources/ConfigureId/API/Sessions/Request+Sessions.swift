@@ -88,7 +88,7 @@ extension Request {
             return Request(method: .PUT, urlComponents: components, httpBody: parametersData)
         }
         
-        static func updateRecipe(sessionId: String, includeSummary: Bool, updates: [UpdateRecipeAttributes]) throws -> Request {
+        static func updateRecipe(sessionId: String, includeSummary: Bool?, updates: [UpdateRecipeAttributes]) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
             components.host = ConfigureId.host.stringValue
@@ -101,6 +101,13 @@ extension Request {
             } catch {
                 throw ConfigureIdError.encodingError(entity: "updateRecipe", originalError: error)
             }
+            
+            components.queryItems = [
+                URLQueryItem(
+                    name: "includeSummary",
+                    value: includeSummary.map(String.init)
+                ),
+            ]
             
             return Request(method: .PATCH, urlComponents: components, httpBody: parametersData)
         }

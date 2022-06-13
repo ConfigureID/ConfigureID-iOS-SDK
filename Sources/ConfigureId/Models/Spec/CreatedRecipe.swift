@@ -18,6 +18,6 @@ public struct CreatedRecipe: Codable {
     /// Version of the api.
     let apiVersion: String
     
-    // TODO: This is object
+    // TODO: Can't do it yet. Need clarification in documentation.
 //    let imageUrls:
 }

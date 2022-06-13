@@ -7,28 +7,27 @@
 
 import Foundation
 
-// TODO: Document
-struct CreateRecipeParameters: Codable {
+public struct CreateRecipeParameters: Codable {
     
     /// Id of a sesstion to create a recipe.
-    let sessionId: String
+    public let sessionId: String
     
     /// Amount of products created with this recipe.
     /// Default: 1
-    let quantity: Int?
+    public let quantity: Int?
     
     /// The purpose of creating recipe.
-    let purpose: String?
+    public let purpose: String?
     
     /// True if should be included in recipe-search index.
-    let addToCatalog: Bool?
+    public let addToCatalog: Bool?
     
     /// List of catalogs for recipe in the recipe-search index.
-    let catalogs: [String]?
+    public let catalogs: [String]?
     
-    // TODO
+    // TODO: Can't do it yet. Need clarification in documentation.
     /// Custom paylod to be saved with recipe document.
 //    let customerData: CustomerData?
-//    TODO: add this
-//    let imageParameters: String?
+    
+    public let imageParameters: [ImageParametersRecipe]?
 }

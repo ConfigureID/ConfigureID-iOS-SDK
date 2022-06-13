@@ -39,14 +39,15 @@ public enum VariadicType: Codable {
     }
 }
 
-// TODO: Pedro would send the real values, this probably should be an enum.
 public struct UpdateRecipeAttributes: Codable {
+    
     /// Patch operation
     let op: String
     
     /// The configurable attribute to update.
     let configurableAttribute: VariadicType
     
+    // TODO: I can do this
     /// The attribute value to select/update.
     let attributeValue: VariadicType
     

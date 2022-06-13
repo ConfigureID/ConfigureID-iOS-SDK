@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ProductFacet: Codable {
+public struct ProductFacet: Codable {
     
     /// The name for the product facet.
-    let name: String
+    public let name: String
     
-    /// The list of facet values.
-    let values: [String]
+    /// The list of Facet Values.
+    public let values: [String]
     
 }

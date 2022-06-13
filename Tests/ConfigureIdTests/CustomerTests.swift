@@ -21,7 +21,7 @@ final class ConfigureID_iOS_SDKTests: XCTestCase {
             .fetchProducts(
                 customerId: config.customerId,
                 workflow: config.workflow,
-                onSuccess: { (products: [ProductSummary]) in
+                onSuccess: { (products: [ProductReport]) in
                     print(products)
                     productsExpectation.fulfill()
                 },

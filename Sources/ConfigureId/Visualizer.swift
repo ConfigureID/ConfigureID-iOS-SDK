@@ -9,7 +9,6 @@ import Foundation
 import WebKit
 import Combine
 
-// TODO: Move inside framework
 public class Visualizer: UIView {
     
     let webView: WKWebView!

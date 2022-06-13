@@ -7,21 +7,22 @@
 
 import Foundation
 
-struct CreateSessionParameters: Codable {
+public struct CreateSessionParameters: Codable {
     
-    let recipeId: Int?
-    let locale: String
-    let customerId: Int
-    let productId: Int
-    let workflow: String?
-    let environment: String?
-    let baseUrl: String?
-    let skipCdn: Bool?
-    let configureEndpoint: String?
-    let imageParameters: [ImageParameters]?
-    let debug: Bool?
+    public let recipeId: Int?
+    public let locale: String
+    public let customerId: Int
+    public let productId: Int
+    public let workflow: String?
+    public let environment: String?
+    public let baseUrl: String?
+    public let skipCdn: Bool?
+    public let configureEndpoint: String?
+    public let imageParameters: [ImageParameters]?
+    public let debug: Bool?
+    public let quantity: Int?
     
-    init(
+    public init(
         recipeId: Int?,
         locale: String,
         customerId: Int,
@@ -32,7 +33,8 @@ struct CreateSessionParameters: Codable {
         skipCdn: Bool?,
         configureEndpoint: String?,
         imageParameters: [ImageParameters]?,
-        debug: Bool?
+        debug: Bool?,
+        quantity: Int?
     ) {
         self.recipeId = recipeId
         self.locale = locale
@@ -45,6 +47,7 @@ struct CreateSessionParameters: Codable {
         self.configureEndpoint = configureEndpoint
         self.imageParameters = imageParameters
         self.debug = debug
+        self.quantity = quantity
     }
     
 }

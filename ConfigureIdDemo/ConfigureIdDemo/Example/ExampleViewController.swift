@@ -118,9 +118,8 @@ class ExampleViewController: UIViewController {
 }
 
 fileprivate func getUrl(session: Session) -> URL {
-    if let imageURLs = session.imageUrls {
-        let imageURL = imageURLs.onBust
-        return URL(string: imageURL)!
+    if let imageURLs = session.imageUrls, let imageURL = imageURLs.first {
+        return URL(string: imageURL.value)!
     }
     
     if !session.isWebGl {

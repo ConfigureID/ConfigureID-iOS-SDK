@@ -23,7 +23,7 @@ public extension ConfigureId {
             customerId: Int,
             workflow: String? = nil,
             vendorId: String? = nil,
-            onSuccess: @escaping ([ProductSummary]) -> (),
+            onSuccess: @escaping ([ProductReport]) -> (),
             onError: @escaping (ConfigureIdError) -> ()
         ) {
             do {

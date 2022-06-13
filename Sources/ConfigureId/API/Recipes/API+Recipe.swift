@@ -22,9 +22,9 @@ public extension ConfigureId {
         ///   - onError: Callback that will be run on error.
         public static func fetchRecipe(
             recipeId: String,
-            locale: String,
-            includeLocalizedConfiguration: Bool,
-            includeExtendedAttributes: Bool,
+            locale: String? = nil,
+            includeLocalizedConfiguration: Bool? = nil,
+            includeExtendedAttributes: Bool? = nil,
             onSuccess: @escaping (Recipe) -> (),
             onError: @escaping (ConfigureIdError) -> ()
         ) {
@@ -61,12 +61,13 @@ public extension ConfigureId {
         ///   - onError: Callback that will be run on error.
         public static func createRecipe(
             sessionId: String,
-            quantity: Int?,
-            purpose: String?,
-            addToCatalog: Bool?,
-            catalogs: [String]?,
-            // TODO: imageParameters
-            // TODO: customerData
+            quantity: Int? = nil,
+            purpose: String? = nil,
+            addToCatalog: Bool? = nil,
+            catalogs: [String]? = nil, 
+            imageParameters: [ImageParametersRecipe]?,
+            // TODO: Can't do it yet. Need clarification in documentation.
+            // customerData
             onSuccess: @escaping (CreatedRecipe) -> (),
             onError: @escaping (ConfigureIdError) -> ()
         ) { 
@@ -77,7 +78,8 @@ public extension ConfigureId {
                         quantity: quantity,
                         purpose: purpose,
                         addToCatalog: addToCatalog,
-                        catalogs: catalogs
+                        catalogs: catalogs,
+                        imageParameters: imageParameters
                     )
                 )
                 

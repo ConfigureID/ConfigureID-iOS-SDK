@@ -52,8 +52,9 @@ public extension ConfigureId {
         ///   - baseUrl: Base url for getting assets.
         ///   - skipCdn: Whether should skip cdn.  Default: false.
         ///   - configureEndpoint: Defines configure endpoint to be used when interacting with the API.
-        ///   - imageParameters: Parameters used to generate image. If not present default parameters and view name will be used.
+        ///   - imageParameters: Parameters used to generate image. If not present, default parameters and view name will be used.
         ///   - debug: True if is debug mode.
+        ///   - quantity: Amount of products created with this recipe.  Must be >= 1. Default: 1
         ///   - onSuccess: Callback that will be run on success.
         ///   - onError: Callback that will be run on error.
         public static func createSession(
@@ -68,6 +69,7 @@ public extension ConfigureId {
             configureEndpoint: String? = nil,
             imageParameters: [ImageParameters]? = nil,
             debug: Bool? = nil,
+            quantity: Int? = nil,
             onSuccess: @escaping (Session) -> (),
             onError: @escaping (ConfigureIdError) -> ()
         ) {
@@ -84,7 +86,8 @@ public extension ConfigureId {
                         skipCdn: skipCdn,
                         configureEndpoint: configureEndpoint,
                         imageParameters: imageParameters,
-                        debug: debug
+                        debug: debug,
+                        quantity: quantity
                     )
                 )
                 
@@ -139,8 +142,8 @@ public extension ConfigureId {
         ///   - onError: Callback that will be run on error.
         public static func updateSession(
             sessionId: String,
-            locale: String?,
-            quantity: Int?,
+            locale: String? = nil,
+            quantity: Int? = nil,
             onSuccess: @escaping (Session) -> (),
             onError: @escaping (ConfigureIdError) -> ()
         ) {
@@ -169,8 +172,8 @@ public extension ConfigureId {
         ///   - includeSummary: Indicates if an array of changes is returned in the response. Useful for debugging/testing purposes.
         public static func updateRecipe(
             sessionId: String,
-            includeSummary: Bool,
             updates: [UpdateRecipeAttributes],
+            includeSummary: Bool? = nil,
             onSuccess: @escaping (Session) -> (),
             onError: @escaping (ConfigureIdError) -> ()
         ) {

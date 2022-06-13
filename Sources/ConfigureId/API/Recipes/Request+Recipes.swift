@@ -13,9 +13,9 @@ extension Request {
         
         static func fetchRecipe(
             recipeId: String,
-            locale: String,
-            includeLocalizedConfiguration: Bool,
-            includeExtendedAttributes: Bool
+            locale: String?,
+            includeLocalizedConfiguration: Bool?,
+            includeExtendedAttributes: Bool?
         ) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
@@ -24,8 +24,8 @@ extension Request {
             
             components.queryItems = [
                 URLQueryItem(name: "locale", value: locale),
-                URLQueryItem(name: "includeLocalizedConfiguration", value: includeLocalizedConfiguration.asQueryItem),
-                URLQueryItem(name: "includeExtendedAttributes", value: includeExtendedAttributes.asQueryItem),
+                URLQueryItem(name: "includeLocalizedConfiguration", value: includeLocalizedConfiguration?.asQueryItem),
+                URLQueryItem(name: "includeExtendedAttributes", value: includeExtendedAttributes?.asQueryItem),
             ]
             
             return Request(method: .GET, urlComponents: components)

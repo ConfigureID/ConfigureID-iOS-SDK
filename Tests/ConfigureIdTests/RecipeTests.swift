@@ -32,6 +32,7 @@ final class RecipeTests: XCTestCase {
                 purpose: nil,
                 addToCatalog: nil,
                 catalogs: nil,
+                imageParameters: nil,
                 onSuccess: {
                     print($0)
                     createRecipeExpectation.fulfill()
