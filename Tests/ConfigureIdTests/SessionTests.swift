@@ -100,8 +100,8 @@ final class SessionTests: XCTestCase {
                 updates: [
                     UpdateRecipeAttributes(
                         op: "selectValue",
-                        configurableAttribute: .int(33951),
-                        attributeValue: .int(44852)
+                        configurableAttribute: .id(33951),
+                        attributeValue: .id(44852)
                     )
                 ],
                 includeSummary: true,

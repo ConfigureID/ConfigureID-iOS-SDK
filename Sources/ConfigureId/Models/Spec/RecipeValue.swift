@@ -20,7 +20,7 @@ public enum RecipeValueType: Codable {
                 self = try .object(container.decode([String: String].self))
             } catch DecodingError.typeMismatch {
                 throw DecodingError.typeMismatch(
-                    VariadicType.self,
+                    RecipeValueType.self,
                     DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded payload not of an expected type")
                 )
             }
@@ -74,7 +74,7 @@ public struct RecipeValue: Codable {
                 
             } catch DecodingError.typeMismatch {
                 throw DecodingError.typeMismatch(
-                    VariadicType.self,
+                    RecipeValue.self,
                     DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded payload not of an expected type")
                 )
             }

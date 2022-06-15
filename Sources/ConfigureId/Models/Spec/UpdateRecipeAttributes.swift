@@ -7,21 +7,23 @@
 
 import Foundation
 
-public enum VariadicType: Codable {
-    case int(Int)
-    case string(String)
-    //    TODO: object
+public enum ConfigurableAttributeValue: Codable {
+    case id(Int)
+    case name(String)
+    // TODO: Can't do it yet. Need clarification in documentation.
+//    case Text (object)
+//    case UGC clipart (object)
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         do {
-            self = try .int(container.decode(Int.self))
+            self = try .id(container.decode(Int.self))
         } catch DecodingError.typeMismatch {
             do {
-                self = try .string(container.decode(String.self))
+                self = try .name(container.decode(String.self))
             } catch DecodingError.typeMismatch {
                 throw DecodingError.typeMismatch(
-                    VariadicType.self,
+                    ConfigurableAttributeValue.self,
                     DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded payload not of an expected type")
                 )
             }
@@ -31,9 +33,40 @@ public enum VariadicType: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .int(let int):
+        case .id(let int):
             try container.encode(int)
-        case .string(let string):
+        case .name(let string):
+            try container.encode(string)
+        }
+    }
+}
+public enum ConfigurableAttributeToUpdate: Codable {
+    case id(Int)
+    case alias(String)
+    //    TODO: object
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        do {
+            self = try .id(container.decode(Int.self))
+        } catch DecodingError.typeMismatch {
+            do {
+                self = try .alias(container.decode(String.self))
+            } catch DecodingError.typeMismatch {
+                throw DecodingError.typeMismatch(
+                    ConfigurableAttributeToUpdate.self,
+                    DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded payload not of an expected type")
+                )
+            }
+        }
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .id(let int):
+            try container.encode(int)
+        case .alias(let string):
             try container.encode(string)
         }
     }
@@ -45,18 +78,17 @@ public struct UpdateRecipeAttributes: Codable {
     let op: String
     
     /// The configurable attribute to update.
-    let configurableAttribute: VariadicType
+    let configurableAttribute: ConfigurableAttributeToUpdate
     
-    // TODO: I can do this
     /// The attribute value to select/update.
-    let attributeValue: VariadicType
+    let attributeValue: ConfigurableAttributeValue
     
     /// Parameters for update recipe endpoint.
     /// - Parameters:
     ///   - op: Patch operation
     ///   - configurableAttribute: The configurable attribute to update.
     ///   - attributeValue: The attribute value to select/update.
-    public init(op: String, configurableAttribute: VariadicType, attributeValue: VariadicType) {
+    public init(op: String, configurableAttribute: ConfigurableAttributeToUpdate, attributeValue: ConfigurableAttributeValue) {
         self.op = op
         self.configurableAttribute = configurableAttribute
         self.attributeValue = attributeValue

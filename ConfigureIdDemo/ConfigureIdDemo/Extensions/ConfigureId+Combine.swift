@@ -34,16 +34,16 @@ func updateRecipe(data: ConfigureIdData) -> AnyPublisher<Session, ConfigureIdErr
         updates = [
             UpdateRecipeAttributes(
                 op: "selectValue",
-                configurableAttribute: .int(88191),
-                attributeValue: .int(202295)
+                configurableAttribute: .id(88191),
+                attributeValue: .id(202295)
             )
         ]
     } else if data.customerId == SelectedExample.webgl.config.customerId {
         updates = [
             UpdateRecipeAttributes(
                 op: "selectValue",
-                configurableAttribute: .int(33951),
-                attributeValue: .int(44852)
+                configurableAttribute: .id(33951),
+                attributeValue: .id(44852)
             )
         ]
     } else {
