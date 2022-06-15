@@ -20,7 +20,6 @@ extension Request {
             return Request(method: .GET, urlComponents: components)
         }
         
-        // TODO: add parameters to request
         static func createSession(parameters: CreateSessionParameters) throws -> Request {
             var components = URLComponents()
             components.scheme = "https"
@@ -63,7 +62,7 @@ extension Request {
             var components = URLComponents()
             components.scheme = "https"
             components.host = ConfigureId.host.stringValue
-            components.path = "/headless/sessions/\(sessionId)/recipe"
+            components.path = "/headless/sessions/\(sessionId)"
                         
             var parametersData: Data?
             
@@ -81,11 +80,11 @@ extension Request {
                 do {
                     parametersData = try parameters.toJSON()
                 } catch {
-                    throw ConfigureIdError.encodingError(entity: "updateRecipe", originalError: error)
+                    throw ConfigureIdError.encodingError(entity: "updateSession", originalError: error)
                 }
             }
             
-            return Request(method: .PUT, urlComponents: components, httpBody: parametersData)
+            return Request(method: .PATCH, urlComponents: components, httpBody: parametersData)
         }
         
         static func updateRecipe(sessionId: String, includeSummary: Bool?, updates: [UpdateRecipeAttributes]) throws -> Request {

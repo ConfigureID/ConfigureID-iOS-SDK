@@ -85,6 +85,9 @@ ConfigureId.Sessions.fetchSession(...)
 // Resets a session.
 ConfigureId.Sessions.resetSession(...)
 
+// Update session.
+ConfigureId.Sessions.updateSession(...)
+
 // Creates a new session.
 ConfigureId.Sessions.createSession(...)
 
@@ -110,22 +113,49 @@ brew install swiftlint
 
 ### Publish cocoapods version
 
-Run the cocoapods linter.
+- Run the cocoapods linter.
+    ```
+    pod lib lint
+    ```
+
+- Publish a new git tag.
+
+- Generate a github release.
+
+- Push to cocoapods.
+    ```
+    pod trunk push
+    ```
+
+[Here](https://github.com/CocoaPods/Specs/tree/master/Specs/a/b/6/ConfigureId) is the link to the updated podspec.
+
+### Tests
+
+- Open the project, so run this on the root of the project
 ```
-pod lib lint
+xed .
 ```
 
-Push to cocoapods.
-```
-pod trunk push
-```
+- First of all, locate the file `sample-config.json`
 
-[Here](https://github.com/CocoaPods/Specs/tree/master/Specs/a/b/6/ConfigureId) is the link to the updated podspect.
+- You will need to complete the json with your information (i.e: apiKey, customerId, etc)...
+
+- Beware that sessions expire every day, so you'd probably need to recreate them and replace on the json.
+
+- Go to TestConfig+swiftPackage and change current() to load the json you created (take a look at the other configurations if you have doubts).
+
+- There are transitive dependencies (i.e: session depends on customer and product, recipe depends on session) so you'll need to run the tests, adjust the configuration and eventually all tests will pass.
+Tests run createSession and createRecipe, so you can use the ids returned by those queries (or perform the queries outside via terminal).
 
 ## Visualizer
 
-TODO
-
+- Be sure you could run the tests, because the configuration used is the same in the tests and the visualizer.
+- Open the demo project
+    ```
+    xed ConfigureIdDemo
+    ```
+- The demo runs some query calls, included update recipe. To be able to run it, ask the team for the correct values.
+- The demo will pick the data from the json config files. Make sure you create the `prod-2d-product.json` and `prod-3d-product.json`
 
 ## 🏷 License
 

@@ -12,8 +12,8 @@ public struct ProductReport: Codable {
     /// The globally unique id of the product.
     let id: Int
         
+    // TODO: Can't do it yet. Need clarification in documentation.
     /// A dictionary with the name of the product in the different locales.
-//    TODO: This is object in API.
 //    let name: String
     
     /// External id of the product.

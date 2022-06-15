@@ -88,6 +88,29 @@ final class SessionTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
+    func testUpdateSession() {
+        let updateSession = expectation(description: "should update session")
+        
+        waitFor(seconds: 2)
+        
+        ConfigureId
+            .Sessions
+            .updateSession(
+                sessionId: config.sessionId,
+                quantity: 1,
+                onSuccess: {
+                    print($0)
+                    updateSession.fulfill()
+                },
+                onError: {
+                    XCTFail(error: $0)
+                    updateSession.fulfill()
+                }
+            )
+        
+        waitForExpectations(timeout: 10)
+    }
+    
     func testUpdateRecipe() {
         let updateRecipe = expectation(description: "should update recipe")
         

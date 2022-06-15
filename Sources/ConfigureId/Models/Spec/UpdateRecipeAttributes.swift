@@ -43,7 +43,6 @@ public enum ConfigurableAttributeValue: Codable {
 public enum ConfigurableAttributeToUpdate: Codable {
     case id(Int)
     case alias(String)
-    //    TODO: object
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

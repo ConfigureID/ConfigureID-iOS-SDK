@@ -22,7 +22,7 @@ extension TestConfig {
     }
     
     static func current() throws -> TestConfig {
-        return try prod3dProduct()
+        return try prod2dProduct()
     }
 
     static func prod2dProduct() throws -> TestConfig {

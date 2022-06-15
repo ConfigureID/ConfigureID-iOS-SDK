@@ -20,10 +20,6 @@ extension TestConfig {
         let decoder = JSONDecoder()
         return try decoder.decode(TestConfig.self, from: jsonData)
     }
-    
-    static func current() throws -> TestConfig {
-        return try prod3dProduct()
-    }
 
     static func prod2dProduct() throws -> TestConfig {
         // NOTE: You'll need to create this.
