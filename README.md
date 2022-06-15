@@ -1,6 +1,5 @@
 # ConfigureID-iOS-SDK
 
-[![License][license-image]][license-url]
 <a href="https://github.com/apple/swift-package-manager">
   <img src="https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat" />
 </a>
@@ -130,7 +129,7 @@ TODO
 
 ## 🏷 License
 
-`ConfigureID-iOS-SDK` is available under the MIT license. See the [LICENSE file](./LICENSE) for more info.
+`ConfigureID-iOS-SDK` is available under the GPL v3 license. See the [LICENSE file](./LICENSE) for more info.
 
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
