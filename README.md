@@ -151,7 +151,6 @@ Tests run createSession and createRecipe, so you can use the ids returned by tho
 
 Sample of 2D and 3D visualizer, with an update recipe use case implemented.
 
-![demo_visualizer_2d](https://user-images.githubusercontent.com/12101394/173745031-a2210d97-7d06-42a9-b614-00ae7de3227d.gif)
 ![demo_visualizer_3d](https://user-images.githubusercontent.com/12101394/173745047-e096264a-6ec7-4cea-8db9-651929b28b5f.gif)
 
 - Be sure you could run the tests, because the configuration used is the same in the tests and the visualizer.
