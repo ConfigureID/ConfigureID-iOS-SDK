@@ -27,10 +27,11 @@ final class SessionTests: XCTestCase {
         ConfigureId
             .Sessions
             .createSession(
-                locale: "en_us",
+                locale: config.productLocale,
                 customerId: config.customerId,
                 productId: config.productId,
                 workflow: config.workflow,
+                environment: config.environment,
                 onSuccess: {
                     print($0)
                     products.fulfill()

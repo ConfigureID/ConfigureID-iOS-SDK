@@ -27,7 +27,14 @@ class ExampleViewModel {
                     .flatMap { _ in
                         fetchSession(sessionId: config.sessionId)
                             .map { session in
-                                ConfigureIdData(typeToRender: .fetchSession, session: session, customerId: config.customerId, productId: config.productId)
+                                ConfigureIdData(
+                                    typeToRender: .fetchSession,
+                                    session: session,
+                                    customerId: config.customerId,
+                                    productId: config.productId,
+                                    environment: config.environment,
+                                    workflow: config.workflow
+                                )
                             }
                     }
                     .catch { error -> AnyPublisher<ConfigureIdData, Never> in
@@ -52,7 +59,16 @@ class ExampleViewModel {
             )
             .map { data in
                 return updateRecipe(data: data)
-                    .map { session in ConfigureIdData(typeToRender: .updateRecipe, session: session, customerId: data.customerId, productId: data.productId) }
+                    .map { session in
+                        ConfigureIdData(
+                            typeToRender: .updateRecipe,
+                            session: session,
+                            customerId: data.customerId,
+                            productId: data.productId,
+                            environment: data.environment,
+                            workflow: data.workflow
+                        )
+                    }
                     .catch { error -> AnyPublisher<ConfigureIdData, Never> in
                         print(error)
                         return Empty().eraseToAnyPublisher()

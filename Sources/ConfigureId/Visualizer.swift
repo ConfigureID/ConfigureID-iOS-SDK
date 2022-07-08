@@ -56,11 +56,11 @@ public class Visualizer: UIView {
         var js = "initConfigure({customer: \(customerId), product: \(productId)"
         
         if let environment = environment {
-            js += ", environment: \(environment)"
+            js += ", environment: \"\(environment)\""
         }
         
         if let workflow = workflow {
-            js += ", workflow: \(workflow)"
+            js += ", workflow: \"\(workflow)\""
         }
         
         js += "})"

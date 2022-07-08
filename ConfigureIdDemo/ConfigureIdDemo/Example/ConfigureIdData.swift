@@ -21,4 +21,8 @@ struct ConfigureIdData {
     let customerId: Int
     
     let productId: Int
+    
+    let environment: String?
+    
+    let workflow: String
 }

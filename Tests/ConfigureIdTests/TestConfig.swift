@@ -33,7 +33,9 @@ struct TestConfig: Decodable {
     let productId: Int
     let vendorId: String
     let host: Host
-    let workflow: String
     let sessionId: String
     let recipeId: String
+    let productLocale: String
+    let workflow: String
+    let environment: String?
 }

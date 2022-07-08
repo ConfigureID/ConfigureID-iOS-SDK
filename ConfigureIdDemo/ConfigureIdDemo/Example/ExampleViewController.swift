@@ -105,8 +105,8 @@ class ExampleViewController: UIViewController {
                     viewer.initConfigure(
                         customerId: configureIdData.customerId,
                         productId: configureIdData.productId,
-                        environment: nil,
-                        workflow: nil
+                        environment: configureIdData.environment,
+                        workflow: configureIdData.workflow
                     )
                 })
                 .map { _ in viewer }
