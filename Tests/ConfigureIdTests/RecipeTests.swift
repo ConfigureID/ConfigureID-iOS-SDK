@@ -55,7 +55,7 @@ final class RecipeTests: XCTestCase {
             .Recipes
             .fetchRecipe(
                 recipeId: config.recipeId,
-                locale: "en_US",
+                locale: config.productLocale,
                 includeLocalizedConfiguration: false,
                 includeExtendedAttributes: false,
                 onSuccess: {
