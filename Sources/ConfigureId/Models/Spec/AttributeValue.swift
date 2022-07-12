@@ -22,7 +22,7 @@ public struct AttributeValue: Codable {
     
     /// A CSS-style hex code, if the attribute value is associated with a color.
     /// - Note: Example: #811cb4
-    public let color: String
+    public let color: String?
     
     /// A localized description of the attribute value.
     /// - Note: Example: A random description
@@ -42,9 +42,19 @@ public struct AttributeValue: Codable {
     
     /// External id of the attribute value.
     /// - Note: Example: MMS01
-    public let vendorId: String
+    public let vendorId: String?
     
     // TODO: Can't do it yet. Need clarification in documentation.
     /// Key-value pairs of currency codes and the cost added to the base price if this attribute value is selected.
 //    let upcharge: Upcharge
+}
+
+public struct SubAttribute: Codable {
+
+    public let id: Int
+    
+    public let name: String
+    
+    public let values: [AttributeValue]
+    
 }

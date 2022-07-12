@@ -68,6 +68,12 @@ public class Visualizer: UIView {
         executeJSCode(js: js)
     }
     
+    public func changeView(viewName: String) {
+        let js = "changeView(\"\(viewName)\")"
+        
+        executeJSCode(js: js)
+    }
+    
     public func setRecipe(recipeValues: [RecipeValue]) {
         //        [{ ca: 1, av: 2}, {ca: 2, av: 3}]
         
