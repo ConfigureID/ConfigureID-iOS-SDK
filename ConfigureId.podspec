@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/ConfigureID/ConfigureID-iOS-SDK'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Francisco Depascuali' => 'depa.developer@gmail.com' }
-  s.source           = { :git => 'https://github.com/ConfigureID/ConfigureID-iOS-SDK.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/ConfigureID/ConfigureID-iOS-SDK.git', :tag => "v" + s.version.to_s }
   s.ios.deployment_target = '13.0'
   s.swift_version = '5.5'
   s.source_files = 'Sources/ConfigureId/**/*'
