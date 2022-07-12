@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../ConfigureId.podspec"
 
 SPEC CHECKSUMS:
-  ConfigureId: 032ca6978692ae992c08bb900fa46704be04f2bd
+  ConfigureId: e6d5ae231c898d1155aaba858f8e8818edeb74f0
 
 PODFILE CHECKSUM: e961853f19ce784b2c43f7930ca2aef0e00cf744
 
