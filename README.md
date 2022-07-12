@@ -193,6 +193,8 @@ Tests run createSession and createRecipe, so you can use the ids returned by tho
 
 Sample of 2D and 3D visualizer, with an update recipe use case implemented.
 
+Note: This demo may be outdated, it's just for a simple glimpse of what this demo does.
+
 ![demo_visualizer_3d](https://user-images.githubusercontent.com/12101394/173745047-e096264a-6ec7-4cea-8db9-651929b28b5f.gif)
 
 - Be sure you could run the tests, because the configuration used is the same in the tests and the visualizer.
@@ -202,6 +204,7 @@ Sample of 2D and 3D visualizer, with an update recipe use case implemented.
     ```
 - The demo runs some query calls, included update recipe. To be able to run it, ask the team for the correct values.
 - The demo will pick the data from the json config files. Make sure you create the `prod-2d-product.json` and `prod-3d-product.json`
+- Open `Context.swift` and change the properties that depend on the product accordingly
 
 ## 🏷 License
 
