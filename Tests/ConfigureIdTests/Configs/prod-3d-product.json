@@ -1,0 +1,13 @@
+{
+    "apiKey": "<api_key>",
+    "customerId": "<customer_id>",
+    "productId": "<productId>",
+    "productLocale": "<productLocale>",
+    "vendorId": "<vendorId>",
+    "host": "<staging or prod>",
+    "workflow": "<workflow, i.e: dev>",
+    "sessionId": "<id of existing session>",
+    "recipeId": "<id of recipe session>",
+    "environment": "<environment_this_line_is_optional>"
+}
+    

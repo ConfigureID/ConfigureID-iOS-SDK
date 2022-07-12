@@ -96,3 +96,5 @@ iOSInjectionProject/
 
 Tests/ConfigureIdTests/Configs/*
 !Tests/ConfigureIdTests/Configs/sample-config.json
+!Tests/ConfigureIdTests/Configs/prod-3d-product.json
+!Tests/ConfigureIdTests/Configs/prod-2d-product.json

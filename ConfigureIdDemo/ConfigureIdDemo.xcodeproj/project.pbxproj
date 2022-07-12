@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1706F1BF287DE26700FDB512 /* backup-prod-2d-product.json in Resources */ = {isa = PBXBuildFile; fileRef = 1706F1BE287DE26700FDB512 /* backup-prod-2d-product.json */; };
 		1706F1C1287E13BD00FDB512 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706F1C0287E13BD00FDB512 /* Context.swift */; };
-		171C8997287D1C0300028E9F /* backup-prod-3d-product.json in Resources */ = {isa = PBXBuildFile; fileRef = 171C8996287D1C0300028E9F /* backup-prod-3d-product.json */; };
 		174774C52850395B004160BE /* SelectedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174774C42850395B004160BE /* SelectedExample.swift */; };
 		174774C9285039FF004160BE /* ConfigureIdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174774C8285039FF004160BE /* ConfigureIdData.swift */; };
 		174774CB28503C7C004160BE /* ConfigureId+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174774CA28503C7C004160BE /* ConfigureId+Combine.swift */; };
@@ -33,14 +31,11 @@
 		17F7B399284DA5EB00F92CBA /* prod-3d-product.json in Resources */ = {isa = PBXBuildFile; fileRef = 17F7B395284DA5EB00F92CBA /* prod-3d-product.json */; };
 		17F7B39A284DA5EB00F92CBA /* prod-2d-product.json in Resources */ = {isa = PBXBuildFile; fileRef = 17F7B396284DA5EB00F92CBA /* prod-2d-product.json */; };
 		17F7B39B284DA5EB00F92CBA /* sample-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 17F7B397284DA5EB00F92CBA /* sample-config.json */; };
-		17F7B39C284DA5EB00F92CBA /* prod-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 17F7B398284DA5EB00F92CBA /* prod-config.json */; };
 		17F7B39E284DA77D00F92CBA /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B39D284DA77D00F92CBA /* TestConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1706F1BE287DE26700FDB512 /* backup-prod-2d-product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "backup-prod-2d-product.json"; sourceTree = "<group>"; };
 		1706F1C0287E13BD00FDB512 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
-		171C8996287D1C0300028E9F /* backup-prod-3d-product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "backup-prod-3d-product.json"; sourceTree = "<group>"; };
 		174774C42850395B004160BE /* SelectedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedExample.swift; sourceTree = "<group>"; };
 		174774C8285039FF004160BE /* ConfigureIdData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureIdData.swift; sourceTree = "<group>"; };
 		174774CA28503C7C004160BE /* ConfigureId+Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigureId+Combine.swift"; sourceTree = "<group>"; };
@@ -65,7 +60,6 @@
 		17F7B395284DA5EB00F92CBA /* prod-3d-product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "prod-3d-product.json"; sourceTree = "<group>"; };
 		17F7B396284DA5EB00F92CBA /* prod-2d-product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "prod-2d-product.json"; sourceTree = "<group>"; };
 		17F7B397284DA5EB00F92CBA /* sample-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sample-config.json"; sourceTree = "<group>"; };
-		17F7B398284DA5EB00F92CBA /* prod-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "prod-config.json"; sourceTree = "<group>"; };
 		17F7B39D284DA77D00F92CBA /* TestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestConfig.swift; path = ../../Tests/ConfigureIdTests/TestConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,12 +165,9 @@
 		17F7B394284DA5EB00F92CBA /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				1706F1BE287DE26700FDB512 /* backup-prod-2d-product.json */,
-				171C8996287D1C0300028E9F /* backup-prod-3d-product.json */,
 				17F7B395284DA5EB00F92CBA /* prod-3d-product.json */,
 				17F7B396284DA5EB00F92CBA /* prod-2d-product.json */,
 				17F7B397284DA5EB00F92CBA /* sample-config.json */,
-				17F7B398284DA5EB00F92CBA /* prod-config.json */,
 			);
 			name = Configs;
 			path = ../../Tests/ConfigureIdTests/Configs;
@@ -251,10 +242,7 @@
 				17F7B39B284DA5EB00F92CBA /* sample-config.json in Resources */,
 				17F7B399284DA5EB00F92CBA /* prod-3d-product.json in Resources */,
 				17F7B39A284DA5EB00F92CBA /* prod-2d-product.json in Resources */,
-				1706F1BF287DE26700FDB512 /* backup-prod-2d-product.json in Resources */,
-				17F7B39C284DA5EB00F92CBA /* prod-config.json in Resources */,
 				17F7B36E284D975700F92CBA /* Assets.xcassets in Resources */,
-				171C8997287D1C0300028E9F /* backup-prod-3d-product.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
