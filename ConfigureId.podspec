@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ConfigureId'
-  s.version          = '0.0.6'
+  s.version          = '1.0.0'
   s.summary          = 'This API exposes the endpoints necessary for interacting with Configure ID'
   s.homepage         = 'https://github.com/FranDepascuali/ConfigureID-iOS-SDK'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

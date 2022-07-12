@@ -1,6 +1,6 @@
 {
   "name": "ConfigureId",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "summary": "This API exposes the endpoints necessary for interacting with Configure ID",
   "homepage": "https://github.com/FranDepascuali/ConfigureID-iOS-SDK",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/FranDepascuali/ConfigureID-iOS-SDK.git",
-    "tag": "0.0.6"
+    "tag": "1.0.0"
   },
   "platforms": {
     "ios": "13.0"
