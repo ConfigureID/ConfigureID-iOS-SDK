@@ -15,9 +15,19 @@ enum SelectedExample: Int, Equatable {
     var config: TestConfig {
         switch self {
         case .image:
-            return try! TestConfig.prod2dProduct()
+            do {
+                return try TestConfig.prod2dProduct()
+            } catch {
+                fatalError("Have you added the 2D product details to prod-2d-product.json?")
+            }
+
         case .webgl:
-            return try! TestConfig.prod3dProduct()
+            do {
+                return try TestConfig.prod3dProduct()
+            } catch {
+                fatalError("Have you added the 3D product details to prod-2d-product.json?")
+            }
+
         case .extra:
             return try! TestConfig.prod3dProduct()
         }
