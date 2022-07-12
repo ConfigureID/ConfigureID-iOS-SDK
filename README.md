@@ -35,6 +35,48 @@ let package = Package(
 pod 'ConfigureId', '1.0.0'
 ```
 
+
+## Run Tests
+- Clone the repo
+- Open the example project with this command.
+```
+xed ConfigureIdDemo
+```
+- Switch the destination from mac to any iPhone (i.e: iPhone 13 Pro).
+- Fill in `Tests/ConfigureIdTests/Configs/prod-2d-product.json.`
+- 
+    Note: You can avoid filling in the session for example and allow the test to create a new session.
+    Then, copy-paste that value into the json.
+- Fill in `Tests/ConfigureIdTests/Configs/prod-3d-product.json.`
+- 
+    Note: You can avoid filling in the session for example and allow the test to create a new session.
+    Then, copy-paste that value into the json.
+- Choose the example you want to run the tests on.
+    Modify this method on `Tests/ConfigureIdTests/TestConfig+swiftPackage.swift`. 
+    You can specify prod2dProduct or prod3dProduct.
+```swift
+    static func current() throws -> TestConfig {
+        return try prod2dProduct()
+    }
+```
+- Change the target to `ConfigureIdDemo`.
+- Run
+- NOTE: sessions get automatically deleted every one day, so you may need to regenerate it. You can use the tests for that.
+- NOTE: The files are shared between demo and tests, so once you have set them up, you can run it without needing to modify them.
+
+## Run Demo
+- Clone the repo
+- Open the example project with this command.
+```
+xed ConfigureIdDemo
+```
+- Switch the destination from mac to any iPhone (i.e: iPhone 13 Pro).
+- Fill in Tests/ConfigureIdTests/Configs/prod-2d-product.json.
+- Fill in Tests/ConfigureIdTests/Configs/prod-3d-product.json.
+- Change the target to `ConfigureIdDemo`.
+- Run
+- NOTE: The files are shared between demo and tests, so once you have set them up, you can run it without needing to modify them.
+
 ### 
 
 ## Authentication
