@@ -71,37 +71,79 @@ Name of the methods are displayed below. Each method receives different paramete
 
 ```swift
 // Retrieves all products of a customer.
-ConfigureId.Customers.fetchProducts(...)
+ConfigureId.Customers.fetchProducts(
+    customerId: Int,
+    onSuccess: ([ProductReport]) -> (),
+    onError: (ConfigureIdError) -> ()
+)
+
 
 // Retrieves the data of a product.
-ConfigureId.Customers.fetchProductData(...)
+ConfigureId.Customers.fetchProductData(
+    customerId: Int,
+    productId: Int,
+    onSuccess: (Product) -> (),
+    onError: (ConfigureIdError) -> ()
+)
 ```
 
 ### Sessions 
 ```swift
 // Retrieves the current state of the session. 
-ConfigureId.Sessions.fetchSession(...)
+ConfigureId.Sessions.fetchSession(
+    sessionId: String,
+    onSuccess: (Session) -> (),
+    onError: (ConfigureIdError) -> ()
+)
 
 // Resets a session.
-ConfigureId.Sessions.resetSession(...)
+ConfigureId.Sessions.resetSession(
+    sessionId: String,
+    onSuccess: (Session) -> (),
+    onError: (ConfigureIdError) -> ()
+)
 
 // Update session.
-ConfigureId.Sessions.updateSession(...)
+ConfigureId.Sessions.updateSession(
+    sessionId: String,
+    onSuccess: (Session) -> (),
+    onError: (ConfigureIdError) -> ()
+)
 
 // Creates a new session.
-ConfigureId.Sessions.createSession(...)
+ConfigureId.Sessions.createSession(
+    locale: String,
+    customerId: Int,
+    productId: Int,
+    onSuccess: (Session) -> (),
+    onError: (ConfigureIdError) -> ()
+)
 
 // Updates a recipe.
-ConfigureId.Sessions.updateRecipe(...)
+ConfigureId.Sessions.updateRecipe(
+    sessionId: String,
+    updates: [UpdateRecipeAttributes],
+    includeSummary: Bool? = nil,
+    onSuccess: (Session) -> (),
+    onError: (ConfigureIdError) -> ()
+)
 ```
 
 ### Recipes
 ```swift
 // Retrieves an existing recipe.
-ConfigureId.Recipes.fetchRecipe(...)
+ConfigureId.Recipes.fetchRecipe(
+    recipeId: String,
+    onSuccess: (Recipe) -> (),
+    onError: (ConfigureIdError) -> ()
+)
 
 // Creates a new recipe. 
-ConfigureId.Recipes.createRecipe(...)
+ConfigureId.Recipes.createRecipe(
+    sessionId: String, 
+    onSuccess: (CreatedRecipe) -> (),
+    onError: (ConfigureIdError) -> ()
+)
 ```
 
 ## Contributing
