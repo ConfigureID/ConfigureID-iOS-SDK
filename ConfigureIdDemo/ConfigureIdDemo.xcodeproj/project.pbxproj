@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1706F1BF287DE26700FDB512 /* backup-prod-2d-product.json in Resources */ = {isa = PBXBuildFile; fileRef = 1706F1BE287DE26700FDB512 /* backup-prod-2d-product.json */; };
+		1706F1C1287E13BD00FDB512 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706F1C0287E13BD00FDB512 /* Context.swift */; };
+		171C8997287D1C0300028E9F /* backup-prod-3d-product.json in Resources */ = {isa = PBXBuildFile; fileRef = 171C8996287D1C0300028E9F /* backup-prod-3d-product.json */; };
 		174774C52850395B004160BE /* SelectedExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174774C42850395B004160BE /* SelectedExample.swift */; };
 		174774C9285039FF004160BE /* ConfigureIdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174774C8285039FF004160BE /* ConfigureIdData.swift */; };
 		174774CB28503C7C004160BE /* ConfigureId+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174774CA28503C7C004160BE /* ConfigureId+Combine.swift */; };
@@ -14,6 +17,10 @@
 		17B8CE80285002EB00B1E492 /* ExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B8CE7F285002EB00B1E492 /* ExampleViewModel.swift */; };
 		17B8CE832850033300B1E492 /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B8CE822850033300B1E492 /* ExampleView.swift */; };
 		17B8CE852850035C00B1E492 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B8CE842850035C00B1E492 /* ExampleViewController.swift */; };
+		17EB483F287B94EB00DA28FD /* ConfigureOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB483D287B94EB00DA28FD /* ConfigureOptionsView.swift */; };
+		17EB4840287B94EB00DA28FD /* ConfigureOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB483E287B94EB00DA28FD /* ConfigureOptionsViewController.swift */; };
+		17EB4842287B955B00DA28FD /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EB4841287B955B00DA28FD /* UIViewController+Extensions.swift */; };
+		17EB4852287BA88600DA28FD /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 17EB4851287BA88600DA28FD /* DropDown */; };
 		17F494F0284E5E69001B0722 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F494EF284E5E69001B0722 /* Array+Extensions.swift */; };
 		17F7B365284D975700F92CBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B364284D975700F92CBA /* AppDelegate.swift */; };
 		17F7B367284D975700F92CBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F7B366284D975700F92CBA /* SceneDelegate.swift */; };
@@ -31,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1706F1BE287DE26700FDB512 /* backup-prod-2d-product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "backup-prod-2d-product.json"; sourceTree = "<group>"; };
+		1706F1C0287E13BD00FDB512 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		171C8996287D1C0300028E9F /* backup-prod-3d-product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "backup-prod-3d-product.json"; sourceTree = "<group>"; };
 		174774C42850395B004160BE /* SelectedExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedExample.swift; sourceTree = "<group>"; };
 		174774C8285039FF004160BE /* ConfigureIdData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureIdData.swift; sourceTree = "<group>"; };
 		174774CA28503C7C004160BE /* ConfigureId+Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigureId+Combine.swift"; sourceTree = "<group>"; };
@@ -38,6 +48,9 @@
 		17B8CE7F285002EB00B1E492 /* ExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewModel.swift; sourceTree = "<group>"; };
 		17B8CE822850033300B1E492 /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		17B8CE842850035C00B1E492 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		17EB483D287B94EB00DA28FD /* ConfigureOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureOptionsView.swift; sourceTree = "<group>"; };
+		17EB483E287B94EB00DA28FD /* ConfigureOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureOptionsViewController.swift; sourceTree = "<group>"; };
+		17EB4841287B955B00DA28FD /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		17F494EF284E5E69001B0722 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		17F7B361284D975700F92CBA /* ConfigureIdDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConfigureIdDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F7B364284D975700F92CBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17F7B386284DA4F100F92CBA /* ConfigureId in Frameworks */,
+				17EB4852287BA88600DA28FD /* DropDown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,13 +85,24 @@
 		17B8CE81285002F100B1E492 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				17EB483C287B94EB00DA28FD /* ConfigureOptions */,
 				174774C8285039FF004160BE /* ConfigureIdData.swift */,
 				17B8CE7F285002EB00B1E492 /* ExampleViewModel.swift */,
 				17B8CE822850033300B1E492 /* ExampleView.swift */,
 				17B8CE842850035C00B1E492 /* ExampleViewController.swift */,
 				174774C42850395B004160BE /* SelectedExample.swift */,
+				1706F1C0287E13BD00FDB512 /* Context.swift */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		17EB483C287B94EB00DA28FD /* ConfigureOptions */ = {
+			isa = PBXGroup;
+			children = (
+				17EB483D287B94EB00DA28FD /* ConfigureOptionsView.swift */,
+				17EB483E287B94EB00DA28FD /* ConfigureOptionsViewController.swift */,
+			);
+			path = ConfigureOptions;
 			sourceTree = "<group>";
 		};
 		17F7B358284D975700F92CBA = {
@@ -131,6 +156,7 @@
 				17F7B37F284DA00800F92CBA /* Publisher+Extensions.swift */,
 				17F7B381284DA0EA00F92CBA /* UIControl+Publisher.swift */,
 				17F494EF284E5E69001B0722 /* Array+Extensions.swift */,
+				17EB4841287B955B00DA28FD /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -145,6 +171,8 @@
 		17F7B394284DA5EB00F92CBA /* Configs */ = {
 			isa = PBXGroup;
 			children = (
+				1706F1BE287DE26700FDB512 /* backup-prod-2d-product.json */,
+				171C8996287D1C0300028E9F /* backup-prod-3d-product.json */,
 				17F7B395284DA5EB00F92CBA /* prod-3d-product.json */,
 				17F7B396284DA5EB00F92CBA /* prod-2d-product.json */,
 				17F7B397284DA5EB00F92CBA /* sample-config.json */,
@@ -172,6 +200,7 @@
 			name = ConfigureIdDemo;
 			packageProductDependencies = (
 				17F7B385284DA4F100F92CBA /* ConfigureId */,
+				17EB4851287BA88600DA28FD /* DropDown */,
 			);
 			productName = ConfigureIdDemo;
 			productReference = 17F7B361284D975700F92CBA /* ConfigureIdDemo.app */;
@@ -201,6 +230,9 @@
 				Base,
 			);
 			mainGroup = 17F7B358284D975700F92CBA;
+			packageReferences = (
+				17EB4850287BA88600DA28FD /* XCRemoteSwiftPackageReference "DropDown" */,
+			);
 			productRefGroup = 17F7B362284D975700F92CBA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -219,8 +251,10 @@
 				17F7B39B284DA5EB00F92CBA /* sample-config.json in Resources */,
 				17F7B399284DA5EB00F92CBA /* prod-3d-product.json in Resources */,
 				17F7B39A284DA5EB00F92CBA /* prod-2d-product.json in Resources */,
+				1706F1BF287DE26700FDB512 /* backup-prod-2d-product.json in Resources */,
 				17F7B39C284DA5EB00F92CBA /* prod-config.json in Resources */,
 				17F7B36E284D975700F92CBA /* Assets.xcassets in Resources */,
+				171C8997287D1C0300028E9F /* backup-prod-3d-product.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,13 +270,17 @@
 				17B8CE832850033300B1E492 /* ExampleView.swift in Sources */,
 				174774CD28503C8C004160BE /* TestConfig+Extensions.swift in Sources */,
 				17B8CE852850035C00B1E492 /* ExampleViewController.swift in Sources */,
+				17EB4842287B955B00DA28FD /* UIViewController+Extensions.swift in Sources */,
 				174774C52850395B004160BE /* SelectedExample.swift in Sources */,
 				17F7B37E284D98D900F92CBA /* UIView+Extensions.swift in Sources */,
 				174774C9285039FF004160BE /* ConfigureIdData.swift in Sources */,
 				17B8CE80285002EB00B1E492 /* ExampleViewModel.swift in Sources */,
+				17EB483F287B94EB00DA28FD /* ConfigureOptionsView.swift in Sources */,
 				174774CB28503C7C004160BE /* ConfigureId+Combine.swift in Sources */,
 				17F7B365284D975700F92CBA /* AppDelegate.swift in Sources */,
+				17EB4840287B94EB00DA28FD /* ConfigureOptionsViewController.swift in Sources */,
 				17F7B380284DA00800F92CBA /* Publisher+Extensions.swift in Sources */,
+				1706F1C1287E13BD00FDB512 /* Context.swift in Sources */,
 				17F7B367284D975700F92CBA /* SceneDelegate.swift in Sources */,
 				17F7B382284DA0EA00F92CBA /* UIControl+Publisher.swift in Sources */,
 			);
@@ -453,7 +491,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		17EB4850287BA88600DA28FD /* XCRemoteSwiftPackageReference "DropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:AssistoLab/DropDown.git";
+			requirement = {
+				kind = revision;
+				revision = 2ab6f6ce19f0117d1a76ea043ef8f57722c65d16;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		17EB4851287BA88600DA28FD /* DropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17EB4850287BA88600DA28FD /* XCRemoteSwiftPackageReference "DropDown" */;
+			productName = DropDown;
+		};
 		17F7B385284DA4F100F92CBA /* ConfigureId */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ConfigureId;

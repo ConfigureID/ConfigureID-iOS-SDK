@@ -10,7 +10,7 @@ import XCTest
 import ConfigureId
 
 final class SessionTests: XCTestCase {
-    
+        
     var config: TestConfig!
     
     override func setUpWithError() throws {
@@ -112,35 +112,36 @@ final class SessionTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
     
-    func testUpdateRecipe() {
-        let updateRecipe = expectation(description: "should update recipe")
-        
-        waitFor(seconds: 2)
-        
-        ConfigureId
-            .Sessions
-            .updateRecipe(
-                sessionId: config.sessionId,
-                updates: [
-                    UpdateRecipeAttributes(
-                        op: "selectValue",
-                        configurableAttribute: .id(33951),
-                        attributeValue: .id(44852)
-                    )
-                ],
-                includeSummary: true,
-                onSuccess: {
-                    print($0)
-                    updateRecipe.fulfill()
-                },
-                onError: {
-                    XCTFail(error: $0)
-                    updateRecipe.fulfill()
-                }
-            )
-
-        waitForExpectations(timeout: 10)
-    }
+//    NOTE: this test depends on the product, so it's commented right now
+//    func testUpdateRecipe() {
+//        let updateRecipe = expectation(description: "should update recipe")
+//
+//        waitFor(seconds: 2)
+//
+//        ConfigureId
+//            .Sessions
+//            .updateRecipe(
+//                sessionId: config.sessionId,
+//                updates: [
+//                    UpdateRecipeAttributes(
+//                        op: "selectValue",
+//                        configurableAttribute: .id(33951),
+//                        attributeValue: .id(44852)
+//                    )
+//                ],
+//                includeSummary: true,
+//                onSuccess: {
+//                    print($0)
+//                    updateRecipe.fulfill()
+//                },
+//                onError: {
+//                    XCTFail(error: $0)
+//                    updateRecipe.fulfill()
+//                }
+//            )
+//
+//        waitForExpectations(timeout: 10)
+//    }
 }
 
 func XCTFail(error: Error, file: StaticString = #filePath, line: UInt = #line) {

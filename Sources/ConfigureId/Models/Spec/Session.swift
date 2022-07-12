@@ -12,9 +12,8 @@ public struct Session: Codable {
     /// Id of the session
     public let sessionId: String
     
-    // TODO: Can't do it yet. Need clarification in documentation.
     /// Product configuration from configure-core
-//    let productJson: ProductJson
+    public let productJson: ProductJson
     
     public let price: Float
     

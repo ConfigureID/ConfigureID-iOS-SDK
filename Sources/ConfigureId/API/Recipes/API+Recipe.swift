@@ -65,7 +65,7 @@ public extension ConfigureId {
             purpose: String? = nil,
             addToCatalog: Bool? = nil,
             catalogs: [String]? = nil, 
-            imageParameters: [ImageParametersRecipe]?,
+            imageParameters: [ImageParametersRecipe]? = nil,
             // TODO: Can't do it yet. Need clarification in documentation.
             // customerData
             onSuccess: @escaping (CreatedRecipe) -> (),

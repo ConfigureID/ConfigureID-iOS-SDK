@@ -10,16 +10,17 @@ import ConfigureId
 
 class ExampleViewModel {
     
-    let sessionPublisher: AnyPublisher<ConfigureIdData, Never>
+    let exampleSelected: AnyPublisher<(), Never>
     
-    let updatedRecipe: AnyPublisher<ConfigureIdData, Never>
+    let showOptionsMenu: AnyPublisher<ConfigureIdData, Never>
     
     init(selectedExample: AnyPublisher<Int, Never>) {
-        sessionPublisher = selectedExample
+        exampleSelected = selectedExample
             .filter { $0 == SelectedExample.image.rawValue || $0 == SelectedExample.webgl.rawValue }
             .map { SelectedExample(rawValue: $0)!.config }
             .handleEvents(receiveOutput: { config in
                 ConfigureId.setApiKey(apiKey: config.apiKey)
+                Context.shared.viewName.value = nil
             })
             .map { config in
                 // TODO: What if session doesn't exist
@@ -28,7 +29,6 @@ class ExampleViewModel {
                         fetchSession(sessionId: config.sessionId)
                             .map { session in
                                 ConfigureIdData(
-                                    typeToRender: .fetchSession,
                                     session: session,
                                     customerId: config.customerId,
                                     productId: config.productId,
@@ -45,36 +45,20 @@ class ExampleViewModel {
             }
             .switchToLatest()
             .share()
-            .print("---> sessionPublisher")
+            .handleEvents(receiveOutput: { data in
+                Context.shared.data = data
+            })
+            .map { _ in }
             .eraseToAnyPublisher()
         
-        updatedRecipe = selectedExample
+        showOptionsMenu = selectedExample
             .filter { index in index == SelectedExample.extra.rawValue }
-            .print("---> updateRecipe")
             .withLatestFrom(
-                sessionPublisher,
+                Context.shared.$data.compactMap { $0 },
                 resultSelector: { _, sessionData in
                     sessionData
                 }
             )
-            .map { data in
-                return updateRecipe(data: data)
-                    .map { session in
-                        ConfigureIdData(
-                            typeToRender: .updateRecipe,
-                            session: session,
-                            customerId: data.customerId,
-                            productId: data.productId,
-                            environment: data.environment,
-                            workflow: data.workflow
-                        )
-                    }
-                    .catch { error -> AnyPublisher<ConfigureIdData, Never> in
-                        print(error)
-                        return Empty().eraseToAnyPublisher()
-                    }
-            }
-            .switchToLatest()
             .eraseToAnyPublisher()
     }
 }

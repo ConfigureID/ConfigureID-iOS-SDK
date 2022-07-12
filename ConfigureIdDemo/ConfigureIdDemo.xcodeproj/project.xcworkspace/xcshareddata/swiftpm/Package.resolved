@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DropDown",
+        "repositoryURL": "git@github.com:AssistoLab/DropDown.git",
+        "state": {
+          "branch": null,
+          "revision": "2ab6f6ce19f0117d1a76ea043ef8f57722c65d16",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
