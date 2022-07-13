@@ -11,7 +11,7 @@ You can take a look at the API at https://prod-ingress.fluidconfigure.com/headle
 
 ### Xcode Projects
 
-Select `File` -> `Swift Packages` -> `Add Package Dependency` and enter `https://github.com/FranDepascuali/ConfigureID-iOS-SDK`.
+Select `File` -> `Swift Packages` -> `Add Package Dependency` and enter `https://github.com/ConfigureID/ConfigureID-iOS-SDK`.
 
 ### Swift Package Manager Projects
 
@@ -23,7 +23,7 @@ let package = Package(
     dependencies: [
         .package(
             name: "ConfigureId",
-            url: "https://github.com/FranDepascuali/ConfigureID-iOS-SDK",
+            url: "https://github.com/ConfigureID/ConfigureID-iOS-SDK",
             .exact("1.0.0")
         ),
     ],
