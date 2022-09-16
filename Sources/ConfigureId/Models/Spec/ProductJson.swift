@@ -29,6 +29,8 @@ public struct ProductJsonAttribute: Codable {
 
     public let alias: String
 
+    public let isVisible: Bool
+
     public let values: [AttributeValue]
     
     public let subAttributes: [ProductJsonAttribute]?
