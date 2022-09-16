@@ -16,6 +16,8 @@ public struct AttributeValue: Codable {
     /// - Note: Example: true
     public let active: Bool
     
+    public let selectable: Bool
+
     // TODO: Can't do it yet. Need clarification in documentation.
     /// The additional data on how to render the clipart if the attribute value is used in a clipartRelation.
 //    let clipArtConfig: ClipArtConfig
