@@ -47,6 +47,10 @@ public enum ConfigurableAttributeValue: Codable {
 
 public struct ConfigurableAttributeValueText: Codable {
     let text: String
+    
+    init(text: String) {
+        self.text = text
+    }
 }
 
 public enum ConfigurableAttributeToUpdate: Codable {
