@@ -10,6 +10,7 @@ import Foundation
 public enum ConfigurableAttributeValue: Codable {
     case id(Int)
     case name(String)
+    case text(ConfigurableAttributeValueText)
     // TODO: Can't do it yet. Need clarification in documentation.
 //    case Text (object)
 //    case UGC clipart (object)
@@ -37,9 +38,17 @@ public enum ConfigurableAttributeValue: Codable {
             try container.encode(int)
         case .name(let string):
             try container.encode(string)
+        case .text(let text):
+            try container.encode(text)
         }
+        
     }
 }
+
+public struct ConfigurableAttributeValueText: Codable {
+    let text: String
+}
+
 public enum ConfigurableAttributeToUpdate: Codable {
     case id(Int)
     case alias(String)
